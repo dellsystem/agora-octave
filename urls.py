@@ -5,6 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+
+    (r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
     # Example:
     # (r'^agora/', include('agora.foo.urls')),
 
@@ -14,4 +16,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+    
 )
