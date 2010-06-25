@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 from agora.apps.free_license.models import Free_license
 
 class Bundle(models.Model):
-    name = models.CharField(max_length=256)    
+    name = models.CharField(max_length=256)
     uploader = models.ForeignKey(User)
     description = models.TextField()
-    free_license = models.ForeignKey(Free_license) 
+    free_license = models.ForeignKey(Free_license)
     pub_date = models.DateTimeField('date uploaded')
     mod_date = models.DateTimeField('date last modified')
     def __unicode__(self):

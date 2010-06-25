@@ -1,0 +1,3 @@
+<p>
+Sup, this {{ user }}'s {{ bundle }} bundle.
+</p>

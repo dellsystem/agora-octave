@@ -6,4 +6,4 @@ class Free_license(models.Model):
     text = models.TextField()
     gpl_compatible = models.BooleanField()
     def __unicode__(self):
-        return self.name    
+        return self.name

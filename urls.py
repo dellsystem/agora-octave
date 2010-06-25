@@ -9,12 +9,6 @@ urlpatterns = patterns('',
     (r'^$',
      'django.views.generic.simple.direct_to_template',
      {'template': 'index.html'}),
-    # Example:
-    # (r'^agora/', include('agora.foo.urls')),
-
-    #(r'^mippets/$', 'agora.mippet.views.index'),
-   
-    #(r'^mippets/(?P<name>.*)/$', 'agora.mippet.views.detail'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
@@ -22,5 +16,12 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    
+
+
+
+    # Example:
+    # (r'^agora/', include('agora.foo.urls')),
+
+    (r'^(?P<user>.*)/(?P<bundle>.*)/$', 'agora.apps.bundle.views.detail'),
+
 )
