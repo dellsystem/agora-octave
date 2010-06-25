@@ -6,9 +6,15 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    (r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
+    (r'^$',
+     'django.views.generic.simple.direct_to_template',
+     {'template': 'index.html'}),
     # Example:
     # (r'^agora/', include('agora.foo.urls')),
+
+    #(r'^mippets/$', 'agora.mippet.views.index'),
+   
+    #(r'^mippets/(?P<name>.*)/$', 'agora.mippet.views.detail'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
