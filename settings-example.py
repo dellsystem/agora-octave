@@ -101,7 +101,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.admin',
 
-    #
+    #Agora-specific apps
     'agora.apps.snippet',
     'agora.apps.bundle',
     'agora.apps.free_license',

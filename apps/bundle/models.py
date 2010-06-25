@@ -9,6 +9,11 @@ class Bundle(models.Model):
     free_license = models.ForeignKey(Free_license)
     pub_date = models.DateTimeField('date uploaded')
     mod_date = models.DateTimeField('date last modified')
+
+    class Meta:
+        #Every user must pick unique names for their bundles
+        unique_together = ('uploader','name')
+
     def __unicode__(self):
         return self.name
 
@@ -22,5 +27,3 @@ class BundleFile(models.Model):
 class CodeFile(BundleFile):
     code = models.TextField()
     language = models.CharField(max_length=50)
-    def __unicode__(self):
-        return self.name

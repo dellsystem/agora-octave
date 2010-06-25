@@ -1,11 +1,9 @@
-from django.template import Context, loader
-from django.http import HttpResponse
+from django.shortcuts import render_to_response, get_object_or_404
 from agora.apps.bundle.models import *
 
 def detail(request, user, bundle):
-    t = loader.get_template('bundle/index.djhtml')
-    c = Context({
-        'user': user,
-        'bundle' : bundle,
-    })
-    return HttpResponse(t.render(c))
+    b = get_object_or_404(Bundle, uploader__username=user, name=bundle)
+    f = BundleFile.objects.filter(bundle=b)
+
+    return render_to_response('bundle/index.djhtml', {'bundle':b,
+                                                      'files': f,})

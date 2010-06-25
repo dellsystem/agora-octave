@@ -1,3 +1,22 @@
+{% if bundle %}
 <p>
-Sup, this {{ user }}'s {{ bundle }} bundle.
+  Sup, this is {{ bundle.uploader }}'s {{ bundle.name }} bundle.
+</p>
+
+{% if files %}
+<ul>
+  {% for f in files%}
+  <li><a href="{{f.bundle_file}}">{{f}}</a></li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<p>
+  No files in this bundle!
+</p>
+{% endif %}
+
+{% else %}
+Bundle not found!
+{% endif %}
 </p>
