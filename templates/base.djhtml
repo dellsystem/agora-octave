@@ -30,7 +30,7 @@
   <div id="container">
     <div id="header">
       <h1 id="logo"><a href="http://www.octave.org/">Agora
-      Octave</a> <span id="agora-logo"><img src="/static/agora.png"></span></h1>
+      Octave</a> <span id="agora-logo"></h1>
       <div id="nav">
         <div id="nav-top"></div>
         <ul  id="nav-main">
@@ -55,7 +55,7 @@
     </div>
     <!-- END #content -->
     <div id="footer">
-      <p>
+      <p id="copyright">
         &copy; 1998-{% now "Y"%} 
         <a href="http://www.gnu.org/software/octave/acknowledgments.html">
           John W. Eaton and others</a> 
