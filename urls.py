@@ -25,6 +25,6 @@ from django.conf import settings
 if settings.DEBUG:
      urlpatterns += patterns('',
                     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-                    {'document_root': 'media/', 'show_indexes': True}),
+                    {'document_root': 'static/', 'show_indexes': True}),
                     )
 
