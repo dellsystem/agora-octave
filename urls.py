@@ -23,7 +23,8 @@ urlpatterns = patterns('',
 from django.conf import settings
 
 if settings.DEBUG:
-    urlpatterns.insert (1,
-    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
-     {'document_root': 'media/', 'show_indexes': True}),
-    )
+     urlpatterns += patterns('',
+                    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+                    {'document_root': 'media/', 'show_indexes': True}),
+                    )
+

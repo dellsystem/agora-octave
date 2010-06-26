@@ -16,9 +16,9 @@
     enables collaboration with Octave-related personal projects and
     code" />
 
-    <link href="/media/{% block cssid %}base{% endblock %}.css" 
+    <link href="/static/{% block cssid %}base{% endblock %}.css" 
           rel="stylesheet" type="text/css" media="screen" />
-    <link href="/media/print.css" 
+    <link href="/static/print.css" 
           rel="stylesheet" type="text/css" media="print" />
       {% block extrahead %}{% endblock %}
   </head>
@@ -28,7 +28,7 @@
 
   <div id="container">
     <div id="header">
-      <h1 id="logo"><a href="http://www.octave.org/"><img src="/site_media/icon.png"
+      <h1 id="logo"><a href="http://www.octave.org/"><img src="/static/icon.png"
       alt="Octave" /></a></h1>
       <ul id="nav-global">
         <li id="nav-homepage"><a href="/">Home</a></li>
