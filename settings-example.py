@@ -24,6 +24,7 @@ DATABASES = {
 
         #SQLite is enough for testing
         'ENGINE' : 'django.db.backends.sqlite3'
+	'NAME'   : 'agora'
     }
 }
 
