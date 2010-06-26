@@ -36,7 +36,7 @@
         <ul  id="nav-main">
           <li id="nav-homepage"><a href="/bundles" class="first">Latest</a></li>
           <li id="nav-snippets"><a href="/about">Snippets</a></li>
-          <li id="nav-discuss"><a href="/news">Discusions</a></li>
+          <li id="nav-discuss"><a href="/news">Discussions</a></li>
           <li id="nav-about"><a href="/news">About</a></li>
 
         </ul>
