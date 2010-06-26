@@ -1,0 +1,6 @@
+{% extends "base.djhtml" %}
+{% block content %}
+<p>
+Main screen turn on!
+</p>
+{% endblock %}

@@ -1,3 +1,6 @@
+{% extends "base.djhtml" %}
+
+{% block content %}
 {% if bundle %}
 <p>
   Sup, this is {{ bundle.uploader }}'s {{ bundle.name }} bundle.
@@ -6,7 +9,7 @@
 {% if files %}
 <ul>
   {% for f in files%}
-  <li><a href="{{f.bundle_file}}">{{f}}</a></li>
+  <li><a href="/{{f.bundle_file}}">{{f}}</a></li>
   {% endfor %}
 </ul>
 
@@ -20,3 +23,4 @@
 Bundle not found!
 {% endif %}
 </p>
+{% endblock %}
