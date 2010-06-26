@@ -39,8 +39,9 @@ a.reference em { font-style: normal; }
 #nav-bot {height: 0.85em; background:#FCAF3E; width: 100%; position: absolute;}
 #nav-main{position: relative; z-index: 1; height: 0.85em;}
 #nav{ 
-    margin: 0; font-size: 14px; text-align: right; 
+    margin: 0; font-size: 12px; text-align: right;
     font-weight: bold; width: 100%;
+    font-family: "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
     float: left; }
 
 #nav ul {
@@ -75,7 +76,7 @@ a.reference em { font-style: normal; }
 /*** basic styles ***/
 
 dd { margin-left:15px; }
-h1,h2,h3,h4 { margin-top:1em; font-family:"Trebuchet MS",sans-serif; font-weight:normal; }
+h1,h2,h3,h4 { margin-top:1em; font-family:"Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif; font-weight:normal; }
 h1 { font-size:218%; margin-bottom:.4em; line-height:1.1em; }
 h2 { font-size:175%; margin-bottom:.6em; line-height:1.2em;}
 h3 { font-size:150%; font-weight:bold; margin-bottom:.2em;}
