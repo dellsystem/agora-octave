@@ -1,9 +1,6 @@
 {% extends "controls.djhtml" %}
 
 {% block content %}
-<h2>
-  Welcome to Agora Octave
-</h2>
 <div class="info">
 <h3>
   information

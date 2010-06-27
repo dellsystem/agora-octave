@@ -1,0 +1,9 @@
+{% extends "base.djhtml" %}
+
+{% block content-related %}
+<div class="whitebox">
+  <p>
+    stuff stuff stuff
+  </p>
+</div>
+{% endblock %}
