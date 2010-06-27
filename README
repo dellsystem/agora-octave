@@ -1,0 +1,67 @@
+Agora Octave is (or will be) a Django-based website for rapid
+collaboroation related to GNU Octave. It is released under the terms
+of the Affero General Public License version 3 as published by the
+Free Software Foundation, or at your option, any later version.
+
+Quickstart for personal debugging:
+
+    1) Install Django, Python, mercurial, SQLite3. On a Unix-based
+    system, Python is probably already installed.
+
+    2) Clone this repository
+
+    3) In the cloned repository, copy "settings-example.py" to
+       "settings.py" (advanced users: modify this to suit your needs).
+
+    4) Now run
+
+         $ python manage.py syncbd    #Will create an empty database
+                                      #(by default: sqlite3)
+
+         $ python manage.py runserver #Run a development webserver on port 8000
+
+    5) Point a browser to http://localhost:8000
+
+    6) Submit patches. ;-)
+
+Here's our TODO. At the moment, almost none of this is done. "I" in
+the text below indicates "Jordi".
+
+   -- Users can upload bundles of code.
+
+   -- Bundles clearly indicate which free license they are using. I'm
+      thinking that it's reasonable to restrict allowable licenses to
+      GPL-compatibility. This is not a stringent requirement, and it
+      would simplify distribution with Octave. For the moment I'm
+      considering that this might be relaxed and any license approved
+      by the OSI or FSF should be ok.
+
+   -- Additionally, there's a place to post quick snippets. They'll
+      be under a default free license that the user indicates in
+      their preferences. Usually only single bits of code go in
+      there. Responding with more snippets will be facilitated.
+
+   -- I'm thinking that optionally, I can setup bundles to also
+      create an hg repo if the uploader requests it, or existing hg
+      repos can be imported.
+
+   -- When viewing a user's bundle, the bundle as a whole can be
+      ranked and commented upon by logged in users. The contents of
+      the bundle can also be browsed from the web without needing to
+      download the whole bundle.
+
+   -- Logging in is required only to contribute to the site with
+      code, comments, ranking code. Everything else is public to
+      anyone.
+
+   -- Users are encouraged but not required to provide real names.
+
+   -- Bundles that are somehow deemed to be of high quality can
+      easily be pushed to Octave-forge (i.e. they've been "forged",
+      tempered, tested and tried).
+
+   -- A user's landing page will indicate which bundles and snippets
+      this user has uploaded as well as whatever personal information
+      the user would like to provid.e
+
+This README itself also admits patches.
