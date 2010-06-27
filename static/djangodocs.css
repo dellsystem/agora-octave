@@ -24,7 +24,7 @@ body { font:16px/1.5 Verdana,sans-serif; color: white;}
     margin: 0 auto;
 }
 #footer {
-    background-color: #888A85; font-size:80%;
+    background-color: #BABDB6; font-size:80%;
     padding-top: 0.75em; text-align:center;
     padding-bottom: 0.75em;
 }
@@ -56,7 +56,7 @@ body { font:16px/1.5 Verdana,sans-serif; color: white;}
 }
 
 #copyright {margin-left: 1em;}
-#agora-logo{float: right;}
+#agora-logo{float: right; margin-right: 1em}
 
 #content-main{
     float: left;
@@ -75,7 +75,7 @@ a {text-decoration: none;}
 a img {border: none;}
 a:link    {color: #3465A4; text-decoration: none;}
 a:active  {color: #204a87; text-decoration: none;}
-a:visited {color: #E9B96E; text-decoration: none;}
+a:visited {color: #CE5C00; text-decoration: none;}
 a:hover   {color: #729FCF; text-decoration: none;}
 h2 a, h3 a, h4 a { text-decoration:none !important; }
 a.reference em { font-style: normal; }
@@ -86,7 +86,7 @@ a.reference em { font-style: normal; }
 #nav-main{position: relative; z-index: 1; height: 0.85em;}
 #nav{
     margin: 0; font-size: 12px; text-align: right;
-    font-weight: bold; width: 100%;
+    font-weight: normal; width: 100%;
     font-family: "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
     float: left; }
 
@@ -99,10 +99,10 @@ a.reference em { font-style: normal; }
 #nav li {display: inline;}
 
 #nav li a{
-    padding:0em 2em;
+    padding:0em 3em 0.2em 3em;
     color: #6A6354;
     text-decoration:none;
-    border-left: solid 1px  #F69327;
+    border-left: solid 1px  #F57900;
 }
 
 #nav li a.first{
