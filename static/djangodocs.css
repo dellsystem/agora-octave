@@ -1,22 +1,22 @@
 /*** setup ***/
-html { background:#DEDFDB; color: #575955;}
+html { background:#EEEEEC; color: #575955;}
 body { font:16px/1.5 Verdana,sans-serif; color: white;}
 #header {
     background: #4877B1; color: white;
     padding: 4px 0 12px 0; text-align: left;
 
     /* for IE */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=' #6F9DCD', endColorstr='#4877B1'); 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=' #6F9DCD', endColorstr='#4877B1');
     /* for webkit browsers */
     background: -webkit-gradient(linear, left top, left bottom, from( #6F9DCD), to(#4877B1));
     /* for firefox 3.6+ */
     background: -moz-linear-gradient(top,   #6F9DCD,  #4877B1);
 }
 
-#header h1 a { color: white; margin-left: 1em}
+#header h1 a { color: #EEEEEC; margin-left: 1em}
 #columnwrap {
-    background: #DFE0DC; color: black;
-    background-image: url("agora-grey-large.png");
+    background: #EEEEEC; color: black;
+    /*background-image: url("agora-grey-large.png");*/
     background-position: bottom right;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -24,7 +24,7 @@ body { font:16px/1.5 Verdana,sans-serif; color: white;}
     margin: 0 auto;
 }
 #footer {
-    background-color:#8F918C; font-size:80%;
+    background-color: #888A85; font-size:80%;
     padding-top: 0.75em; text-align:center;
     padding-bottom: 0.75em;
 }
@@ -34,11 +34,21 @@ body { font:16px/1.5 Verdana,sans-serif; color: white;}
 }
 
 .whitebox{
-    background-color: white;
-    color: black;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border: 1px solid #000;
+    font: 14px/140% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    font-weight: lighter;
+    background: #EEEEEC;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeec', endColorstr='#d3d7cf');
+    background: -webkit-gradient(linear, left top, left bottom, from(#eeeeec), to(#d3d7cf));
+    background: -moz-linear-gradient(top,  #eeeeec,  #d3d7cf);
+    border: solid 1px #888A85;
+    -moz-border-radius-bottomleft:10px;
+    -moz-border-radius-bottomright:0px;
+    -moz-border-radius-topleft:0;
+    -moz-border-radius-topright:10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius:0px;
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-top-right-radius: 10px;
     float: left;
     padding: 10px;
     margin-top: 1em;
@@ -63,7 +73,10 @@ body { font:16px/1.5 Verdana,sans-serif; color: white;}
 /*** links ***/
 a {text-decoration: none;}
 a img {border: none;}
-a:link, a:visited { color: blue; }
+a:link    {color: #3465A4; text-decoration: none;}
+a:active  {color: #204a87; text-decoration: none;}
+a:visited {color: #E9B96E; text-decoration: none;}
+a:hover   {color: #729FCF; text-decoration: none;}
 h2 a, h3 a, h4 a { text-decoration:none !important; }
 a.reference em { font-style: normal; }
 
@@ -110,6 +123,7 @@ a.reference em { font-style: normal; }
 
 dd { margin-left:15px; }
 h1,h2,h3,h4 {
+    color:#555753;
     margin-top:1em;
     font-family:"Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif; 
     font-weight:normal;
