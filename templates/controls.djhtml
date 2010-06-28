@@ -1,9 +1,30 @@
 {% extends "base.djhtml" %}
 
 {% block content-related %}
-<div class="whitebox">
-  <p>
-    stuff stuff stuff
-  </p>
+<div id="info">
+  <h3>
+    Controls
+  </h3>
+  <div class="whitebox">
+    {% if user.is_authenticated %}
+    <p>
+      You are logged in
+      as <a href="/{{user.username}}">{{user.username}}</a>.
+    </p>
+    <p>
+      (<a href="{% url auth_logout %}">logout</a>)
+    </p>
+    {% else %}
+    <p>
+      <a href="/accounts/login">Log in</a>
+    </p>
+    {% endif %}
+    <form method="get" action="." >
+      <br/>
+      <input id="search" type="text" name="search" maxlength="200" size="10"/>
+      <input type="submit" value="Search" />
+    </form>
+    
+  </div>
 </div>
 {% endblock %}

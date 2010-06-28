@@ -5,17 +5,21 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+     (r'^$',
+      'django.views.generic.simple.direct_to_template',
+      {'template': 'index.djhtml'}),
 
-    (r'^$',
-     'django.views.generic.simple.direct_to_template',
-     {'template': 'index.djhtml'}),
 
+     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+     (r'^admin/', include(admin.site.urls)),
 
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+     (r'^accounts/logout/', 'django.contrib.auth.views.logout',
+      {'template_name' : 'index.djhtml', 'next_page' : '/'}),
 
-    (r'^admin/', include(admin.site.urls)),
+     (r'^accounts/', include('registration.urls'),     
+      {'template_name' : 'registration/registration_form.djhtml'} ),
 
-    (r'^', include('agora.apps.bundle.urls'))
+     (r'^', include('agora.apps.bundle.urls')),
 
 )
 

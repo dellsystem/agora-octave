@@ -93,6 +93,9 @@ TEMPLATE_DIRS = (
     "templates", #Relative paths are ok for testing
 )
 
+#For how long a registration link will remain active
+ACCOUNT_ACTIVATION_DAYS = 1
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,6 +104,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admindocs',
     'django.contrib.admin',
+
+    #Third-party apps
+    'registration',
 
     #Agora-specific apps
     'agora.apps.snippet',

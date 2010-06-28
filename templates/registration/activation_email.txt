@@ -1,0 +1,10 @@
+You are receiving this email because you requested a registration for
+Agora Octave (http://{{ site.domain }})). Please click the following
+link to complete your registration to Agora Octave:
+
+     http://{{ site.domain }}{% url registration_activate activation_key %}
+
+This link is valid for {{ expiration_days }} days.
+
+If you received this email in error, simply ignore it, and we
+apologise for the inconvenience.

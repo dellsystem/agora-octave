@@ -5,7 +5,11 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-us" />
 
-    <title>Agora Octave &mdash; {% block title %}Free your math!{% endblock %}</title>
+    <title>Agora Octave &mdash; 
+      {% block title %}
+      Free your math!
+      {% endblock %}
+    </title>
 
     <meta name="Copyright" content="Agora Octave is free software
     under the Affero General Public License version 3 as published by
@@ -21,7 +25,7 @@
 
     <link href="/static/{% block cssid %}base{% endblock %}.css" 
           rel="stylesheet" type="text/css" media="screen" />
-      {% block extrahead %}{% endblock %}
+    {% block extrahead %}{% endblock %}
   </head>
 
   <body id="{% block sectionid %}generic{% endblock %}" 
@@ -30,7 +34,7 @@
   <div id="container">
     <div id="header">
       <img src="/static/agora.png" id="agora-logo">
-      <h1 id="logo"><a href="http://www.octave.org/">Agora Octave</a> 
+      <h1 id="logo"><a href="/">Agora Octave</a> 
       </h1>
       <div id="nav">
         <div id="nav-top"></div>

@@ -1,0 +1,45 @@
+{% extends "controls.djhtml" %}
+
+{% block content %}
+
+<div class="info">
+  <h3>
+    Registration details
+  </h3>
+  <div class="whitebox">
+    <p>
+      Please provide us some basic information to set up your account.
+    </p>
+    <form action="." method="post">
+      {% csrf_token %}
+      <p>
+        <label for="id_username">username: (letters, numbers, underscores)
+        </label>
+        <br />
+        <input id="id_username" type="text" class="required"
+               name="username" maxlength="30" />
+      </p>
+      <p>
+        <label for="id_email">email address:</label>
+        <br />
+        <input id="id_email" type="text" class="required" name="email"
+               maxlength="75" />
+      </p>
+      <p>
+        <label for="id_password1">password:</label>
+        <br />
+        <input id="id_password1" type="password" class="required"
+               name="password1" />
+      </p>
+      <p>
+        <label for="id_password2">password (again):</label>
+        <br />
+        <input id="id_password2" type="password" class="required"
+               name="password2" />
+      </p>      
+      <input class="button" type="submit" value="Submit" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}

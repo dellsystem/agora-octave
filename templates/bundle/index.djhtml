@@ -2,13 +2,13 @@
 
 {% block content %}
 <div class="info">
-  {% if bundle %}
   <h3>
     {{bundle.name}} by <a href="/{{bundle.uploader}}/">{{bundle.uploader}}</a>
   </h3>
 
+  {% if files %}
+
   <div class="whitebox">
-    {% if files %}
     <p>
       files:
     </p>
@@ -20,14 +20,14 @@
   </div>
 
   {% else %}
-  <p>
-    No files in this bundle!
-  </p>
+
+  <div class="whitebox">
+    <p>
+      No files in this bundle!
+    </p>
+  </div>
+
   {% endif %}
 
-
-  {% else %}
-  Bundle not found!
-  {% endif %}
 </div>
 {% endblock %}
