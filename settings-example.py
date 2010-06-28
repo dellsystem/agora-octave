@@ -96,6 +96,14 @@ TEMPLATE_DIRS = (
 #For how long a registration link will remain active
 ACCOUNT_ACTIVATION_DAYS = 1
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -113,3 +121,5 @@ INSTALLED_APPS = (
     'agora.apps.bundle',
     'agora.apps.free_license',
 )
+
+LOGIN_REDIRECT_URL='/'
