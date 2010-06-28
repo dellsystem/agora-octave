@@ -16,8 +16,7 @@ urlpatterns = patterns('',
      (r'^accounts/logout/', 'django.contrib.auth.views.logout',
       {'template_name' : 'index.djhtml', 'next_page' : '/'}),
 
-     (r'^accounts/', include('registration.urls'),     
-      {'template_name' : 'registration/registration_form.djhtml'} ),
+     (r'^accounts/', include('registration.urls')),
 
      (r'^', include('agora.apps.bundle.urls')),
 

@@ -8,35 +8,19 @@
   </h3>
   <div class="whitebox">
     <p>
-      Please provide us some basic information to set up your account.
+      Please give us some basic information to set up your account.
+      Valid usernames consist of letters, numbers, and underscores.
     </p>
+    {% if form.errors %}
+    <p class="error">
+      Please correct the errors below.
+    </p>
+    {% endif %}
     <form action="." method="post">
       {% csrf_token %}
-      <p>
-        <label for="id_username">username: (letters, numbers, underscores)
-        </label>
-        <br />
-        <input id="id_username" type="text" class="required"
-               name="username" maxlength="30" />
-      </p>
-      <p>
-        <label for="id_email">email address:</label>
-        <br />
-        <input id="id_email" type="text" class="required" name="email"
-               maxlength="75" />
-      </p>
-      <p>
-        <label for="id_password1">password:</label>
-        <br />
-        <input id="id_password1" type="password" class="required"
-               name="password1" />
-      </p>
-      <p>
-        <label for="id_password2">password (again):</label>
-        <br />
-        <input id="id_password2" type="password" class="required"
-               name="password2" />
-      </p>      
+      <table>
+      {{form.as_table}}
+      </table>
       <input class="button" type="submit" value="Submit" />
     </form>
   </div>

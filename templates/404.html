@@ -1,10 +1,12 @@
-<html>
-<head>
-<title>Quoth the server...</title>
-</head>
-<body>
+{% extends "controls.djhtml" %}
+{% block title %}
+Object not found
+{% endblock %}
+{% block content %}
+<div class="whitebox">
 <p>
-404!
+  The resource you were looking for is unavailable. If you think this
+  is our fault, please let us know.
 </p>
-</body>
-</html>
+</div>
+{% endblock %}

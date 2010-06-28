@@ -16,7 +16,7 @@
     </p>
     {% else %}
     <p>
-      <a href="/accounts/login">Log in</a>
+      <a href="{% url auth_login%}?next={{ request.path }}">Log in</a>
     </p>
     {% endif %}
     <form method="get" action="." >

@@ -33,6 +33,13 @@ body { font:16px/1.5 Verdana,sans-serif; color: white;}
     overflow: hidden;
 }
 
+.error, .errorlist{
+    color: #ef2929;
+    display: block;
+}
+
+
+
 .whitebox{
     font: 14px/140% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
     font-weight: lighter;
@@ -112,11 +119,6 @@ a.reference em { font-style: normal; }
 #header div.nav { margin-top: -27px; }
 #footer div.nav { margin-bottom: -18px; }
 
-/*** content ***/
-/*
-#yui-main div.yui-b { position: relative; }
-#yui-main div.yui-b { margin: 0 0 0 20px; background: white; color: black; padding: 0.3em 2em 1em 2em; }
-*/
 
 
 /*** basic styles ***/
@@ -137,7 +139,6 @@ div.figure { text-align: center; }
 div.figure p.caption { font-size:1em; margin-top:0; margin-bottom:1.5em; color: #555;}
 hr { color:#ccc; background-color:#ccc; height:1px; border:0; }
 p, ul, dl { margin-top:.6em; margin-bottom:1em; padding-bottom: 0.1em; text-align: left;}
-#yui-main div.yui-b img { max-width: 50em; margin-left: auto; margin-right: auto; display: block; }
 caption { font-size:1em; font-weight:bold; margin-top:0.5em; margin-bottom:0.5em; margin-left: 2px; text-align: center; }
 blockquote { padding: 0 1em; margin: 1em 0; font:125%/1.2em "Trebuchet MS", sans-serif; border-left:2px solid; } 
 strong { font-weight: bold; }
