@@ -1,12 +1,12 @@
 Agora Octave is (or will be) a Django-based website for rapid
-collaboroation related to GNU Octave. It is released under the terms
-of the Affero General Public License version 3 as published by the
-Free Software Foundation, or at your option, any later version.
+collaboration related to GNU Octave. It is released under the terms of
+the Affero General Public License version 3 as published by the Free
+Software Foundation, or at your option, any later version.
 
 Quickstart for personal debugging:
 
     1) Install Django, Python, mercurial, SQLite3. On a Unix-based
-    system, Python is probably already installed.
+       system, Python is probably already installed.
 
     2) Clone this repository
 
@@ -15,7 +15,7 @@ Quickstart for personal debugging:
 
     4) Now run
 
-         $ python manage.py syncbd    #Will create an empty database
+         $ python manage.py syncdb    #Will create an empty database
                                       #(by default: sqlite3)
 
          $ python manage.py runserver #Run a development webserver on port 8000
@@ -62,6 +62,6 @@ the text below indicates "Jordi".
 
    -- A user's landing page will indicate which bundles and snippets
       this user has uploaded as well as whatever personal information
-      the user would like to provid.e
+      the user would like to provide.
 
 This README itself also admits patches.
