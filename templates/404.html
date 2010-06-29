@@ -1,12 +1,16 @@
-{% extends "controls.djhtml" %}
+{% extends "whitebox.djhtml" %}
+
 {% block title %}
 Object not found
 {% endblock %}
-{% block content %}
-<div class="whitebox">
+
+{% block boxtitle %}
+Object not found
+{% endblock %}
+
+{% block boxcontents %}
 <p>
   The resource you were looking for is unavailable. If you think this
   is our fault, please let us know.
 </p>
-</div>
 {% endblock %}

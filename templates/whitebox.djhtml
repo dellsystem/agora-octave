@@ -1,5 +1,16 @@
 {% extends "base.djhtml" %}
 
+{% block content %}
+<div id="info">
+  <h3>
+    {% block boxtitle  %}{% endblock %}
+  </h3>
+  <div class="whitebox">
+    {% block boxcontents %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
+
 {% block content-related %}
 <div id="info">
   <h3>

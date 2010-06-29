@@ -1,25 +1,23 @@
-{% extends "controls.djhtml" %}
+{% extends "whitebox.djhtml" %}
 
-{% block content %}
-<div id="info">
-  <h3>
-    Account activation
-  </h3>
-  <div class="whitebox">
-    {% if account %}
-    <p>
-      Account successfully activated. 
-      <a href="{% url auth_login %}">Click here</a> to log in.
-    </p>
+{% block boxtitle %}
+Account activation
+{% endblock %}
 
-    {% else %}
+{% block boxcontents %}
 
-    <p>
-      Account activation failed.
-    </p>
+{% if account %}
+<p>
+  Account successfully activated. 
+  <a href="{% url auth_login %}">Click here</a> to log in.
+</p>
 
-    {% endif %}
+{% else %}
 
-  </div>
-</div>
+<p>
+  Account activation failed.
+</p>
+
+{% endif %}
+
 {% endblock %}

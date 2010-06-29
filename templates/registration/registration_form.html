@@ -1,29 +1,27 @@
-{% extends "controls.djhtml" %}
+{% extends "whitebox.djhtml" %}
 
-{% block content %}
+{% block boxtitle %}
+Registration details
+{% endblock %}
 
-<div class="info">
-  <h3>
-    Registration details
-  </h3>
-  <div class="whitebox">
-    <p>
-      Please give us some basic information to set up your account.
-      Valid usernames consist of letters, numbers, and underscores.
-    </p>
-    {% if form.errors %}
-    <p class="error">
-      Please correct the errors below.
-    </p>
-    {% endif %}
-    <form action="." method="post">
-      {% csrf_token %}
-      <table>
-      {{form.as_table}}
-      </table>
-      <input class="button" type="submit" value="Submit" />
-    </form>
-  </div>
-</div>
 
+{% block boxcontents %}
+<p>
+  Please give us some basic information to set up your account.
+  Valid usernames consist of letters, numbers, and underscores.
+</p>
+
+{% if form.errors %}
+<p class="error">
+  Please correct the errors below.
+</p>
+{% endif %}
+
+<form action="." method="post">
+  {% csrf_token %}
+  <table>
+    {{form.as_table}}
+  </table>
+  <input class="button" type="submit" value="Submit" />
+</form>
 {% endblock %}

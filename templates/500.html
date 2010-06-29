@@ -1,12 +1,15 @@
-{% extends "controls.djhtml" %}
+{% extends "whitebox.djhtml" %}
 {% block title %}
 Server error
 {% endblock %}
-{% block content %}
-<div class="whitebox">
+
+{% block boxtitle %}
+Oops...
+{% endblock %}
+
+{% block boxcontents %}
 <p>
   The server encountered an internal error. If the problem persists,
   please let us know.
 </p>
-</div>
 {% endblock %}

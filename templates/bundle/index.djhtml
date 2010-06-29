@@ -1,4 +1,4 @@
-{% extends "controls.djhtml" %}
+{% extends "whitebox.djhtml" %}
 
 {% block content %}
 <div class="info">
