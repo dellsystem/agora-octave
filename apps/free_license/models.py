@@ -1,6 +1,6 @@
 from django.db import models
 
-class Free_license(models.Model):
+class FreeLicense(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField()
     text = models.TextField()

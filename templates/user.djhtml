@@ -1,0 +1,9 @@
+{% extends "whitebox.djhtml" %}
+{% block boxtitle %}
+{{user.username}}
+{% endblock %}
+{% block boxcontents %}
+{{profile.preferred_license}} <br/>
+{{bundles}} <br/>
+{{snippets}} <br/>
+{% endblock %}
