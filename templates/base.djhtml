@@ -65,16 +65,16 @@
 
     </div>
     <!-- END #content -->
-    <div id="footer">
-      <p id="copyright">
-        &copy; 1998-{% now "Y"%} 
-        <a href="http://www.gnu.org/software/octave/acknowledgments.html">
-          John W. Eaton and others</a> unless otherwise noted.
-      </p>
-    </div>
-    <!-- END #footer -->
   </div>
   <!-- END #container -->
+  <div id="footer">
+    <p id="copyright">
+      &copy; 1998-{% now "Y"%}
+      <a href="http://www.gnu.org/software/octave/acknowledgments.html">
+        John W. Eaton and others</a> unless otherwise noted.
+    </p>
+  </div>
+  <!-- END #footer -->
   </body>
 </html>
 

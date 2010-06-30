@@ -1,6 +1,6 @@
 /*** setup ***/
-html { background:#EEEEEC; color: #575955;}
-body { font:16px/1.5 Verdana,sans-serif; color: white;}
+html { background:#EEEEEC; color: #575955; height: 100%;}
+body { font:16px/1.5 Verdana,sans-serif; color: white; height: 100%;}
 #header {
     background: #4877B1; color: white;
     padding: 4px 0 12px 0; text-align: left;
@@ -13,20 +13,31 @@ body { font:16px/1.5 Verdana,sans-serif; color: white;}
     background: -moz-linear-gradient(top,   #6F9DCD,  #4877B1);
 }
 
+#container {
+    min-height: 100%;
+}
+
 #header h1 a { color: #EEEEEC; margin-left: 1em}
+
 #columnwrap {
     background: #EEEEEC; color: black;
     /*background-image: url("agora-grey-large.png");*/
     background-position: bottom right;
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow: auto;
     width: 85%;
     margin: 0 auto;
+    padding-bottom: 60px;
 }
+
 #footer {
     background-color: #BABDB6; font-size:80%;
     padding-top: 0.75em; text-align:center;
-    padding-bottom: 0.75em;
+    padding-bottom: -150px;
+    position: relative;
+    clear:both;
+    height: 60px;
+    margin-top: -60px;
 }
 
 .info{
