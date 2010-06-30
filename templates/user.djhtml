@@ -3,7 +3,63 @@
 {{user.username}}
 {% endblock %}
 {% block boxcontents %}
-{{profile.preferred_license}} <br/>
-{{bundles}} <br/>
-{{snippets}} <br/>
-{% endblock %}
+<div id="userinfo">
+  {% if user.first_name or user.last_name %}
+  <span class="userfield">Name</span> 
+  <span class="userdata">{{user.first_name}} {{user.last_name}}</span> 
+  <br />
+  {% endif %}
+  <span class="userfield">Preferred license</span>
+  <span class="userdata">{{profile.preferred_license}}</span>
+  <br />
+  {% if profile.interests %}
+  <h4>
+    Interests
+  </h4>
+  <p class="userdata">
+    {{profile.interests}}
+  </p>
+  {% endif %}
+
+  {% if profile.blurb %}
+  <h4>
+    About {{user.username}}
+  </h4>
+  <p class="userdata">
+    {{profile.blurb}}
+  </p>
+</div>
+{% endif %}
+{% endblock %} {# boxcontents #}
+
+{% block extra-content-related %}
+{% if bundles or snippets %}
+<div id="info">
+  <h3>
+    Contributions by {{user.username}}
+  </h3>
+  <div class="whitebox">
+    {% if bundles %}
+    <h5>
+      Bundles
+    </h5>
+    <ul>
+      {% for b in bundles %}
+      <li> <a href="/{{user.username}}/{{b.name}}">{{b.name}} </a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if snippets %}
+    <h5>
+      Snippets
+    </h5>
+    <ul>
+      {% for s in snippets %}
+      <li><a href="/snippet/{{s}}"}{{s}}</a></li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endif %}
+{% endblock %} {# extra-content-related #}

@@ -9,5 +9,13 @@ class Snippet(models.Model):
     pub_date = models.DateTimeField('date uploaded')
     mod_date = models.DateTimeField('date last modified')
 
+    def __unicode__(self):
+        if self.name:
+            return self.name
+        return self.id
+
 class CodeLanguage(models.Model):
     name = models.CharField(max_length=64)
+
+    def __unicode__(self):
+        return name

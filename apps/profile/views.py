@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from agora.apps.profile.models import *
+from agora.apps.profile.models import Profile
 from django.contrib.auth.models import User
 from django.http import Http404
 from agora.apps.free_license.models import FreeLicense
