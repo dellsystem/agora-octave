@@ -11,32 +11,15 @@
 </div>
 {% endblock %}
 
-{% block content-related %}
-<div id="info">
-  <h3>
-    Controls
-  </h3>
-  <div class="whitebox">
-    {% if user.is_authenticated %}
-    <p>
-      You are logged in
-      as <a href="/{{user.username}}">{{user.username}}</a>.
-    </p>
-    <p>
-      (<a href="{% url auth_logout %}">logout</a>)
-    </p>
-    {% else %}
-    <p>
-      <a href="{% url auth_login %}?next={{ request.path }}">Log in</a>
-    </p>
-    {% endif %}
-    <form method="get" action="." >
-      <br/>
-      <input id="search" type="text" name="search" maxlength="200" size="10"/>
-      <input type="submit" value="Search" />
-    </form>
-    
-  </div>
-</div>
-{% block extra-content-related %}{% endblock %}
+{% block session %}
+{% if user.is_authenticated %}
+<form action="{% url auth_logout %}" method="post" id="nav-right">
+  You are logged in
+  as <a href="/{{user.username}}">{{user.username}}</a>.
+  {% csrf_token %}
+  <input type="submit" value="logout" id="logout-button"/>
+</form>
+{% else %}
+<a href="{% url auth_login %}?next={{ request.path }}">Log in</a>
+{% endif %}
 {% endblock %}
