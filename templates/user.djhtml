@@ -5,8 +5,8 @@
 {% block boxcontents %}
 <div id="userinfo">
   {% if user.first_name or user.last_name %}
-  <span class="userfield">Name</span> 
-  <span class="userdata">{{user.first_name}} {{user.last_name}}</span> 
+  <span class="userfield">Name</span>
+  <span class="userdata">{{name}}</span>
   <br />
   {% endif %}
   <span class="userfield">Preferred license</span>
@@ -23,7 +23,7 @@
 
   {% if profile.blurb %}
   <h4>
-    About {{user.username}}
+    About {{name}}
   </h4>
   <p class="userdata">
     {{profile.blurb}}
@@ -36,7 +36,7 @@
 {% if bundles or snippets %}
 <div id="info">
   <h3>
-    Contributions by {{user.username}}
+    Contributions by {{name}}
   </h3>
   <div class="whitebox">
     {% if bundles %}

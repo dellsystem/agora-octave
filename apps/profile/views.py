@@ -21,11 +21,17 @@ def showprofile(request, user):
         p = Profile(user=u, preferred_license=FreeLicense.objects.get(id=1))
         p.save()
 
+    if u.first_name or u.last_name:
+        n = u.first_name + " " + u.last_name
+    else:
+        n = u.username
+
     b = Bundle.objects.filter(uploader=u)
     s = Snippet.objects.filter(uploader=u)
 
     return render_to_response('user.djhtml', {'user' : u,
                                               'profile' : p,
                                               'bundles' : b,
-                                              'snippets' :s,
+                                              'snippets' : s,
+                                              'name' : n,
                                               })

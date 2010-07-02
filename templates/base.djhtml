@@ -5,7 +5,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-us" />
 
-    <title>Agora Octave &mdash; 
+    <title>Agora Octave &mdash;
       {% block title %}
       Free your math!
       {% endblock %}
@@ -23,18 +23,18 @@
     enables collaboration with Octave-related personal projects and
     code" />
 
-    <link href="/static/{% block cssid %}base{% endblock %}.css" 
+    <link href="/static/{% block cssid %}base{% endblock %}.css"
           rel="stylesheet" type="text/css" media="screen" />
     {% block extrahead %}{% endblock %}
   </head>
 
-  <body id="{% block sectionid %}generic{% endblock %}" 
+  <body id="{% block sectionid %}generic{% endblock %}"
         class="{% block coltype %}default{% endblock %}">
 
   <div id="container">
     <div id="header">
       <img src="/static/agora.png" id="agora-logo">
-      <h1 id="logo"><a href="/">Agora Octave</a> 
+      <h1 id="logo"><a href="/">Agora Octave</a>
       </h1>
       <div id="nav">
         <div id="nav-top"></div>
@@ -54,16 +54,16 @@
     <div id="billboard">{% block billboard %}{% endblock %}</div>
     <div id="columnwrap">
 
-		  <div id="content-main">
-		    {% block content %}
-		    {% endblock %}
-		  </div>
-		  <!-- END #content-main -->
-		  <div id="content-related" class="sidebar">
-		    {% block content-related %}
-		    {% endblock %}
-		  </div>
-		  <!-- END #content-related -->
+      <div id="content-main">
+        {% block content %}
+        {% endblock %}
+      </div>
+      <!-- END #content-main -->
+      <div id="content-related" class="sidebar">
+        {% block content-related %}
+        {% endblock %}
+      </div>
+      <!-- END #content-related -->
 
     </div>
     <!-- END #content -->
@@ -79,4 +79,3 @@
   <!-- END #footer -->
   </body>
 </html>
-

@@ -3,10 +3,18 @@ collaboration related to GNU Octave. It is released under the terms of
 the Affero General Public License version 3 as published by the Free
 Software Foundation, or at your option, any later version.
 
+Required external libraries:
+
+    - Django registration      
+      (http://bitbucket.org/ubernostrum/django-registration/)
+
 Quickstart for personal debugging:
 
-    1) Install Django, Python, mercurial, SQLite3. On a Unix-based
-       system, Python is probably already installed.
+    1) Install Django 1.2 or higher, Python 2.5 or higher, the
+       external librariesm, and probably any version of mercurial,
+       SQLite3. On a Unix-based system, Python is probably already
+       installed, the rest can be gotten from source or your operating
+       system's package manager if it has one.
 
     2) Clone this repository
 

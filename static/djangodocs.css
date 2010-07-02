@@ -104,7 +104,7 @@ a.reference em { font-style: normal; }
 #nav-main{position: relative; z-index: 1; height: 0.85em;}
 #nav-right{position: relative; z-index: 1; height: 0.85em;
            float :right;
-           color: #6A6354; padding-right: 2em; margin:0;}
+           color: #2e3436; padding-right: 2em; margin:0;}
 #nav{
     margin: 0; font-size: 12px; text-align: right;
     font-weight: normal; width: 100%;

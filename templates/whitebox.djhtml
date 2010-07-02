@@ -13,12 +13,10 @@
 
 {% block session %}
 {% if user.is_authenticated %}
-<form action="{% url auth_logout %}" method="post" id="nav-right">
-  You are logged in
-  as <a href="/{{user.username}}">{{user.username}}</a>.
-  {% csrf_token %}
-  <input type="submit" value="logout" id="logout-button"/>
-</form>
+<a href="{% url auth_logout %}" id="nav-logout">Logout</a>
+<small>
+  (<a href="/{{user.username}}" id="nav-username">{{user.username}}</a>)
+</small>
 {% else %}
 <a href="{% url auth_login %}?next={{ request.path }}">Log in</a>
 {% endif %}
