@@ -18,8 +18,8 @@ Quickstart for personal debugging:
 
     2) Clone this repository
 
-    3) In the cloned repository, copy "settings-example.py" to
-       "settings.py" (advanced users: modify this to suit your needs).
+    3) In the cloned repository, copy "agora-example.conf" to
+       "agora.conf" (advanced users: modify this to suit your needs).
 
     4) Now run
 

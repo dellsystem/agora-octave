@@ -1,3 +1,4 @@
 syntax: glob
 *.pyc
-settings.py
+agora.sqlite
+agora.conf
