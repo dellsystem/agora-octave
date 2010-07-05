@@ -7,7 +7,7 @@
 
     <title>Agora Octave &mdash;
       {% block title %}
-      Free your math!
+      Free your numbers!
       {% endblock %}
     </title>
 

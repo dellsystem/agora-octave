@@ -1,10 +1,19 @@
 {% extends "whitebox.djhtml" %}
+
 {% block boxtitle %}
-{{user.username}}
-{% endblock %}
+{{profile.user.username}} <br/>
+{% if profile.user = user %}
+<small>
+  (<a href="{% url agora.apps.profile.views.editprofile user %}">
+    edit profile
+  </a>)
+</small>
+{% endif %}
+{% endblock boxtitle%}
+
 {% block boxcontents %}
 <div id="userinfo">
-  {% if user.first_name or user.last_name %}
+  {% if profile.user.first_name or profile.user.last_name %}
   <span class="userfield">Name</span>
   <span class="userdata">{{name}}</span>
   <br />
@@ -30,7 +39,7 @@
   </p>
 </div>
 {% endif %}
-{% endblock %} {# boxcontents #}
+{% endblock boxcontents %}
 
 {% block content-related %}
 {% if bundles or snippets %}
@@ -45,7 +54,7 @@
     </h5>
     <ul>
       {% for b in bundles %}
-      <li> <a href="/{{user.username}}/{{b.name}}">{{b.name}} </a></li>
+      <li> <a href="/{{profile.user.username}}/{{b.name}}">{{b.name}} </a></li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -62,4 +71,4 @@
   </div>
 </div>
 {% endif %}
-{% endblock %} {# content-related #}
+{% endblock content-related %}

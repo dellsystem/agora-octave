@@ -1,0 +1,76 @@
+{% extends "profile/user.djhtml" %}
+
+{% block boxtitle %}
+Edit your profile
+{% endblock boxtitle %}
+
+{% block boxcontents %}
+<p class="explanation">
+You can provide some extra optional information about yourself. We
+recommend that you provide us with a real name. If you do, it will be
+displayed next to all of your contributions instead of your Agora
+username.
+</p>
+<form id="userinfo" method="post" action=".">
+
+  {% csrf_token %}
+
+  <p class="explanation">
+    We will display your name according to most Western European
+    conventions, your given name(s) followed by your surname(s).
+  </p>
+  <span class="userfield">Given name(s)</span>
+  <input type="text"
+         name="first-name"
+         id="edit-first-name"
+         value="{{user.first_name}}" /> <br />
+  <span class="userfield">Surname(s)</span>
+  <input type="text"
+         id="edit-last-name"
+         name="last-name"
+         value="{{user.last_name}}" /> <br />
+
+  <p class="explanation">
+    By default, all of your submissions will be under the following
+    license, and will be displayed next to your submissions.
+    <a href="/licenses">
+      Here is a thorough explanation of the available licenses.
+    </a>
+  </p>
+
+  <span class="userfield">Preferred license</span>
+  <select name="license" id="edit-license">
+  {% for license in licenses %}
+  <option value="{{ license.id }}"
+          {% if license = profile.preferred_license %}
+          selected="true"
+          {% endif %}
+          />
+  {{license.name}}
+  </option>
+  {% endfor %}
+  </select>
+
+  <p class="explanation">
+    Tell us about your research interests (e.g. <em>signal processing</em>,
+    <em>hyperbolic PDEs</em>). These keywords will be used when
+    searching for submissions.
+  </p>
+  <span class="userfield">Research interests</span>
+  <input type="text"
+         name="interests"
+         id="edit-interests"
+         value="{{profile.interests}}" /> <br />
+
+  <p class="explanation">
+    Finally, anything else you would like to say about yourself.
+  </p>
+
+  <span class="userfield">Blurb</span>
+
+  <textarea name="blurb" id="edit-blurb">{{profile.blurb}}</textarea>
+  <br/>
+
+  <input type="submit" value="Update profile" />
+</form>
+{% endblock boxcontents %}

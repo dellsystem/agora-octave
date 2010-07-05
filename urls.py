@@ -18,7 +18,8 @@ urlpatterns = patterns('',
 
      (r'^accounts/', include('registration.urls')),
 
-     (r'^(?P<user>[\w|_]*)/$', 'agora.apps.profile.views.showprofile'),
+     (r'^editprofile/(?P<user>\w*)/$', 'agora.apps.profile.views.editprofile'),
+     (r'^(?P<user>\w*)/$',      'agora.apps.profile.views.showprofile'),
 
      (r'^', include('agora.apps.bundle.urls')),
 
