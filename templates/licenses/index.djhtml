@@ -1,0 +1,22 @@
+{% extends "whitebox.djhtml" %}
+
+{% block boxtitle %}
+Free licenses 
+{% endblock boxtitle %}
+
+{% block boxcontents %}
+<p class="explanation">
+The following are the licenses available in Agora. Click on the
+license title for the text license itself.
+</p>
+<dl>
+  {% for license in licenses %}
+  <dt>
+    <a href="{% url agora.apps.free_license.views.show_license license%}">
+      {{license.name}}
+    </a>
+  </dt>
+  <dd>{{license.description|safe|linebreaks}}</dd>
+  {% endfor %}
+</dl>
+{% endblock boxcontents %}

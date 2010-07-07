@@ -161,3 +161,8 @@ ins { font-weight: bold; text-decoration: none; }
 
 /*** IE hacks ***/
 * pre { width: 100%; }
+
+pre{ 
+    font-size: 0.7em;
+    text-align: left
+   }

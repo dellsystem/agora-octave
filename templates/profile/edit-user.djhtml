@@ -33,7 +33,7 @@ username.
   <p class="explanation">
     By default, all of your submissions will be under the following
     license, and will be displayed next to your submissions.
-    <a href="{% url agora.apps.free_license.views.list %}">
+    <a href="{% url agora.apps.free_license.views.index %}">
       Here is a thorough explanation of the available licenses.
     </a>
   </p>

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
+from django.views.generic.simple import direct_to_template
 
 from agora.apps.free_license.models import FreeLicense
 from agora.apps.bundle.models import Bundle
@@ -40,14 +40,13 @@ def showprofile(request, user):
     b = Bundle.objects.filter(uploader=u)
     s = Snippet.objects.filter(uploader=u)
 
-    return render_to_response('profile/user.djhtml',
+    return direct_to_template(request, 'profile/user.djhtml',
                               {
                                   'profile' : p,
                                   'bundles' : b,
                                   'snippets' : s,
                                   'name' : n,
                                },
-                               RequestContext(request)
                               )
 
 @login_required
@@ -78,10 +77,9 @@ def editprofile(request, user):
                                     )
 
     licenses = FreeLicense.objects.all()
-    return render_to_response('profile/edit-user.djhtml',
+    return direct_to_template(request, 'profile/edit-user.djhtml',
                               {
                                   'profile' : p,
                                   'licenses' : licenses,
                               },
-                              RequestContext(request)
                               )

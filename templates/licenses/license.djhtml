@@ -1,0 +1,39 @@
+{% extends "whitebox.djhtml" %}
+
+{% block boxtitle %}
+{{license.name}}
+{% endblock boxtitle %}
+
+{% block boxcontents %}
+{{license.text|safe}}
+{% endblock %}
+
+{% block content-related %}
+<div class="info">
+  <h3>
+    Description
+  </h3>
+  <div class="whitebox">
+    <p align="justify">
+      <small>{{license.description|safe|linebreaks}}</small>
+    </p>
+  </div>
+</div>
+
+<div class="info">
+  <h3>
+    <a href="{% url agora.apps.free_license.views.index %}">Other Licenses</a>
+  </h3>
+  <div class="whitebox">
+    <ul>
+      {% for license in licenses %}
+      <li>
+        <a href="{% url agora.apps.free_license.views.show_license license %}">
+          {{license.name}}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
