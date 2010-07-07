@@ -17,7 +17,7 @@ body { font:16px/1.5 Verdana,sans-serif; color: white; height: 100%;}
     min-height: 100%;
 }
 
-#header h1 a { color: #EEEEEC; margin-left: 1em}
+#header h1 a { color: #EEEEEC; margin-left: 1em;}
 
 #columnwrap {
     background: #EEEEEC; color: black;
