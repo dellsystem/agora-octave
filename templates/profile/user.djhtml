@@ -54,7 +54,11 @@
     </h5>
     <ul>
       {% for b in bundles %}
-      <li> <a href="/{{profile.user.username}}/{{b.name}}">{{b.name}} </a></li>
+      <li>
+        <a href="{% url agora.apps.bundle.views.detail profile.user b %}">
+          {{b.name}}
+        </a>
+      </li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -64,6 +68,7 @@
     </h5>
     <ul>
       {% for s in snippets %}
+      {# FIXME: Use an urlconf for snippets #}
       <li><a href="/snippet/{{s}}"}{{s}}</a></li>
       {% endfor %}
       {% endif %}

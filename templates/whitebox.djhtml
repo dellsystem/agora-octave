@@ -15,7 +15,8 @@
 {% if user.is_authenticated %}
 <a href="{% url auth_logout %}" id="nav-logout">Logout</a>
 <small>
-  (<a href="/{{user.username}}" id="nav-username">{{user.username}}</a>)
+  (<a href="{% url agora.apps.profile.views.showprofile user %}" 
+      id="nav-username">{{user.username}}</a>)
 </small>
 {% else %}
 <a href="{% url auth_login %}?next={{ request.path }}">Log in</a>

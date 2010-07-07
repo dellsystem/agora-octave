@@ -9,7 +9,6 @@ urlpatterns = patterns('',
       'django.views.generic.simple.direct_to_template',
       {'template': 'index.djhtml'}),
 
-
      (r'^admin/doc/', include('django.contrib.admindocs.urls')),
      (r'^admin/', include(admin.site.urls)),
 
@@ -18,8 +17,9 @@ urlpatterns = patterns('',
 
      (r'^accounts/', include('registration.urls')),
 
-     (r'^editprofile/(?P<user>\w*)/$', 'agora.apps.profile.views.editprofile'),
-     (r'^(?P<user>\w*)/$',      'agora.apps.profile.views.showprofile'),
+     (r'^licenses/', include('agora.apps.free_license.urls')),
+
+     (r'^user/', include('agora.apps.profile.urls')),
 
      (r'^', include('agora.apps.bundle.urls')),
 
