@@ -8,7 +8,9 @@ Login
 {% if user.is_authenticated %}
 <p>
   You're already logged in as 
-  <a href="{{ user.username }}">{{user.username}}</a>.
+  <a href="{% url agora.apps.profile.views.showprofile user %}">
+    {{user.username}}
+  </a>.
 </p>
 <p>
   (<a href="{% url auth_logout %}">logout</a>)
