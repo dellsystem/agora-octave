@@ -1,7 +1,9 @@
 Agora Octave is (or will be) a Django-based website for rapid
 collaboration related to GNU Octave. It is released under the terms of
 the Affero General Public License version 3 as published by the Free
-Software Foundation, or at your option, any later version.
+Software Foundation, or at your option, any later version. Agora also
+includes other software under a different BSD-like license. For
+details consult LICENSE.
 
 Required external libraries:
 
