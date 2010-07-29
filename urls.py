@@ -21,6 +21,8 @@ urlpatterns = patterns('',
 
      (r'^user/', include('agora.apps.profile.urls')),
 
+     (r'^snippet/', include('agora.apps.snippet.urls')),
+
      (r'^', include('agora.apps.bundle.urls')),
 
 )

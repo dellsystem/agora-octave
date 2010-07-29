@@ -43,7 +43,7 @@
         </div>
         <ul  id="nav-main">
           <li id="nav-bundles"><a href="/bundles" class="first">Latest</a></li>
-          <li id="nav-snippets"><a href="/snippets">Snippets</a></li>
+          <li id="nav-snippets"><a href="/snippet">Snippets</a></li>
           <li id="nav-discuss"><a href="/discuss">Discussions</a></li>
           <li id="nav-about"><a href="/about">About</a></li>
         </ul>
