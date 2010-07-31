@@ -15,7 +15,7 @@ from django.core.urlresolvers import reverse
 from django.utils import simplejson
 import difflib
 
-def snippet_new(request, template_name='snippet/snippet_new.html'):
+def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
 
     if request.method == "POST":
         snippet_form = SnippetForm(data=request.POST, request=request)
@@ -36,7 +36,7 @@ def snippet_new(request, template_name='snippet/snippet_new.html'):
     )
 
 
-def snippet_details(request, snippet_id, template_name='snippet/snippet_details.html', is_raw=False):
+def snippet_details(request, snippet_id, template_name='snippet/snippet_details.djhtml', is_raw=False):
 
     snippet = get_object_or_404(Snippet, secret_id=snippet_id)
 
@@ -86,7 +86,7 @@ def snippet_delete(request, snippet_id):
     snippet.delete()
     return HttpResponseRedirect(reverse('snippet_new'))
 
-def snippet_userlist(request, template_name='snippet/snippet_list.html'):
+def snippet_userlist(request, template_name='snippet/snippet_list.djhtml'):
     
     try:
         snippet_list = get_list_or_404(Snippet, pk__in=request.session.get('snippet_list', None))
@@ -105,7 +105,7 @@ def snippet_userlist(request, template_name='snippet/snippet_list.html'):
     )
 
 
-def userprefs(request, template_name='snippet/userprefs.html'):
+def userprefs(request, template_name='snippet/userprefs.djhtml'):
 
     if request.method == 'POST':
         settings_form = UserSettingsForm(request.POST, initial=request.session.get('userprefs', None))
@@ -127,7 +127,7 @@ def userprefs(request, template_name='snippet/userprefs.html'):
         RequestContext(request)
     )
 
-def snippet_diff(request, template_name='snippet/snippet_diff.html'):
+def snippet_diff(request, template_name='snippet/snippet_diff.djhtml'):
 
     if request.GET.get('a').isdigit() and request.GET.get('b').isdigit():
         try:

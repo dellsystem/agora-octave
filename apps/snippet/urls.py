@@ -25,7 +25,7 @@ urlpatterns = patterns('agora.apps.snippet.views',
 
     url(r'^(?P<snippet_id>[a-zA-Z0-9]{4})/raw/$',
         'snippet_details',
-          {'template_name': 'dpaste/snippet_details_raw.html',
+          {'template_name': 'snippet/snippet_details_raw.djhtml',
            'is_raw': True},
         name='snippet_details_raw'),
 )
