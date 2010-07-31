@@ -1,4 +1,4 @@
-{% extends "snippet/base.html" %}
+{% extends "snippet/base.djhtml" %}
 {% load i18n %}
 
 {% block title %}{% trans "New snippet" %}{% endblock %}
@@ -6,7 +6,7 @@
 
 {% block content %}
     <h2>{% trans "New snippet" %}</h2>
-    {% include "snippet/snippet_form.html" %}
+    {% include "snippet/snippet_form.djhtml" %}
 {% endblock %}
 
 

@@ -1,4 +1,4 @@
-{% extends "snippet/base.html" %}
+{% extends "snippet/base.djhtml" %}
 {% load mptt_tags %}
 {% load i18n %}
 
@@ -58,7 +58,7 @@
 
     <h2>{% trans "Write an answer" %} &rarr;</h2>
     <div class="container" style="display: none;">
-        {% include "snippet/snippet_form.html" %}
+        {% include "snippet/snippet_form.djhtml" %}
     </div>
 </div>
 {% endblock %}
@@ -121,7 +121,7 @@ jQuery(document).ready(function(){
             a: $("input[name=a]:checked").val(),
             b: $("input[name=b]:checked").val()
         }, function(data){
-            $('#diff').html(data).slideDown('fast');
+            $('#diff').djhtml(data).slideDown('fast');
         });
         return false;
     });

@@ -1,4 +1,4 @@
-{% extends "snippet/base.html" %}
+{% extends "snippet/base.djhtml" %}
 {% load i18n %}
 
 {% block title %}{% trans "Snippet" %} #{{ snippet.pk }}{% endblock %}
