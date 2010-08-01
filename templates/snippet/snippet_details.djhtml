@@ -82,18 +82,14 @@
       <table>
         <tr>
           <th>
-            <pre class="code">
-              {% for l in lines %}
-              <a href="#l{{ forloop.counter }}" 
-                 id="l{{ forloop.counter }}">
-                {{ forloop.counter }}
-              </a>
-              {% endfor %}
-            </pre>
+            {# this has to look like this due to the pre tags #}
+            <pre class="code">{% for l in lines %}<a href="#l{{ forloop.counter }}" id="l{{ forloop.counter }}">{{ forloop.counter }}</a> 
+{% endfor %}</pre>
           </th>
           <td>
             {# this has to look like this due to the pre tags #}
-            <pre class="code">{% for line in snippet.content_splitted %}<div class="line" id="l{{ forloop.counter }}">{% if line %} {{ line|safe }} {% else %} &nbsp; {% endif %}</div>{% endfor %}</pre>
+            <pre class="code">{% for line in snippet.content_splitted %}<span class="line" id="l{{ forloop.counter }}">{% if line %}{{ line|safe }}{% else %}&nbsp;{% endif %}</span>
+{% endfor %}</pre>
           </td>
         </tr>
       </table>
@@ -101,7 +97,7 @@
   </div>
 
   <h2>{% trans "Write an answer" %} &rarr;</h2>
-  <div class="container" style="display: none;">
+  <div class="accordion" style="display: none;">
     {% include "snippet/snippet_form.djhtml" %}
   </div>
 </div>
@@ -169,6 +165,6 @@
 <script src="/static/jquery.min.js"></script>
 <script src="/static/jquery-ui.min.js"></script>
 <script type="text/javascript">
-  {% include "snippet/snippet_details.js" %}
+{%include "snippet/snippet_details.js" %}
 </script>
 {% endblock script_footer %}

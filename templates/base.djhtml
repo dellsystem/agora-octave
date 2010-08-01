@@ -75,6 +75,8 @@
       <a href="http://www.gnu.org/software/octave/acknowledgments.html">
         John W. Eaton and others</a> unless otherwise noted.
     </p>
+    {% block script_footer %}
+    {% endblock %}
   </div>
   <!-- END #footer -->
   </body>
