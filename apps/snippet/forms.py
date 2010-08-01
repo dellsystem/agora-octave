@@ -37,13 +37,15 @@ class SnippetForm(forms.ModelForm):
         self.request = request
         
         try:
-            if self.request.session['userprefs'].get('display_all_lexer', False):
+            if self.request.session['userprefs'].get('display_all_lexer',
+                                                     False):
                 self.fields['lexer'].choices = LEXER_LIST_ALL
         except KeyError:
             pass
 
         try:
-            self.fields['author'].initial = self.request.session['userprefs'].get('default_name', '')
+            self.fields['author'].initial = \
+                    self.request.session['userprefs'].get('default_name', '')
         except KeyError:
             pass
         
@@ -62,7 +64,8 @@ class SnippetForm(forms.ModelForm):
 
         # Add the snippet to the user session list
         if self.request.session.get('snippet_list', False):
-            if len(self.request.session['snippet_list']) >= getattr(settings, 'MAX_SNIPPETS_PER_USER', 10):
+            if len(self.request.session['snippet_list']) >= \
+                   getattr(settings, 'MAX_SNIPPETS_PER_USER', 10):
                 self.request.session['snippet_list'].pop(0)
             self.request.session['snippet_list'] += [self.instance.pk]
         else:
@@ -102,8 +105,15 @@ class UserSettingsForm(forms.Form):
         label=_(u'Display all lexer'), 
         required=False,
         widget=forms.CheckboxInput,
-        help_text=_(u'This also enables the super secret \'guess lexer\' function.'),
+        help_text=_(u'This also enables the super secret ' \
+                     '\'guess lexer\' function.'),
     )
-    font_family = forms.ChoiceField(label=_(u'Font Family'), required=False, choices=USERPREFS_FONT_CHOICES)
-    font_size = forms.ChoiceField(label=_(u'Font Size'), required=False, choices=USERPREFS_SIZES)
-    line_height = forms.ChoiceField(label=_(u'Line Height'), required=False, choices=USERPREFS_SIZES)
+    font_family = forms.ChoiceField(label=_(u'Font Family'),
+                                    required=False,
+                                    choices=USERPREFS_FONT_CHOICES)
+    font_size = forms.ChoiceField(label=_(u'Font Size'),
+                                  required=False,
+                                  choices=USERPREFS_SIZES)
+    line_height = forms.ChoiceField(label=_(u'Line Height'),
+                                    required=False,
+                                    choices=USERPREFS_SIZES)

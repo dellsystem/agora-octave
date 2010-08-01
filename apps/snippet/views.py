@@ -36,7 +36,9 @@ def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
     )
 
 
-def snippet_details(request, snippet_id, template_name='snippet/snippet_details.djhtml', is_raw=False):
+def snippet_details(request, snippet_id,
+                    template_name='snippet/snippet_details.djhtml',
+                    is_raw=False):
 
     snippet = get_object_or_404(Snippet, secret_id=snippet_id)
 
@@ -49,7 +51,9 @@ def snippet_details(request, snippet_id, template_name='snippet/snippet_details.
     }
 
     if request.method == "POST":
-        snippet_form = SnippetForm(data=request.POST, request=request, initial=new_snippet_initial)
+        snippet_form = SnippetForm(data=request.POST,
+                                   request=request,
+                                   initial=new_snippet_initial)
         if snippet_form.is_valid():
             request, new_snippet = snippet_form.save(parent=snippet)
             return HttpResponseRedirect(new_snippet.get_absolute_url())
@@ -80,19 +84,25 @@ def snippet_delete(request, snippet_id):
     try:
         snippet_list = request.session['snippet_list']
     except KeyError:
-        return HttpResponseForbidden('You have no recent snippet list, cookie error?')
+        return HttpResponseForbidden('You have no recent snippet list, '\
+                                     'cookie error?')
     if not snippet.pk in snippet_list:
         return HttpResponseForbidden('That\'s not your snippet, sucka!')
     snippet.delete()
     return HttpResponseRedirect(reverse('snippet_new'))
 
 def snippet_userlist(request, template_name='snippet/snippet_list.djhtml'):
-    
+
     try:
-        snippet_list = get_list_or_404(Snippet, pk__in=request.session.get('snippet_list', None))
+        snippet_list = get_list_or_404(Snippet,
+                                       pk__in=request.session.get
+                                       (
+                                           'snippet_list',
+                                           None)
+                                       )
     except ValueError:
         snippet_list = None
-                
+
     template_context = {
         'snippets_max': getattr(settings, 'MAX_SNIPPETS_PER_USER', 10),
         'snippet_list': snippet_list,
@@ -108,12 +118,16 @@ def snippet_userlist(request, template_name='snippet/snippet_list.djhtml'):
 def userprefs(request, template_name='snippet/userprefs.djhtml'):
 
     if request.method == 'POST':
-        settings_form = UserSettingsForm(request.POST, initial=request.session.get('userprefs', None))
+        settings_form = \
+                      UserSettingsForm(request.POST,
+                                       initial=\
+                                       request.session.get('userprefs', None))
         if settings_form.is_valid():
             request.session['userprefs'] = settings_form.cleaned_data
             settings_saved = True
     else:
-        settings_form = UserSettingsForm(initial=request.session.get('userprefs', None))
+        settings_form = UserSettingsForm(initial=\
+                                         request.session.get('userprefs', None))
         settings_saved = False
 
     template_context = {
@@ -162,7 +176,7 @@ def snippet_diff(request, template_name='snippet/snippet_diff.djhtml'):
         template_context,
         RequestContext(request)
     )
-    
+
 def guess_lexer(request):
     code_string = request.GET.get('codestring', False)
     response = simplejson.dumps({'lexer': guess_code_lexer(code_string)})

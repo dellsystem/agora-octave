@@ -25,7 +25,8 @@ class NakedHtmlFormatter(HtmlFormatter):
             yield i, t
 
 def pygmentize(code_string, lexer_name='text'):
-    return highlight(code_string, get_lexer_by_name(lexer_name), NakedHtmlFormatter())
+    return highlight(code_string, get_lexer_by_name(lexer_name),
+                     NakedHtmlFormatter())
 
 def guess_code_lexer(code_string, default_lexer='unknown'):
     try:
