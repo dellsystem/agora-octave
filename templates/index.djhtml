@@ -2,17 +2,17 @@
 
 {% block content %}
 <div class="info">
-<h3>
-  Welcome
-</h3>
-<div class="whitebox">
-  <p>
-    Agora Octave is a place dedicated for rapid collaboration related
-    to <a href="http://octave.org">GNU Octave</a>. You
-    can <a href="/latest">browse our code submissions</a>
-    or <a href="accounts/login">contribute your own</a>.
-  </p>
-</div>
+  <h3>
+    Welcome
+  </h3>
+  <div class="whitebox">
+    <p>
+      Agora Octave is a place dedicated for rapid collaboration related
+      to <a href="http://octave.org">GNU Octave</a>. You
+      can <a href="/latest">browse our code submissions</a>
+      or <a href="accounts/login">contribute your own</a>.
+    </p>
+  </div>
 </div>
 <div class="info">
   <h3>

@@ -8,9 +8,9 @@ jQuery(document).ready(function(){
 
     $("div.accordion").accordion({
        autoHeight: false,
-       header: 'h2',
+       header: 'h3',
        animation: 'bounceslide',
-       duration: 2000,
+       duration: 2000
     });
 
     /**
@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
             a: $("input[name=a]:checked").val(),
             b: $("input[name=b]:checked").val()
         }, function(data){
-            $('#diff').djhtml(data).slideDown('fast');
+            $('#diff').html(data).slideDown('fast');
         });
         return false;
     });
