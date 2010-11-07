@@ -38,7 +38,7 @@ def showprofile(request, user):
         n = u.username
 
     b = Bundle.objects.filter(uploader=u)
-    s = Snippet.objects.filter(uploader=u)
+    s = Snippet.objects.filter(author=u)
 
     return direct_to_template(request, 'profile/user.djhtml',
                               {
