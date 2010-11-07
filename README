@@ -13,7 +13,7 @@ Required external libraries:
 Quickstart for personal debugging:
 
     1) Install Django 1.2 or higher, Python 2.5 or higher, the
-       external librariesm, and probably any version of mercurial,
+       external libraries, and probably any version of mercurial,
        SQLite3. On a Unix-based system, Python is probably already
        installed, the rest can be gotten from source or your operating
        system's package manager if it has one.

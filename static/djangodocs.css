@@ -21,7 +21,7 @@ body { font:16px/1.5 Verdana,sans-serif; color: white; height: 100%;}
 
 #columnwrap {
     background: #EEEEEC; color: black;
-    /*background-image: url("agora-grey-large.png");*/
+    background-image: url("agora-grey-large.png");
     background-position: bottom right;
     background-repeat: no-repeat;
     overflow: auto;
