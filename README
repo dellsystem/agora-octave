@@ -9,6 +9,8 @@ Required external libraries:
 
     - Django registration      
       (http://bitbucket.org/ubernostrum/django-registration/)
+    - Pygments
+      (http://pygments.org/)
 
 Quickstart for personal debugging:
 
