@@ -46,12 +46,16 @@ the text below indicates "Jordi".
       GPL-compatibility. This is not a stringent requirement, and it
       would simplify distribution with Octave. For the moment I'm
       considering that this might be relaxed and any license approved
-      by the OSI or FSF should be ok.
+      by the OSI or FSF should be ok. **DONE** The basic framework for
+      licenses is in place, but bundles aren't done yet.
 
-   -- Additionally, there's a place to post quick snippets. They'll
-      be under a default free license that the user indicates in
-      their preferences. Usually only single bits of code go in
-      there. Responding with more snippets will be facilitated.
+   -- Additionally, there's a place to post quick snippets. They'll be
+      under a default free license that the user indicates in their
+      preferences. Usually only single bits of code go in there.
+      Responding with more snippets will be facilitated. **DONE**
+      Except for the license part. I'm changing my mind about this,
+      perhaps it's too pedantic to demand clear licenses on code
+      snippets. 
 
    -- I'm thinking that optionally, I can setup bundles to also
       create an hg repo if the uploader requests it, or existing hg
@@ -66,7 +70,8 @@ the text below indicates "Jordi".
       code, comments, ranking code. Everything else is public to
       anyone.
 
-   -- Users are encouraged but not required to provide real names.
+   -- Users are encouraged but not required to provide real
+      names. **DONE** registration and profiles now do this.
 
    -- Bundles that are somehow deemed to be of high quality can
       easily be pushed to Octave-forge (i.e. they've been "forged",
@@ -74,6 +79,7 @@ the text below indicates "Jordi".
 
    -- A user's landing page will indicate which bundles and snippets
       this user has uploaded as well as whatever personal information
-      the user would like to provide.
+      the user would like to provide. **DONE** Except that bundles
+      aren't implemented yet.
 
 This README itself also admits patches.
