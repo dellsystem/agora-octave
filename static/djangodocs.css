@@ -49,7 +49,14 @@ body { font:16px/1.5 Verdana,sans-serif; color: white; height: 100%;}
     display: block;
 }
 
-
+/* snippet ui styling */
+.ui-accordion-header {
+    color: #3465A4;
+}
+.ui-accordion-header:hover {
+    color: #729FCF;
+    cursor: pointer;
+}
 
 .whitebox{
     font: 14px/140% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
