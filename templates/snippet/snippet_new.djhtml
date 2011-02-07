@@ -6,13 +6,37 @@
 
 {% block content %}
     <h2>{% trans "New snippet" %}</h2>
-    {% include "snippet/snippet_form.djhtml" %}
+    <div class="whitebox">
+      {% include "snippet/snippet_form.djhtml" %}
+    </div>
 {% endblock %}
 
 
-{% block sidebar %}
-    <h2>{% trans "DPASTE_HOMEPAGE_TITLE" %}</h2>
-    <p>{% trans "DPASTE_HOMEPAGE_DESCRIPTION" %}</p>
+{% block content-related %}
+    <h2>Recent snippets</h2>
+    <div class="whitebox">
+      <ul>
+        {% for r in recent %}
+        <li>
+          <a href="{% url snippet_details r %}">
+            {% if r.title %}
+            {{r.title}}
+            {% else %}
+            Snippet #{{r.pk}}
+            {% endif %}
+          </a>
+        by
+          {% if r.author %}
+          <a href="{% url agora.apps.profile.views.showprofile user %}">
+            {{r.author}}
+          </a>
+          {% else %}
+          anonymous
+          {% endif %}
+          {% endfor %}
+        </li>
+      </ul>
+    </div>
 {% endblock %}
 
 

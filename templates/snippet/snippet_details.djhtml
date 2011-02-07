@@ -63,7 +63,7 @@
     <div class="whitebox">
 
       <div class="snippet-options">
-        <abbr title="{% trans "Time to life" %}"
+        <abbr title="{% trans "Time to live" %}"
               >TTL:
         </abbr>
         {{ snippet.expires|timeuntil  }}
@@ -77,14 +77,16 @@
         {% endif %}
         <a id="toggleWordwrap" href="#">{% trans "Wordwrap" %}</a>
         <div>
-         author:
-          {% if snippet.author %}
+         Author:
+         {% if snippet.author %}
          <a href="{% url agora.apps.profile.views.showprofile snippet.author %}">
            {{ snippet.author }}
          </a>
-          {% else %}
-          anonymous
-          {% endif %}
+         {% else %}
+         anonymous
+         {% endif %}
+         &mdash;
+         Language: {{language}}
         </div>
       </div>
 

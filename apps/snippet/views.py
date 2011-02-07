@@ -10,7 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
 from agora.apps.snippet.forms import SnippetForm, UserSettingsForm
 from agora.apps.snippet.models import Snippet
-from agora.apps.snippet.highlight import pygmentize, guess_code_lexer
+from agora.apps.snippet.highlight import pygmentize, guess_code_lexer, \
+     LEXER_LIST
 from django.core.urlresolvers import reverse
 from django.utils import simplejson
 import difflib
@@ -31,8 +32,11 @@ def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
     else:
         snippet_form = SnippetForm(request=request)
 
+    recent = Snippet.objects.all()[:10]
+
     template_context = {
         'snippet_form': snippet_form,
+        'recent' : recent,
     }
 
     return render_to_response(
@@ -53,7 +57,6 @@ def snippet_details(request, snippet_id,
 
     new_snippet_initial = {
         'content': snippet.content,
-        'lexer': snippet.lexer,
     }
 
     if request.method == "POST":
@@ -71,6 +74,7 @@ def snippet_details(request, snippet_id,
         'snippet': snippet,
         'lines': range(snippet.get_linecount()),
         'tree': tree,
+        'language': dict(LEXER_LIST)[snippet.lexer],
     }
 
     response = render_to_response(
