@@ -6,12 +6,15 @@ from pygments import highlight
 
 LEXER_LIST_ALL = sorted([(i[1][0], i[0]) for i in get_all_lexers()])
 LEXER_LIST = (
+    ('bash', 'bash'),
     ('c', 'C'),
     ('c++', 'C++'),
+    ('java', 'Java'),
     ('matlab', 'MATLAB'),
     ('octave', 'Octave'),
     ('perl', 'Perl'),
     ('php', 'PHP'),
+    ('python', 'Python'),
     ('text', 'Text only'),
 )
 LEXER_DEFAULT = 'octave'

@@ -6,6 +6,7 @@ from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
 from agora.apps.snippet.highlight import LEXER_DEFAULT, pygmentize
+from django.contrib.auth.models import User
 
 t = 'abcdefghijkmnopqrstuvwwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ1234567890'
 def generate_secret_id(length=4):
@@ -14,7 +15,7 @@ def generate_secret_id(length=4):
 class Snippet(models.Model):
     secret_id = models.CharField(_(u'Secret ID'), max_length=4, blank=True)
     title = models.CharField(_(u'Title'), max_length=120, blank=True)
-    author = models.CharField(_(u'Author'), max_length=30, blank=True)
+    author = models.ForeignKey(User, max_length=30, blank=True, null=True)
     content = models.TextField(_(u'Content'), )
     content_highlighted = models.TextField(_(u'Highlighted Content'),
                                            blank=True)

@@ -78,7 +78,6 @@ class SnippetForm(forms.ModelForm):
         fields = (
             'title',
             'content',
-            'author',
             'lexer',
         )
 

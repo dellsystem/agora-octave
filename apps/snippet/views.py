@@ -18,7 +18,13 @@ import difflib
 def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
 
     if request.method == "POST":
-        snippet_form = SnippetForm(data=request.POST, request=request)
+        snippet = Snippet()
+        try:
+            snippet.author = request.user
+        except:
+            pass
+        snippet_form = SnippetForm(data=request.POST, request=request,
+                                   instance=snippet)
         if snippet_form.is_valid():
             request, new_snippet = snippet_form.save()
             return HttpResponseRedirect(new_snippet.get_absolute_url())
@@ -95,8 +101,7 @@ def snippet_userlist(request, template_name='snippet/snippet_list.djhtml'):
 
     try:
         snippet_list = get_list_or_404(Snippet,
-                                       pk__in=request.session.get
-                                       (
+                                        pk__in=request.session.get(
                                            'snippet_list',
                                            None)
                                        )
