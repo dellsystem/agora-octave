@@ -58,13 +58,6 @@
       {% else %}
       {% trans "Snippet" %} #{{ snippet.id}}
       {% endif %}
-      <span>
-        {% if snippet.author %}
-        {% blocktrans with snippet.author as author %}
-        by {{ author }}
-        {% endblocktrans %}
-        {% endif %}
-      </span>
     </h3>
 
     <div class="whitebox">
@@ -83,6 +76,16 @@
         &mdash;
         {% endif %}
         <a id="toggleWordwrap" href="#">{% trans "Wordwrap" %}</a>
+        <div>
+         author:
+          {% if snippet.author %}
+         <a href="{% url agora.apps.profile.views.showprofile snippet.author %}">
+           {{ snippet.author }}
+         </a>
+          {% else %}
+          anonymous
+          {% endif %}
+        </div>
       </div>
 
       <br />

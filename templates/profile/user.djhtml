@@ -68,11 +68,16 @@
     </h5>
     <ul>
       {% for s in snippets %}
-      {# FIXME: Use an urlconf for snippets #}
-      <li><a href="/snippet/{{s}}"}{{s}}</a></li>
+      <li><a href="{% url snippet_details s %}">
+          {% if s.title %}
+          {{s.title}}
+          {% else %}
+          Snippet #{{s.pk}}
+          {% endif %}
+      </a></li>
       {% endfor %}
-      {% endif %}
     </ul>
+    {% endif %}
   </div>
 </div>
 {% endif %}
