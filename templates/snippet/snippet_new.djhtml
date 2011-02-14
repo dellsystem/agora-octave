@@ -27,7 +27,7 @@
           </a>
         by
           {% if r.author %}
-          <a href="{% url agora.apps.profile.views.showprofile user %}">
+          <a href="{% url agora.apps.profile.views.showprofile r.author %}">
             {{r.author}}
           </a>
           {% else %}
