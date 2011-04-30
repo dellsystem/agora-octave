@@ -1,6 +1,8 @@
 # Django settings for agora project.
 # -*- coding: utf-8 -*-
 
+import sys
+
 # Read some settings from config file
 from ConfigParser import ConfigParser
 config = ConfigParser()
