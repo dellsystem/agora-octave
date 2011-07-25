@@ -70,6 +70,11 @@
   </div>
   <!-- END #container -->
   <div id="footer">
+    <p>
+      <a href="http://bitbucket.org/jordigh/agora">HELP US BUILD THIS
+      SITE!</a> Clone the source and start contributing.
+    </p>
+
     <p id="copyright">
       &copy; 1998-{% now "Y"%}
       <a href="http://www.gnu.org/software/octave/acknowledgments.html">
