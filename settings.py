@@ -136,9 +136,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admindocs',
     'django.contrib.admin',
+	'django.contrib.comments',
 
     #Third-party apps
     'registration',
+	'threadedcomments',
 
     #Agora apps
     'agora.apps.profile',
@@ -147,6 +149,8 @@ INSTALLED_APPS = (
     'agora.apps.free_license',
     'agora.apps.mptt',
 )
+
+COMMENTS_APP = 'threadedcomments'
 
 LOGIN_REDIRECT_URL='/'
 AUTH_PROFILE_MODULE = 'profile.Profile'

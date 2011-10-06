@@ -23,7 +23,7 @@ urlpatterns = patterns('',
 
      (r'^snippet/', include('agora.apps.snippet.urls')),
 
-     (r'^', include('agora.apps.bundle.urls')),
+     (r'^bundles/', include('agora.apps.bundle.urls')),
 
 )
 

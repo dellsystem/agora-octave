@@ -1,33 +1,24 @@
 {% extends "whitebox.djhtml" %}
 
 {% block content %}
-<div class="info">
-  <h3>
-    {{bundle.name}} by <a href="/{{bundle.uploader}}/">{{bundle.uploader}}</a>
-  </h3>
+<h1> Latest bundles </h1>
 
-  {% if files %}
+{% if bundles|length > 0 %}
 
-  <div class="whitebox">
-    <p>
-      files:
-    </p>
-    <ul>
-      {% for f in files%}
-      <li><a href="/{{f.bundle_file}}">{{f}}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
+{% for bundle in bundles %}
+	<div class="info">
+	  <h3>
+	    {{bundle.name}} by <a href="/{{bundle.uploader}}/">{{bundle.uploader}}</a>
+	  </h3>
+	  <div class="whitebox">
+	    <p>
+	      Bundle published the {{bundle.pub_date}} under the {{bundle.free_license}}.
+	    </p>
+	  </div>
+	{% endfor %}
 
-  {% else %}
-
-  <div class="whitebox">
-    <p>
-      No files in this bundle!
-    </p>
-  </div>
-
-  {% endif %}
-
+{% else %}
+	No bundles registered yet!
+{% endif %}
 </div>
 {% endblock %}
