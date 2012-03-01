@@ -1,0 +1,33 @@
+{% extends "whitebox.djhtml" %}
+
+{% block content %}
+<div class="info">
+  <h3>
+    {{bundle.name}} by <a href="/{{bundle.uploader}}/">{{bundle.uploader}}</a>
+  </h3>
+
+  {% if files %}
+
+  <div class="whitebox">
+    <p>
+      files:
+    </p>
+    <ul>
+      {% for f in files%}
+      <li><a href="/{{f.bundle_file}}">{{f}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% else %}
+
+  <div class="whitebox">
+    <p>
+      No files in this bundle!
+    </p>
+  </div>
+
+  {% endif %}
+
+</div>
+{% endblock %}
