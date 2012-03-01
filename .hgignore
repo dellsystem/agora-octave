@@ -4,4 +4,5 @@ agora.sqlite
 agora.conf
 
 .*\.swp$
+.*\.swo$
 ^Honza.*/
