@@ -1,4 +1,7 @@
-syntax: glob
-*.pyc
+syntax: regexp
+.*\.pyc
 agora.sqlite
 agora.conf
+
+.*\.swp$
+^Honza.*/
