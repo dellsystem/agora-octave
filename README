@@ -11,6 +11,8 @@ Required external libraries:
       (http://bitbucket.org/ubernostrum/django-registration/)
     - Pygments
       (http://pygments.org/)
+    - Threaded Comments
+      (https://github.com/HonzaKral/django-threadedcomments)
 
 Quickstart for personal debugging:
 
