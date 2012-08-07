@@ -3,6 +3,8 @@
 
 import sys
 
+import django.conf.global_settings as DEFAULT_SETTINGS
+
 # Read some settings from config file
 from ConfigParser import ConfigParser
 config = ConfigParser()
@@ -119,14 +121,9 @@ TEMPLATE_DIRS = (
 
 ACCOUNT_ACTIVATION_DAYS = 1
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-)
-
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+                             'django.core.context_processors.request',
+                              )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
