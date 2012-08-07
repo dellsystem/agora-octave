@@ -44,7 +44,7 @@ DATABASES = {
 }
 
 try:
-    tz = config.get('env','timezone')
+    tz = config.get('env', 'timezone')
 except:
     tz = 'America/Mexico_City'
 
