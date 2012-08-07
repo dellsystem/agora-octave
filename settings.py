@@ -13,40 +13,40 @@ config = ConfigParser()
 config.optionxform = str
 
 if not config.read('agora.conf'):
-  print >> sys.stderr, '''
+    print >> sys.stderr, '''
 ERROR: No config file found!
-  You probably should copy agora-example.conf to agora.conf
+    You probably should copy agora-example.conf to agora.conf
 ''';
-  exit(1)
+    exit(1)
 
 try:
-  DEBUG = (config.get('debug', 'debug').lower() == 'yes')
+    DEBUG = (config.get('debug', 'debug').lower() == 'yes')
 except:
-  DEBUG = False
+    DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
 try:
-  ADMINS = tuple(config.items('admins'))
+    ADMINS = tuple(config.items('admins'))
 except:
-  ADMINS = ()
+    ADMINS = ()
 
 MANAGERS = ADMINS
 
 try:
-  database = dict(config.items('db'))
+    database = dict(config.items('db'))
 except:
-  database = { 'ENGINE' : 'django.db.backends.sqlite3',
-               'NAME' : 'agora',}
+    database = {'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': 'agora'}
 
 DATABASES = {
-  'default': database
+    'default': database
 }
 
 try:
-  tz = config.get('env','timezone')
+    tz = config.get('env','timezone')
 except:
-  tz = 'America/Mexico_City'
+    tz = 'America/Mexico_City'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -86,9 +86,9 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 try:
-  secret_key = config.get('security','secret_key')
+    secret_key = config.get('security', 'secret_key')
 except:
-  secret_key = 'l0ng-str1ng-no-one-w1ll-gue55-with-numb3rs-4nd-letters'
+    secret_key = 'l0ng-str1ng-no-one-w1ll-gue55-with-numb3rs-4nd-letters'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = secret_key
@@ -101,14 +101,14 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-  'django.middleware.common.CommonMiddleware',
-  'django.contrib.sessions.middleware.SessionMiddleware',
-  'django.middleware.csrf.CsrfViewMiddleware',
-  'django.contrib.auth.middleware.AuthenticationMiddleware',
-  'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 
-  #Agora-specific middleware
-  'agora.middleware.http.Http403Middleware',
+    # Agora-specific middleware
+    'agora.middleware.http.Http403Middleware',
 )
 
 ROOT_URLCONF = 'agora.urls'
@@ -122,8 +122,8 @@ TEMPLATE_DIRS = (
 ACCOUNT_ACTIVATION_DAYS = 1
 
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
-                             'django.core.context_processors.request',
-                              )
+    'django.core.context_processors.request',
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -135,11 +135,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 #	'django.contrib.comments',
 
-    #Third-party apps
+    # Third-party apps
     'registration',
 #	'threadedcomments',
 
-    #Agora apps
+    # Agora apps
     'agora.apps.profile',
     'agora.apps.snippet',
     'agora.apps.bundle',
