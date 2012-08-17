@@ -11,6 +11,8 @@ Required external libraries:
       (http://bitbucket.org/ubernostrum/django-registration/)
     - Pygments
       (http://pygments.org/)
+    - Django OpenID Auth
+      (http://pypi.python.org/pypi/django-openid-auth/)
     - Threaded Comments
       (https://github.com/HonzaKral/django-threadedcomments)
 
@@ -20,7 +22,15 @@ Quickstart for personal debugging:
        external libraries, and probably any version of mercurial,
        SQLite3. On a Unix-based system, Python is probably already
        installed, the rest can be gotten from source or your operating
-       system's package manager if it has one.
+       system's package manager if it has one. If you have pip (the Python
+       package manager) installed, you can quickly install all the
+       dependencies at particular versions by running
+
+         $ pip install -r pip-requirements
+
+       It is recommended that you do this within a virtualenv to avoid
+       conflicts with system-wide packages. More information about
+       virtualenv is available at www.virtualenv.org.
 
     2) Clone this repository
 
