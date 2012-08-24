@@ -1,28 +1,70 @@
 {% extends "whitebox.djhtml" %}
 
-{% block content %}
-<div class="info">
-  <h3>
-    Welcome
-  </h3>
-  <div class="whitebox">
-    <p>
-      Agora Octave is a place dedicated for rapid collaboration related
-      to <a href="http://octave.org">GNU Octave</a>. You
-      can <a href="/latest">browse our code submissions</a>
-      or <a href="accounts/login">contribute your own</a>.
-    </p>
-  </div>
+{% block navbar %}
+{% endblock %}
+
+{% block billboard %}
+<div id="billboard">
+    <div class="grid">
+        <div class="wrap center-align">
+            <h1>
+            Agora Octave enables <strong>rapid collaboration</strong> and
+            <strong>code&#8209;sharing</strong> for users of
+            <a href="http://octave.org">GNU Octave</a>.
+            </h1>
+            <!--<div id="login-box"></div>-->
+        </div>
+    </div>
 </div>
-<div class="info">
-  <h3>
-    Recent submissions
-  </h3>
-  <div class="whitebox">
+<div id="billboard-below">
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="info-box" class="row">
+    <div class="span3">
+        <div class="center-align">
+            <img src="/static/img/browse.png" />
+            <h2>Browse code submissions</h2>
+        </div>
+        <p>
+            Some copy about how you can browse through the code until you
+            find what you want. They can be snippets or bundles. You can
+            contribute your own changes, maybe. You can even install them
+            as octave packages. More text to fill up line.
+        </p>
+    </div><div class="span3">
+        <div class="center-align">
+            <img src="/static/img/snippet.png" />
+            <h2>Post a snippet</h2>
+        </div>
+        <p>
+            Just want to post a quick snippet of code? Do it in the pastebin.
+            You don't even have to be registered. Though we'd need some sort
+            of spam-protection measures in that case. Plus, syntax highlighting!
+        </p>
+    </div><div class="span3">
+        <div class="center-align">
+            <img src="/static/img/upload.png" />
+            <h2>Share your code</h2>
+        </div>
+        <p>
+            For larger pieces of code, we have bundles. Mercurial integration,
+            select a license. Sharing made easy. Forge for installing packages,
+            eventually. Some more text just to fill up the space. Lorem ipsum,
+            etc. You do have to be signed up to upload something, though.
+        </p>
+    </div>
+</div>
+
+<div class="center-align">
+    <p><a href="{% url code %}" class="button large">Explore</a>
+    <a href="{% url registration_register %}" class="button large">
+        Register an account
+    </a></p>
     <p>
-      <a href="http://inversethought.com/hg/hgwebdir.cgi/agora/">HELP US BUILD THIS
-      SITE!</a> Clone the source and start contributing.
+        You can sign up, if you want, won't share your email, not required, etc
     </p>
-  </div>
-</div class="info">
+</div>
+
 {% endblock %}

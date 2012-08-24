@@ -1,0 +1,6 @@
+{% extends "base.djhtml" %}
+
+{% block content %}
+<h1>Discuss</h1>
+<p>Not sure what belongs here</p>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.djhtml" %}
+
+{% block content %}
+<h1>Help</h1>
+<p>Help manuals for using Agora Octave, etc</p>
+{% endblock %}

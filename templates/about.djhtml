@@ -1,0 +1,14 @@
+{% extends "base.djhtml" %}
+
+{% block content %}
+<h1>About Agora Octave</h1>
+<p>Agora Octave is a blah blah</p>
+
+<h2>Get involved</h2>
+
+<p>You can contribute etc</p>
+
+<h2>Contact information</h2>
+
+<p>Not sure what belongs here</p>
+{% endblock %}

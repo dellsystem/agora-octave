@@ -4,7 +4,7 @@
 {{profile.user.username}} <br/>
 {% if profile.user = user %}
 <small>
-  (<a href="{% url agora.apps.profile.views.editprofile user %}">
+  (<a href="{% url agora.apps.profile.views.editprofile %}">
     edit profile
   </a>)
 </small>

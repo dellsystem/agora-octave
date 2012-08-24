@@ -1,10 +1,7 @@
-{% extends "whitebox.djhtml" %}
+{% extends "base.djhtml" %}
 
-{% block boxtitle %}
-Login
-{% endblock %}
-
-{% block boxcontents %}
+{% block content %}
+<h1>Login</h1>
 {% if user.is_authenticated %}
 <p>
   You're already logged in as 
@@ -18,10 +15,10 @@ Login
 
 {% else %}
 
-<form method="post" action=".">
+<form method="post" action="">
   {% csrf_token %}
   <table>
-    {{form.as_table}}
+    {{ form }}
   </table>
   <input type="submit" value="Log in" />
   <input type="hidden" name="next" value="{{ next }}" />
