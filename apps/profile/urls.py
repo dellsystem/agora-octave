@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('agora.apps.profile.views',
-    (r'^editprofile/(?P<user>\w*)/$', 'editprofile'),
-    (r'^(?P<user>\w*)/$', 'showprofile'),
+    url(r'^editprofile$', 'editprofile', name='edit_profile'),
+    url(r'^(?P<user>\w*)/$', 'showprofile', name='show_profile'),
 )
