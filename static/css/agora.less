@@ -55,7 +55,6 @@ body {
                 font-size: 1.1em;
 
                 &:hover {
-                    background-position-y: -60px;
                     text-decoration: none;
                     color: @darkerGrey;
                 }
@@ -67,20 +66,29 @@ body {
             }
         }
 
+        // Because Firefox/Opera don't do background-position-x/y
+        .header-icon(@xPosition) {
+            background-position: @xPosition 0px;
+
+            &:hover {
+                background-position: @xPosition @headerIconHoverY;
+            }
+        }
+
         .code {
-            background-position-x: -62px;
+            .header-icon(-62px);
         }
 
         .discuss {
-            background-position-x: -125px;
+            .header-icon(-125px);
         }
 
         .help {
-            background-position-x: -209px;
+            .header-icon(-209px);
         }
 
         .about {
-            background-position-x: 12px;
+            .header-icon(12px);
         }
 
         .login {
