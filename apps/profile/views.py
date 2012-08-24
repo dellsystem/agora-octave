@@ -50,12 +50,8 @@ def showprofile(request, user):
                               )
 
 @login_required
-def editprofile(request, user):
-    [u,p] = getprofile(user)
-
-    #Make sure user can only edit own profile
-    if request.user != u:
-        raise Http403
+def editprofile(request):
+    [u,p] = getprofile(request.user)
 
     if request.method=='POST':
         u.first_name = request.POST['first-name']
