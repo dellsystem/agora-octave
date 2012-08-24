@@ -6,3 +6,4 @@ agora.conf
 .*\.swp$
 .*\.swo$
 ^Honza.*/
+fabfile.py
