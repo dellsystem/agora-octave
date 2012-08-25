@@ -1,6 +1,46 @@
 {% extends "base.djhtml" %}
 
 {% block content %}
-<h1>Code</h1>
-<p>Not sure what belongs here</p>
+
+<h1>Browse code submissions</h1>
+
+<a class="pill" href="{% url snippet_new %}">Post a snippet</a>
+{% if user.is_authenticated %}
+<a class="pill" href="">Upload a single</a>
+<a class="pill" href="">Upload a bundle</a>
+{% else %}
+<a class="pill" href="{% url auth_login %}">Login to upload singles/bundles</a>
+{% endif %}
+
+<br />
+<br />
+
+<div class="row">
+    <div class="span3">
+        <h2 class="center-align"><a href="{% url snippet_explore %}">Snippets</a></h2>
+        <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+        </ul>
+    </div><div class="span3">
+        <h2 class="center-align">Modules</h2>
+        <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+        </ul>
+    </div><div class="span3">
+        <h2 class="center-align">Forge</h2>
+        <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+        </ul>
+    </div>
+</div>
+
 {% endblock %}
