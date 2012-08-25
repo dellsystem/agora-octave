@@ -1,4 +1,4 @@
-{% extends "whitebox.djhtml" %}
+{% extends "base.djhtml" %}
 
 {% block boxtitle %}
 {{profile.user.username}} <br/>
@@ -11,7 +11,7 @@
 {% endif %}
 {% endblock boxtitle%}
 
-{% block boxcontents %}
+{% block content %}
 <div id="userinfo">
   {% if profile.user.first_name or profile.user.last_name %}
   <span class="userfield">Name</span>
@@ -39,7 +39,7 @@
   </p>
 </div>
 {% endif %}
-{% endblock boxcontents %}
+{% endblock %}
 
 {% block content-related %}
 {% if bundles or snippets %}
