@@ -1,1 +1,5 @@
-{% extends "whitebox.djhtml" %}
+{% extends "base.djhtml" %}
+
+{% block breadcrumbs %}
+<a href="{% url snippet_explore %}">Snippets</a> &raquo; {% block title %}{% endblock %}
+{% endblock %}

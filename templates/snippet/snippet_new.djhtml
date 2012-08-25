@@ -2,12 +2,32 @@
 {% load i18n %}
 
 {% block title %}{% trans "New snippet" %}{% endblock %}
-{% block headline %}<h1>{% trans "Paste a new snippet" %}</h1>{% endblock %}
 
 {% block content %}
-    <h2>{% trans "New snippet" %}</h2>
-    <div class="whitebox">
-      {% include "snippet/snippet_form.djhtml" %}
+    <div id="non-sidebar">
+        <h1>{% trans "Paste a new snippet" %}</h1>
+        <p class="hint">Snippets are a lorem ipsum</p>
+        {% include "snippet/snippet_form.djhtml" %}
+    </div><div id="sidebar">
+        <h2>Recent snippets</h2>
+        {% for snippet in recent_snippets %}
+        <hr />
+        <p><a href="{% url snippet_details snippet %}">
+        {% if snippet.title %}
+        {{ snippet.title }}
+        {% else %}
+        Snippet #{{ snippet.id }}
+        {% endif %}
+        </a>
+        <br />
+        by
+        {% if snippet.author %}
+            <a href="{% url show_profile snippet.author %}">{{ snippet.author }}</a>
+        {% else %}
+            anonymous
+        {% endif %}
+        </p>
+        {% endfor %}
     </div>
 {% endblock %}
 

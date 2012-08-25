@@ -174,13 +174,60 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 3.0em;
+    font-size: 2.1em;
 }
 
 h2 {
-    font-size: 2.0em;
+    font-size: 1.7em;
 }
 
 p {
     padding: 5px 0;
+}
+
+.snippetform {
+    input[type=text], textarea {
+        width: @nonSidebarWidth - @inputPadding * 2 - 2;
+        padding: 5px;
+        margin: 10px 0;
+        outline: none;
+        border: 1px solid @mediumGrey;
+        .border-radius(3px);
+        line-height: 20px;
+
+        &:focus {
+            border-color: @lightBlue;
+        }
+    }
+}
+
+#sidebar {
+    width: @sidebarWidth - @sidebarPadding * 2;
+    padding: @sidebarPadding;
+    min-height: 300px;
+    background: @lighterGrey;
+    .inline-block;
+}
+
+#non-sidebar {
+    .inline-block;
+    width: @nonSidebarWidth;
+    padding-right: @sidebarLeftSpace;
+    vertical-align: top;
+}
+
+.hint {
+    border: 1px solid @lightBlue;
+    background: lighten(@mediumBlue, 40%);
+    padding-left: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid @mediumGrey;
+    & + p {
+        margin-top: 10px;
+    }
 }

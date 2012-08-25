@@ -1,9 +1,7 @@
 {% load i18n %}
-<form method="post" action="." class="snippetform">
+<form method="post" action="" class="snippetform">
 {% csrf_token %}
-<ol>
     {% for field in snippet_form %}
-    <li>
         {{ field.errors }}
         {{ field.label_tag }}
         {{ field }}
@@ -14,11 +12,10 @@
                    id="guess_lexer_btn"/>
         {% endifequal %}
         {% endif %}
-    </li>
     {% endfor %}
-    <li class="submit">
-      <input type="submit"   value="{% trans "Paste it" %}"/>
-    </li>
-</ol>
+    <br />
+    <div class="center-align">
+        <button type="submit" class="button large">{% trans "Paste it" %}</button>
+    </div>
 </form>
 
