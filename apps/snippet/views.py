@@ -16,6 +16,11 @@ from django.core.urlresolvers import reverse
 from django.utils import simplejson
 import difflib
 
+
+def snippet_explore(request):
+    pass
+
+
 def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
 
     if request.method == "POST":
