@@ -41,7 +41,7 @@ def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
 
     template_context = {
         'snippet_form': snippet_form,
-        'recent' : recent,
+        'recent_snippets' : recent,
     }
 
     return render_to_response(
