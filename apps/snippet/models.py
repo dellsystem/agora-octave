@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from agora.apps.snippet.highlight import LEXER_DEFAULT, pygmentize
 from django.contrib.auth.models import User
 
+
 t = 'abcdefghijkmnopqrstuvwwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ1234567890'
 def generate_secret_id(length=4):
     return ''.join([random.choice(t) for i in range(length)])
