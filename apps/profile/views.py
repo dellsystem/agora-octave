@@ -9,8 +9,8 @@ from agora.apps.free_license.models import FreeLicense
 from agora.apps.bundle.models import Bundle
 from agora.apps.snippet.models import Snippet
 from agora.apps.profile.models import Profile
-
 from agora.middleware.http import Http403
+
 
 def getprofile(user):
     u = get_object_or_404(User, username=user)

@@ -1,3 +1,5 @@
+import difflib
+
 from django.shortcuts import render_to_response, \
      get_object_or_404, get_list_or_404
 from django.template.context \
@@ -8,13 +10,14 @@ from django.http \
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
+from django.utils import simplejson
+
 from agora.apps.snippet.forms import SnippetForm, UserSettingsForm
 from agora.apps.snippet.models import Snippet
 from agora.apps.snippet.highlight import pygmentize, guess_code_lexer, \
      LEXER_LIST
-from django.core.urlresolvers import reverse
-from django.utils import simplejson
-import difflib
+from agora.apps.pygments_style.models import PygmentsStyle
 
 
 def snippet_explore(request):

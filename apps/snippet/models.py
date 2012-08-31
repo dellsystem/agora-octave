@@ -1,12 +1,14 @@
 import datetime
 import difflib
 import random
-import agora.apps.mptt as mptt
+
 from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
-from agora.apps.snippet.highlight import LEXER_DEFAULT, pygmentize
 from django.contrib.auth.models import User
+
+from agora.apps.snippet.highlight import LEXER_DEFAULT, LEXER_LIST, pygmentize
+import agora.apps.mptt as mptt
 
 
 t = 'abcdefghijkmnopqrstuvwwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ1234567890'
