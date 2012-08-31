@@ -1,17 +1,9 @@
-
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
 
     curLine = document.location.hash;
     if(curLine.substring(0,2) == '#l'){
         $('div.snippet div.line'+curLine).addClass('marked');
     }
-
-    $("div.accordion").accordion({
-       autoHeight: false,
-       header: 'h3',
-       animation: 'bounceslide',
-       duration: 2000
-    });
 
     /**
     * Diff Ajax Call
@@ -27,18 +19,28 @@ jQuery(document).ready(function(){
     });
 
     /**
-    * Wordwrap
+    * Word wrap
     */
-    $('#toggleWordwrap').toggle(
-        function(){
-            $('div.snippet pre.code').css('white-space', 'pre-wrap');
-            return false;
-        },
-        function(){
-            $('div.snippet pre.code').css('white-space', 'pre');
-            return false;
-        }
-    );
+    $('#toggle-wordwrap').click(function () {
+        // Hide the line numbers (otherwise they could be wrong)
+        $('#line-numbers').toggle();
+
+        // Toggle the wrapping on the highlighted code
+        $('.highlight').toggleClass('wrap');
+
+        return false;
+    });
+
+    /**
+    * Changing syntax highlighting colours
+    */
+    var currentStyle = $('#change-highlighting').attr('data-default');
+    $('#change-highlighting').change(function () {
+        var newStyle = $(this).find(':selected').attr('name');
+
+        $('.highlight').removeClass(currentStyle).addClass(newStyle);
+        currentStyle = newStyle;
+    });
 
     /**
     * Line Highlighting

@@ -30,6 +30,7 @@ class Snippet(models.Model):
     expires = models.DateTimeField(_(u'Expires'), blank=True, help_text='asdf')
     parent = models.ForeignKey('self', null=True, blank=True,
                                related_name='children')
+    num_views = models.IntegerField(default=0)
 
     class Meta:
         ordering = ('-published',)

@@ -90,9 +90,10 @@
         <a href="http://inversethought.com/hg/hgwebdir.cgi/agora/">source</a>
         and start contributing. :: About
     </p>
-    {% block script_footer %}
-    {% endblock %}
   </div>
   <!-- END #footer -->
+    <script src="/static/js/jquery.min.js"></script>
+    {% block script_footer %}
+    {% endblock %}
   </body>
 </html>

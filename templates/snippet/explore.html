@@ -1,0 +1,45 @@
+{% extends "snippet/base.djhtml" %}
+
+{% load i18n %}
+
+{% block title %}
+Explore
+{% endblock %}
+
+{% block content %}
+<h2>{% trans "Recent snippets" %}</h2>
+
+{% if recent_snippets %}
+<table class="default">
+    <thead>
+        <tr>
+            <th>{% trans "Snippet title" %}</th>
+            <th>{% trans "Language" %}</th>
+            <th>{% trans "Created on" %}</th>
+            <th>{% trans "User" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for snippet in recent_snippets %}
+        <tr>
+            <td><a href="{{ snippet.get_absolute_url }}">
+                {{ snippet.get_title }}
+            </a></td>
+            <td>{{ snippet.get_lexer_display }}
+            <td>N/A</td>
+            <td>{% if snippet.author %}
+                <a href="{{ snippet.author.get_absolute_url }}">
+                    {{ snippet.author }}
+                </a>
+                {% else %}
+                {% trans "anonymous" %}
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% else %}
+<p>{% trans "No snippets have been created yet!" %}</p>
+{% endif %}
+{% endblock %}

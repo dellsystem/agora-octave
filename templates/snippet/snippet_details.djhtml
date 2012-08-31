@@ -5,7 +5,7 @@
 {% block extrahead %}
 {% if request.session.userprefs %}
 <style type="text/css" media="all">
-  .code{
+  .highlight {
   {# FIXME: Thats stupid #}
   {% ifnotequal request.session.userprefs.font_family "None" %}
   font-family: {{ request.session.userprefs.font_family }} !important;
@@ -22,7 +22,7 @@
 {% endblock %}
 
 {% block title %}
-{% trans "Snippet" %} #{{ snippet.pk }}
+Viewing snippet — {{ snippet.get_title }}
 {% endblock title %}
 
 {% block headline %}
@@ -42,97 +42,84 @@
 {% load snippet_tags %}
 
 {% block content %}
-
-<h2>Snippet view</h2>
-
-<div class="accordion">
-  <div class="info">
-
-    <div id="diff" style="display:none;">
-      diff
+<div id="non-sidebar">
+    <div id="diff">
     </div>
 
-    <h3>
-      {% if snippet.title %}
-      {{ snippet.title }}
-      {% else %}
-      {% trans "Snippet" %} #{{ snippet.id}}
-      {% endif %}
-    </h3>
-
-    <div class="whitebox">
-
-      <div class="snippet-options">
+    <h1>{{ snippet.get_title }}</h1>
+    <div class="snippet-options">
         <abbr title="{% trans "Time to live" %}"
               >TTL:
         </abbr>
         {{ snippet.expires|timeuntil  }}
         &mdash;
         {% if snippet.pk|in_list:request.session.snippet_list %}
-        <a onclick="return confirm('{% trans "Really delete this snippet?" %}')" 
+        <a onclick="return confirm('{% trans "Really delete this snippet?" %}')"
            href="{% url snippet_delete snippet.secret_id %}">
-          Delete now!
+            Delete this snippet
         </a>
         &mdash;
         {% endif %}
-        <a id="toggleWordwrap" href="#">{% trans "Wordwrap" %}</a>
+        <a id="toggle-wordwrap" href="#">{% trans "Toggle wordwrap" %}</a>
+        &mdash;
+        Syntax highlighting style:
+        <select id="change-highlighting"
+                data-default="{{ default_style }}">
+            {% for pygments_style in pygments_styles %}
+            <option name="{{ pygments_style }}">
+                {{ pygments_style }}
+                {% if pygments_style == default_style %}
+                (default)
+                {% endif %}
+            </option>
+            {% endfor %}
+        </select>
         <div>
-         Author:
-         {% if snippet.author %}
-         <a href="{% url agora.apps.profile.views.showprofile snippet.author %}">
-           {{ snippet.author }}
-         </a>
-         {% else %}
-         anonymous
-         {% endif %}
-         &mdash;
-         Language: {{language}}
+            Author:
+            {% if snippet.author %}
+            <a href="{% url agora.apps.profile.views.showprofile snippet.author %}">
+            {{ snippet.author }}
+            </a>
+            {% else %}
+            anonymous
+            {% endif %}
+            &mdash;
+            Language: {{language}}
         </div>
-      </div>
-
-      <br />
-
-      <div class="snippet">
-        <table>
-          <tr>
-            <th>
-              {# this has to look like this due to the pre tags #}
-              <pre class="code">{% for l in lines %}<a href="#l{{ forloop.counter }}" id="l{{ forloop.counter }}">{{ forloop.counter }}</a> 
-{% endfor %}</pre>
-            </th>
-            <td>
-              {# this has to look like this due to the pre tags #}
-              <pre class="code">{% for line in snippet.content_splitted %}<span class="line" id="l{{ forloop.counter }}">{% if line %}{{ line|safe }}{% else %}&nbsp;{% endif %}</span>
-{% endfor %}</pre>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-    </div> {#whitebox#}
-
-  </div> {# info #}
-
-  <div class="info">
-    <h3>{% trans "Write an answer" %} &rarr;</h3>
-    <div class="accordion" style="display: none;">
-      <div class="whitebox">
-        {% include "snippet/snippet_form.djhtml" %}
-      </div>
     </div>
-  </div>
-</div>
-{% endblock %}
+    <br />
+    <div class="snippet">
+        <table>
+            <tr>
+                <th id="line-numbers">
+                    {# this has to look like this due to the pre tags #}
+                    <pre class="numbers">{% for l in lines %}<a href="#l{{ forloop.counter }}" id="l{{ forloop.counter }}">{{ forloop.counter }}</a>
+{% endfor %}</pre>
+                </th>
+                <td>
+                    {# this has to look like this due to the pre tags #}
+                    <pre class="highlight {{ default_style }}">{% for line in snippet.content_splitted %}<span class="line" id="l{{ forloop.counter }}">{% if line %}{{ line|safe }}{% else %}&nbsp;{% endif %}</span>
+{% endfor %}</pre>
+                </td>
+            </tr>
+        </table>
+    </div>
 
+    <br />
 
+    <h2 id="revise">{% trans "Revise this snippet" %}</h2>
 
-{% block content-related %}
-<div class="info">
-
-  <h3>{% trans "History" %}</h3>
-
-  <div class="whitebox">
-
+    {% include "snippet/snippet_form.djhtml" %}
+</div><div id="sidebar">
+    <h2>{% trans "History" %}</h2>
+    {% if no_descendants %}
+        <p>{% trans "This snippet has no children!" %}</p>
+        <p>
+            <a href="#revise">
+            {% trans "Make one" %} &raquo;
+            </a>
+        </p>
+    {% else %}
     <form method="get" id="diffform" action="{% url snippet_diff %}">
       <div class="tree">
         {% for tree_item,structure in tree|tree_info %}
@@ -158,21 +145,11 @@
                        {% endifequal %}/>
               </span>
               {% ifequal snippet tree_item %}
-              <strong>
-                {% if tree_item.title %}
-                {{ tree_item.title }}
-                {% else %}
-                {% trans "Snippet" %} #{{ tree_item.id }}
-                {% endif %}
-              </strong>
+                <strong>{{ tree_item.get_title }}</strong>
               {% else %}
-              <a href="{{ tree_item.get_absolute_url }}">
-                {% if tree_item.title %}
-                {{ tree_item.title }}
-                {% else %}
-                {% trans "Snippet" %} #{{ tree_item.id }}
-                {% endif %}
-              </a>
+                <a href="{{ tree_item.get_absolute_url }}">
+                    {{ tree_item.get_title }}
+                </a>
               {% endifequal %}
             </div>
             {% for level in structure.closed_levels %}
@@ -185,25 +162,17 @@
         </div>
       </div>
     </form>
-
-  </div> {# whitebox #}
-
-</div> {# info #}
-
-<div class="info">
-  <h3>{% trans "Options" %}</h3>
-  <div class="whitebox">
-       <p>
-         <a href="{% url snippet_details_raw snippet.secret_id %}">
-           {% trans "View raw" %}
-         </a>
-       </p>
+    {% endif %}
+    <br />
+    <h2>{% trans "Options" %}</h2>
+    <a href="{% url snippet_details_raw snippet.secret_id %}">
+       {% trans "View raw" %}
+     </a>
 </div>
-{% endblock content-related %}
+</div>
+{% endblock %}
 
 {% block script_footer %}
-<script src="/static/jquery.min.js"></script>
-<script src="/static/jquery-ui.min.js"></script>
 <script type="text/javascript">
 {%include "snippet/snippet_details.js" %}
 </script>

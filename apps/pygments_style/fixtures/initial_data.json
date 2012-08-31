@@ -1,0 +1,66 @@
+[
+    {
+        "pk": 1,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "tango",
+            "description": null
+        }
+    },
+    {
+        "pk": 2,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "autumn",
+            "description": null
+        }
+    },
+    {
+        "pk": 3,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "borland",
+            "description": null
+        }
+    },
+    {
+        "pk": 4,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "fruity",
+            "description": null
+        }
+    },
+    {
+        "pk": 5,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "monokai",
+            "description": null
+        }
+    },
+    {
+        "pk": 6,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "native",
+            "description": null
+        }
+    },
+    {
+        "pk": 7,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "vs",
+            "description": null
+        }
+    },
+    {
+        "pk": 8,
+        "model": "pygments_style.pygmentsstyle",
+        "fields": {
+            "class_name": "vibrant",
+            "description": null
+        }
+    }
+]

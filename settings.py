@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'agora.apps.snippet',
     'agora.apps.bundle',
     'agora.apps.free_license',
+    'agora.apps.pygments_style',
     'agora.apps.mptt',
 )
 

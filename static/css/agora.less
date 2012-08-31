@@ -146,6 +146,7 @@ body {
 #breadcrumbs {
     border-bottom: 1px solid @lightGrey;
     margin-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 #info-box {
@@ -202,10 +203,11 @@ p {
 }
 
 #sidebar {
-    width: @sidebarWidth - @sidebarPadding * 2;
+    margin-top: 10px;
+    width: @sidebarWidth - @sidebarPadding * 2 - 2;
+    border: 1px solid @lightGrey;
     padding: @sidebarPadding;
-    min-height: 300px;
-    background: @lighterGrey;
+    background: @offWhite;
     .inline-block;
 }
 
@@ -219,15 +221,47 @@ p {
 .hint {
     border: 1px solid @lightBlue;
     background: lighten(@mediumBlue, 40%);
-    padding-left: 10px;
+    padding: 10px;
     margin-bottom: 10px;
-    padding-top: 10px;
 }
 
 hr {
     border: 0;
     border-top: 1px solid @mediumGrey;
-    & + p {
-        margin-top: 10px;
+    margin: 5px 0;
+}
+
+.tree {
+    ul {
+        list-style-type: none;
+    }
+}
+
+#diff {
+    .hidden;
+    border: 1px solid @lightGrey;
+    padding: 10px;
+    background: @offWhite;
+
+    .gi {
+        background: #DFD;
+    }
+
+    .gu {
+        color: @mediumGrey;
+    }
+
+    .gd {
+        background: #FDD;
+    }
+}
+
+table &.default {
+    width: 100%;
+    border: 1px solid @lightGrey;
+
+    thead th {
+        padding: 5px 0;
+        border-bottom: 1px solid @lightGrey;
     }
 }

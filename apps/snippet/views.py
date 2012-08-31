@@ -1,7 +1,7 @@
 import difflib
 
 from django.shortcuts import render_to_response, \
-     get_object_or_404, get_list_or_404
+     get_object_or_404, get_list_or_404, render
 from django.template.context \
      import RequestContext
 from django.http \
@@ -21,7 +21,11 @@ from agora.apps.pygments_style.models import PygmentsStyle
 
 
 def snippet_explore(request):
-    pass
+    context = {
+        'recent_snippets': Snippet.objects.all()[:20]
+    }
+
+    return render(request, 'snippet/explore.html', context)
 
 
 def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
@@ -59,12 +63,15 @@ def snippet_details(request, snippet_id,
                     is_raw=False):
 
     snippet = get_object_or_404(Snippet, secret_id=snippet_id)
+    snippet.num_views += 1
+    snippet.save()
 
     tree = snippet.get_root()
     tree = tree.get_descendants(include_self=True)
 
     new_snippet_initial = {
         'content': snippet.content,
+        'lexer': snippet.lexer,
     }
 
     if request.method == "POST":
@@ -75,7 +82,13 @@ def snippet_details(request, snippet_id,
             request, new_snippet = snippet_form.save(parent=snippet)
             return HttpResponseRedirect(new_snippet.get_absolute_url())
     else:
-        snippet_form = SnippetForm(initial=new_snippet_initial, request=request)
+        snippet_form = SnippetForm(initial=new_snippet_initial,
+                                   request=request)
+
+    if request.user.is_authenticated():
+        default_pygments_style = request.user.get_profile().pygments_style
+    else:
+        default_pygments_style = PygmentsStyle.objects.get(pk=1)
 
     template_context = {
         'snippet_form': snippet_form,
@@ -83,6 +96,9 @@ def snippet_details(request, snippet_id,
         'lines': range(snippet.get_linecount()),
         'tree': tree,
         'language': dict(LEXER_LIST)[snippet.lexer],
+        'pygments_styles': PygmentsStyle.objects.all(),
+        'default_style': default_pygments_style,
+        'no_descendants': len(tree) == 1,
     }
 
     response = render_to_response(

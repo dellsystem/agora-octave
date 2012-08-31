@@ -1,1 +1,27 @@
-// Nothing yet
+// For all syntax-highlighted code
+.highlight {
+    width: 650px;
+	padding: 10px;
+	.border-radius(7px);
+    overflow-x: auto;
+    border: 1px solid @lightGrey;
+
+    &.wrap {
+        white-space: pre-wrap;
+        width: 688px;
+    }
+}
+
+.numbers, .highlight {
+    line-height: 18px;
+}
+
+#line-numbers {
+    vertical-align: top;
+    padding-top: 11px;
+    width: 40px;
+}
+
+.snippet table {
+    border-spacing: 0;
+}

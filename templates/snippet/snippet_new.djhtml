@@ -6,59 +6,32 @@
 {% block content %}
     <div id="non-sidebar">
         <h1>{% trans "Paste a new snippet" %}</h1>
-        <p class="hint">Snippets are a lorem ipsum</p>
+        <p class="hint">{% trans "Snippets provide a way to quickly share pieces of code, complete with line-numbering and syntax-highlighting." %} {% if not user.is_authenticated %}{% trans "Although registration is not required, only registered users can delete their own snippets after ending a session or have them linked to their profile." %}{% endif %}</p>
         {% include "snippet/snippet_form.djhtml" %}
     </div><div id="sidebar">
         <h2>Recent snippets</h2>
         {% for snippet in recent_snippets %}
         <hr />
-        <p><a href="{% url snippet_details snippet %}">
-        {% if snippet.title %}
-        {{ snippet.title }}
-        {% else %}
-        Snippet #{{ snippet.id }}
-        {% endif %}
-        </a>
-        <br />
-        by
-        {% if snippet.author %}
-            <a href="{% url show_profile snippet.author %}">{{ snippet.author }}</a>
-        {% else %}
+        <p>
+            <a href="{{ snippet.get_absolute_url }}">
+                {{ snippet.get_title }}
+            </a>
+            <br />
+            by
+            {% if snippet.author %}
+                <a href="{{ snippet.author.get_absolute_url }}">
+                    {{ snippet.author }}
+                </a>
+            {% else %}
             anonymous
-        {% endif %}
+            {% endif %}
         </p>
         {% endfor %}
+        <p class="right-float"><a href="{% url snippet_explore %}">
+            {% trans "View more" %} &raquo;
+        </a></p>
     </div>
 {% endblock %}
-
-
-{% block content-related %}
-    <h2>Recent snippets</h2>
-    <div class="whitebox">
-      <ul>
-        {% for r in recent %}
-        <li>
-          <a href="{% url snippet_details r %}">
-            {% if r.title %}
-            {{r.title}}
-            {% else %}
-            Snippet #{{r.pk}}
-            {% endif %}
-          </a>
-        by
-          {% if r.author %}
-          <a href="{% url agora.apps.profile.views.showprofile r.author %}">
-            {{r.author}}
-          </a>
-          {% else %}
-          anonymous
-          {% endif %}
-          {% endfor %}
-        </li>
-      </ul>
-    </div>
-{% endblock %}
-
 
 {% block script_footer %}
 <script src="/static/jquery.min.js"></script>
