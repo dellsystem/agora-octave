@@ -31,7 +31,7 @@ urlpatterns = patterns('',
         {'template_name' : 'index.djhtml', 'next_page' : '/'}),
     url(r'^accounts/', include('registration.urls')),
     url(r'^licenses/', include('agora.apps.free_license.urls')),
-    url(r'^user/', include('agora.apps.profile.urls')),
+    url(r'^users/', include('agora.apps.profile.urls')),
     url(r'^snippet/', include('agora.apps.snippet.urls')),
     url(r'^bundles/', include('agora.apps.bundle.urls')),
 )
