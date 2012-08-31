@@ -20,11 +20,6 @@ EXPIRE_DEFAULT = 3600*24*30
 
 class SnippetForm(forms.ModelForm):
 
-    lexer = forms.ChoiceField(
-        choices=LEXER_LIST,
-        initial=LEXER_DEFAULT,
-        label=_(u'Lexer'),
-    )
     expire_options = forms.ChoiceField(
         choices=EXPIRE_CHOICES,
         initial=EXPIRE_DEFAULT,

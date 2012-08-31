@@ -20,7 +20,10 @@ class Snippet(models.Model):
     content = models.TextField(_(u'Content'), )
     content_highlighted = models.TextField(_(u'Highlighted Content'),
                                            blank=True)
-    lexer = models.CharField(_(u'Lexer'), max_length=30, default=LEXER_DEFAULT)
+    lexer = models.CharField(_(u'Lexer'),
+                             max_length=30,
+                             choices=LEXER_LIST,
+                             default=LEXER_DEFAULT)
     published = models.DateTimeField(_(u'Published'), blank=True)
     expires = models.DateTimeField(_(u'Expires'), blank=True, help_text='asdf')
     parent = models.ForeignKey('self', null=True, blank=True,
