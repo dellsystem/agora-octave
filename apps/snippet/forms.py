@@ -25,7 +25,6 @@ class SnippetForm(forms.ModelForm):
         initial=LEXER_DEFAULT,
         label=_(u'Lexer'),
     )
-    
     expire_options = forms.ChoiceField(
         choices=EXPIRE_CHOICES,
         initial=EXPIRE_DEFAULT,
@@ -35,7 +34,7 @@ class SnippetForm(forms.ModelForm):
     def __init__(self, request, *args, **kwargs):
         super(SnippetForm, self).__init__(*args, **kwargs)
         self.request = request
-        
+
         try:
             if self.request.session['userprefs'].get('display_all_lexer',
                                                      False):
@@ -48,17 +47,17 @@ class SnippetForm(forms.ModelForm):
                     self.request.session['userprefs'].get('default_name', '')
         except KeyError:
             pass
-        
+
     def save(self, parent=None, *args, **kwargs):
 
         # Set parent snippet
         if parent:
             self.instance.parent = parent
-        
+
         # Add expire datestamp
         self.instance.expires = datetime.datetime.now() + \
             datetime.timedelta(seconds=int(self.cleaned_data['expire_options']))
-        
+
         # Save snippet in the db
         super(SnippetForm, self).save(*args, **kwargs)
 
@@ -101,7 +100,7 @@ class UserSettingsForm(forms.Form):
 
     default_name = forms.CharField(label=_(u'Default Name'), required=False)
     display_all_lexer = forms.BooleanField(
-        label=_(u'Display all lexer'), 
+        label=_(u'Display all lexer'),
         required=False,
         widget=forms.CheckboxInput,
         help_text=_(u'This also enables the super secret ' \
