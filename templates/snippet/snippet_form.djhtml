@@ -18,4 +18,3 @@
         <button type="submit" class="button large">{% trans "Paste it" %}</button>
     </div>
 </form>
-
