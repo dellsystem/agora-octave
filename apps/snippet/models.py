@@ -45,6 +45,9 @@ class Snippet(models.Model):
         self.content_highlighted = pygmentize(self.content, self.lexer)
         super(Snippet, self).save(*args, **kwargs)
 
+    def get_title(self):
+        return self.title or _('Snippet #%d' % self.id)
+
     @permalink
     def get_absolute_url(self):
         return ('snippet_details', (self.secret_id,))
