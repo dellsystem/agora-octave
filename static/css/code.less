@@ -1,27 +1,37 @@
-// For all syntax-highlighted code
+.line-number {
+    width: 30px;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
 .highlight {
     width: 650px;
-	padding: 10px;
-	.border-radius(7px);
-    overflow-x: auto;
-    border: 1px solid @lightGrey;
+    white-space: pre-wrap;
+    border-style: solid;
+    border-color: @lightGrey;
+    border-width: 0 1px;
+    padding: 0 10px;
+}
 
-    &.wrap {
-        white-space: pre-wrap;
-        width: 688px;
+.snippet tr {
+    &:first-child td {
+        border-top-width: 1px;
+        padding-top: 10px;
+        .border-radius(7px 7px 0 0);
+    }
+
+    &:last-child td {
+        border-bottom-width: 1px;
+        padding-bottom: 10px;
+        .border-radius(0 0 7px 7px);
     }
 }
 
-.numbers, .highlight {
-    line-height: 18px;
-}
-
-#line-numbers {
-    vertical-align: top;
-    padding-top: 11px;
-    width: 40px;
-}
-
 .snippet table {
+    font-family: monospace;
     border-spacing: 0;
+    td {
+        vertical-align: top;
+    }
 }

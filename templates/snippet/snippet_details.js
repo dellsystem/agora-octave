@@ -19,26 +19,13 @@ jQuery(document).ready(function () {
     });
 
     /**
-    * Word wrap
-    */
-    $('#toggle-wordwrap').click(function () {
-        // Hide the line numbers (otherwise they could be wrong)
-        $('#line-numbers').toggle();
-
-        // Toggle the wrapping on the highlighted code
-        $('.highlight').toggleClass('wrap');
-
-        return false;
-    });
-
-    /**
     * Changing syntax highlighting colours
     */
     var currentStyle = $('#change-highlighting').attr('data-default');
     $('#change-highlighting').change(function () {
         var newStyle = $(this).find(':selected').attr('name');
 
-        $('.highlight').removeClass(currentStyle).addClass(newStyle);
+        $('.snippet').removeClass(currentStyle).addClass(newStyle);
         currentStyle = newStyle;
     });
 
