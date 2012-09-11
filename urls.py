@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.views.generic import ListView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -22,8 +23,7 @@ urlpatterns = patterns('',
         {'template': 'discuss.djhtml'},
         name='discuss'),
     url(r'^code$',
-        'django.views.generic.simple.direct_to_template',
-        {'template': 'code.djhtml'},
+        'views.code',
         name='code'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
