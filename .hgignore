@@ -7,3 +7,4 @@ agora.conf
 .*\.swo$
 ^Honza.*/
 fabfile.py
+.git
