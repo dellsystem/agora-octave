@@ -1,0 +1,85 @@
+<h1>Login or register</h1>
+
+{% if user.is_authenticated %}
+<p>
+    You are already logged in.
+    <a href="{% url auth_logout %}">Logout &raquo;</a>
+</p>
+{% else %}
+<form method="post"
+      action="{% url login %}?next={{ next_url|default:request.get_full_path }}">
+    {% csrf_token %}
+
+    <p>Already have an account? Enter your username and password below.</p>
+
+    <div class="form-line">
+        <label for="username">Username</label>
+        <div class="form-input">
+            <input type="text" id="username" name="username" maxlength="30" />
+        </div>
+    </div>
+
+    {% if form.username.errors %}
+    <div class="errors">
+    {{ form.username.errors }}
+    </div>
+    {% endif %}
+
+    <div class="form-line">
+        <label for="password1">Password</label>
+        <div class="form-input">
+            <input type="password" id="password1" name="password1" />
+        </div>
+    </div>
+
+    {% if form.password1.errors %}
+    <div class="errors">
+    {{ form.password1.errors }}
+    </div>
+    {% endif %}
+
+    <br />
+
+    <p>
+        If you don't have an account yet, you can create one by filling out
+        the following fields as well:
+    </p>
+
+    <div class="form-line">
+        <label for="password2">Confirm password</label>
+        <div class="form-input">
+            <input type="password" id="password2" name="password2" />
+        </div>
+    </div>
+
+    {% if form.password2.errors %}
+    <div class="errors">
+    {{ form.password2.errors }}
+    </div>
+    {% endif %}
+
+    <div class="form-line">
+        <label for="email">Email address</label>
+        <div class="form-input">
+            <input type="text" id="email" name="email" />
+        </div>
+    </div>
+
+    {% if form.email.errors %}
+    <div class="errors">
+    {{ form.email.errors }}
+    </div>
+    {% endif %}
+
+    <br />
+
+    <div class="center-align">
+        <button type="submit" class="button large" name="action" value="login">
+        Login
+        </button>
+        <button type="submit" class="button large" name="action" value="register">
+        Register
+        </button>
+    </div>
+</form>
+{% endif %}

@@ -57,14 +57,16 @@
     </div>
 </div>
 
+{% if not user.is_authenticated %}
 <div class="center-align">
     <p><a href="{% url code %}" class="button large">Explore</a>
-    <a href="{% url registration_register %}" class="button large">
-        Register an account
+    <a href="{% url login %}" class="button large login-link">
+        Login or register
     </a></p>
     <p>
         You can sign up, if you want, won't share your email, not required, etc
     </p>
 </div>
+{% endif %}
 
 {% endblock %}
