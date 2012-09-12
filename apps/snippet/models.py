@@ -3,7 +3,6 @@ import difflib
 import random
 
 from django.db import models
-from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
@@ -51,7 +50,7 @@ class Snippet(models.Model):
     def get_title(self):
         return self.title or _('Snippet #%d' % self.id)
 
-    @permalink
+    @models.permalink
     def get_absolute_url(self):
         return ('snippet_details', (self.secret_id,))
 
