@@ -34,10 +34,12 @@
             as octave packages. More text to fill up line.
         </p>
     </div><div class="span3">
-        <div class="center-align">
-            <img src="/static/img/snippet.png" />
-            <h2>Post a snippet</h2>
-        </div>
+        <a href="{%url snippet_new %}">
+            <div class="center-align">
+                <img src="/static/img/snippet.png" />
+                <h2>Post a snippet</h2>
+            </div>
+        </a>
         <p>
             Just want to post a quick snippet of code? Do it in the pastebin.
             You don't even have to be registered. Though we'd need some sort
