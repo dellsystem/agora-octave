@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.views.generic import ListView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -22,13 +23,16 @@ urlpatterns = patterns('',
         {'template': 'discuss.djhtml'},
         name='discuss'),
     url(r'^code$',
-        'django.views.generic.simple.direct_to_template',
-        {'template': 'code.djhtml'},
+        'views.code',
         name='code'),
+    url(r'^login',
+        'views.login_register',
+        name='login'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/logout/', 'django.contrib.auth.views.logout',
-        {'template_name' : 'index.djhtml', 'next_page' : '/'}),
+        {'template_name' : 'index.djhtml', 'next_page' : '/'}
+    ),
     url(r'^accounts/', include('registration.urls')),
     url(r'^licenses/', include('agora.apps.free_license.urls')),
     url(r'^users/', include('agora.apps.profile.urls')),

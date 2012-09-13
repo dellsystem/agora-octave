@@ -1,0 +1,15 @@
+{% extends "base.djhtml" %}
+
+{% block content %}
+{% include "login_form.djhtml" %}
+{% endblock %}
+
+{% block login_form %}
+{% endblock %}
+
+{% block login_breadcrumbs %}
+{% endblock %}
+
+{% block breadcrumbs %}
+<a href="{% url home %}">&laquo; Back to home</a>
+{% endblock %}

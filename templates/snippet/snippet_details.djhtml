@@ -60,8 +60,6 @@ Viewing snippet — {{ snippet.get_title }}
         </a>
         &mdash;
         {% endif %}
-        <a id="toggle-wordwrap" href="#">{% trans "Toggle wordwrap" %}</a>
-        &mdash;
         Syntax highlighting style:
         <select id="change-highlighting"
                 data-default="{{ default_style }}">
@@ -88,20 +86,18 @@ Viewing snippet — {{ snippet.get_title }}
         </div>
     </div>
     <br />
-    <div class="snippet">
+    <div class="snippet {{ default_style }}">
         <table>
+            {% for line in snippet.content_splitted %}
             <tr>
-                <th id="line-numbers">
-                    {# this has to look like this due to the pre tags #}
-                    <pre class="numbers">{% for l in lines %}<a href="#l{{ forloop.counter }}" id="l{{ forloop.counter }}">{{ forloop.counter }}</a>
-{% endfor %}</pre>
-                </th>
-                <td>
-                    {# this has to look like this due to the pre tags #}
-                    <pre class="highlight {{ default_style }}">{% for line in snippet.content_splitted %}<span class="line" id="l{{ forloop.counter }}">{% if line %}{{ line|safe }}{% else %}&nbsp;{% endif %}</span>
-{% endfor %}</pre>
+                <td class="line-number">
+                    <a name="l{{ forloop.counter }}" href="#l{{ forloop.counter }}">
+                        {{ forloop.counter }}
+                    </a>
                 </td>
+                <td class="highlight">{% if line %}{{ line|safe }}{% else %}&nbsp;{% endif %}</td>
             </tr>
+            {% endfor %}
         </table>
     </div>
 

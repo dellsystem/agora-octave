@@ -183,7 +183,7 @@ h2 {
 }
 
 p {
-    padding: 5px 0;
+    padding-bottom: 5px;
 }
 
 .snippetform {
@@ -263,5 +263,77 @@ table &.default {
     thead th {
         padding: 5px 0;
         border-bottom: 1px solid @lightGrey;
+    }
+}
+
+ul {
+    padding: 5px 0;
+    margin-left: 20px;
+}
+
+#login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 200;
+}
+
+#login-form {
+    @width: 600px;
+    @height: 300px;
+    @verticalPadding: 20px;
+
+    .box-shadow(0 0 5px 1px rgba(0, 0, 0, 0.3));
+    width: @width;
+    height: @height - (@verticalPadding * 2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -@width / 2;
+    margin-top: -@height / 2;
+    background: @white;
+    .border-radius(5px);
+    padding: @verticalPadding 30px;
+}
+
+.errors {
+    padding-top: 5px;
+    padding-left: 5px;
+    background: @lightOrange;
+    margin-bottom: 10px;
+    border: 1px solid @orange;
+    .border-radius(5px);
+}
+
+form {
+    .form-line {
+        label {
+            float: left;
+            text-align: right;
+        }
+    }
+
+    .form-input {
+        margin-left: 180px;
+    }
+
+    .errors {
+        clear: both;
+    }
+}
+
+dl {
+    dt {
+        float: left;
+        clear: left;
+        font-weight: bold;
+        padding-right: 5px;
+    }
+
+    dd {
+        margin-left: 200px;
     }
 }

@@ -1,44 +1,31 @@
 {% extends "base.djhtml" %}
 
-{% block boxtitle %}
-{{profile.user.username}} <br/>
-{% if profile.user = user %}
-<small>
-  (<a href="{% url agora.apps.profile.views.editprofile %}">
-    edit profile
-  </a>)
-</small>
-{% endif %}
-{% endblock boxtitle%}
+{% block breadcrumbs %}
+Viewing profile: {{ profile.user }}
+{% endblock %}
+
 
 {% block content %}
-<div id="userinfo">
-  {% if profile.user.first_name or profile.user.last_name %}
-  <span class="userfield">Name</span>
-  <span class="userdata">{{name}}</span>
-  <br />
-  {% endif %}
-  <span class="userfield">Preferred license</span>
-  <span class="userdata">{{profile.preferred_license}}</span>
-  <br />
-  {% if profile.interests %}
-  <h4>
-    Interests
-  </h4>
-  <p class="userdata">
-    {{profile.interests}}
-  </p>
-  {% endif %}
 
-  {% if profile.blurb %}
-  <h4>
-    About {{name}}
-  </h4>
-  <p class="userdata">
-    {{profile.blurb}}
-  </p>
-</div>
-{% endif %}
+<h1>{{ profile.user }}'s profile</h1>
+
+<dl>
+    {% if profile.user.first_name or profile.user.last_name %}
+    <dt>Name:</dt>
+    <dd>{{ name|default:"N/A" }}</dd>
+    {% endif %}
+
+    <dt>Preferred license:</dt>
+    <dd>{{ profile.preferred_license }}</dd>
+</dl>
+
+<h2>Interests</h2>
+
+<p>{{ profile.interests }}</p>
+
+<h2>About {{ name }}</h2>
+
+<p>{{ profile.blurb }}</p>
 {% endblock %}
 
 {% block content-related %}

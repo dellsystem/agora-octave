@@ -54,6 +54,7 @@
       {% block navbar %}
       <div id="breadcrumbs">
         <div class="right-float">
+          {% block login_breadcrumbs %}
           {% if user.is_authenticated %}
             <a href="{% url auth_logout %}">Logout</a>
             ::
@@ -61,10 +62,11 @@
             ::
             <a href="{% url show_profile user %}">View your profile ({{ user }})</a>
           {% else %}
-            <a href="{% url auth_login %}?next={{ request.path }}">Login</a>
-            ::
-            <a href="{% url registration_register %}">Register</a>
+            <a href="{% url login %}?next={{ request.path }}" class="login-link">
+                Login or register
+            </a>
           {% endif %}
+          {% endblock %}
         </div>
         <div>
           {% block breadcrumbs %}
@@ -92,7 +94,15 @@
     </p>
   </div>
   <!-- END #footer -->
+  {% block login_form %}
+  <div id="login-popup" class="hidden">
+      <div id="login-form">
+          {% include "login_form.djhtml" %}
+      </div>
+  </div>
+  {% endblock %}
     <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/agora.js"></script>
     {% block script_footer %}
     {% endblock %}
   </body>
