@@ -41,10 +41,10 @@
           <img src="/static/img/logo.png" alt="Agora Octave" class="logo" />
         </a>
         <ul class="nav">
-          <li><a href="{% url code %}" class="code">Code</a></li>
-          <li><a href="{% url discuss %}" class="discuss">Discuss</a></li>
-          <li><a href="{% url help %}" class="help">Help</a></li>
-          <li><a href="{% url about %}" class="about">About</a></li>
+          <li><a href="{% url code %}" id="code-icon">Code</a></li>
+          <li><a href="{% url discuss %}" id="discuss-icon">Discuss</a></li>
+          <li><a href="{% url help %}" id="help-icon">Help</a></li>
+          <li><a href="{% url about %}" id="about-icon">About</a></li>
         </ul>
       </div>
     </div>
