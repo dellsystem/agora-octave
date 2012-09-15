@@ -9,6 +9,7 @@ LEXER_LIST = (
     ('bash', 'bash'),
     ('c', 'C'),
     ('c++', 'C++'),
+    ('diff', 'patch or diff'),
     ('java', 'Java'),
     ('matlab', 'MATLAB'),
     ('octave', 'Octave'),
