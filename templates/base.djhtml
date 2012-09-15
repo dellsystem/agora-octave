@@ -38,7 +38,7 @@
     <div id="header">
       <div class="wrap">
         <a href="{% url home %}">
-          <img src="/static/img/logo.png" alt="Agora Octave" class="logo">
+          <img src="/static/img/logo.png" alt="Agora Octave" class="logo" />
         </a>
         <ul class="nav">
           <li><a href="{% url code %}" class="code">Code</a></li>
