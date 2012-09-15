@@ -23,7 +23,7 @@ jQuery(document).ready(function () {
     */
     var currentStyle = $('#change-highlighting').attr('data-default');
     $('#change-highlighting').change(function () {
-        var newStyle = $(this).find(':selected').attr('name');
+        var newStyle = $(this).find(':selected').attr('data-name');
 
         $('.snippet').removeClass(currentStyle).addClass(newStyle);
         currentStyle = newStyle;

@@ -64,7 +64,7 @@ Viewing snippet — {{ snippet.get_title }}
         <select id="change-highlighting"
                 data-default="{{ default_style }}">
             {% for pygments_style in pygments_styles %}
-            <option name="{{ pygments_style }}">
+            <option data-name="{{ pygments_style }}">
                 {{ pygments_style }}
                 {% if pygments_style == default_style %}
                 (default)
