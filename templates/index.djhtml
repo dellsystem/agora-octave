@@ -24,7 +24,7 @@
 <div id="info-box" class="row">
     <div class="span3">
         <div class="center-align">
-            <img src="/static/img/browse.png" />
+            <img src="/static/img/browse.png" alt="" />
             <h2>Browse code submissions</h2>
         </div>
         <p>
@@ -35,7 +35,7 @@
         </p>
     </div><div class="span3">
         <div class="center-align">
-            <img src="/static/img/snippet.png" />
+            <img src="/static/img/snippet.png" alt="" />
             <h2>Post a snippet</h2>
         </div>
         <p>
@@ -45,7 +45,7 @@
         </p>
     </div><div class="span3">
         <div class="center-align">
-            <img src="/static/img/upload.png" />
+            <img src="/static/img/upload.png" alt="" />
             <h2>Share your code</h2>
         </div>
         <p>
