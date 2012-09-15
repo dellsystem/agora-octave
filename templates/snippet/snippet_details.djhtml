@@ -84,7 +84,7 @@ Viewing snippet — {{ snippet.get_title }}
             &mdash;
             Language: {{language}}
         </div>
-    </div>
+    </div><!-- closes .snippet-options -->
     <br />
     <div class="snippet {{ default_style }}">
         <table>
@@ -99,7 +99,7 @@ Viewing snippet — {{ snippet.get_title }}
             </tr>
             {% endfor %}
         </table>
-    </div>
+    </div><!-- closes .snippet -->
 
     <br />
 
@@ -147,7 +147,7 @@ Viewing snippet — {{ snippet.get_title }}
                     {{ tree_item.get_title }}
                 </a>
               {% endifequal %}
-            </div>
+            </div><!-- closes the div surrounding the .diff span -->
             {% for level in structure.closed_levels %}
           </li>
         </ul>
@@ -155,8 +155,8 @@ Viewing snippet — {{ snippet.get_title }}
         {% endfor %}
         <div class="submit">
           <input type="submit" value="{% trans "Compare" %}"/>
-        </div>
-      </div>
+        </div><!-- closes the .submit div -->
+      </div><!-- closes the .tree div -->
     </form>
     {% endif %}
     <br />
@@ -164,8 +164,7 @@ Viewing snippet — {{ snippet.get_title }}
     <a href="{% url snippet_details_raw snippet.secret_id %}">
        {% trans "View raw" %}
      </a>
-</div>
-</div>
+</div><!-- closes the .sidebar div -->
 {% endblock %}
 
 {% block script_footer %}
