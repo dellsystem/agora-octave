@@ -61,7 +61,15 @@ class SnippetForm(forms.ModelForm):
 
         if file_data:
             file_data.open()
-            cleaned_data['content'] = file_data.read()
+            content_type = file_data.content_type
+
+            # Do some very basic checking of types. NOT SECURE.
+            if (content_type.startswith('text/') or
+                content_type.startswith('application')):
+                cleaned_data['content'] = file_data.read()
+            else:
+                raise forms.ValidationError(_("Please ensure that you upload \
+                    a text file."))
         elif not content:
             # No snippet data specified
             raise forms.ValidationError(_("Please specify some content for \
