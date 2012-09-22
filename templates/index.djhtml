@@ -23,10 +23,12 @@
 {% block content %}
 <div id="info-box" class="row">
     <div class="span3">
+        <a href="{% url code %}">
         <div class="center-align">
             <img src="/static/img/browse.png" alt="" />
             <h2>Browse code submissions</h2>
         </div>
+        </a>
         <p>
             Some copy about how you can browse through the code until you
             find what you want. They can be snippets or bundles. You can
