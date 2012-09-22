@@ -72,6 +72,7 @@ def snippet_details(request, snippet_id,
     new_snippet_initial = {
         'content': snippet.content,
         'lexer': snippet.lexer,
+        'title': 'Re: %s' % snippet.title,
     }
 
     if request.method == "POST":
