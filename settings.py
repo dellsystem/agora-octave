@@ -150,5 +150,7 @@ INSTALLED_APPS = (
 
 COMMENTS_APP = 'threadedcomments'
 
+# Doesn't accept view names until Django 1.5
 LOGIN_REDIRECT_URL='/'
+LOGIN_URL = '/login'
 AUTH_PROFILE_MODULE = 'profile.Profile'
