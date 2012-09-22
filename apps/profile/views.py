@@ -1,81 +1,57 @@
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
-from django.http import Http404, HttpResponseRedirect
-from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from django.views.generic.simple import direct_to_template
 
 from agora.apps.free_license.models import FreeLicense
 from agora.apps.bundle.models import Bundle
 from agora.apps.snippet.models import Snippet
 from agora.apps.profile.models import Profile
-from agora.middleware.http import Http403
+from agora.apps.profile.forms import UserForm, ProfileForm
 
 
-def getprofile(user):
-    u = get_object_or_404(User, username=user)
+def showprofile(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = user.get_profile()
 
-    #Inactive users "don't exist"
-    if not u.is_active:
-        raise Http404
-
-    #Get profile or create a default if none exists
-    try:
-        p = u.get_profile()
-    except Profile.DoesNotExist:
-        #At least one FreeLicense *must* exist.
-        p = Profile(user=u, preferred_license=FreeLicense.objects.get(id=1))
-        p.save()
-
-    return [u,p]
-
-def showprofile(request, user):
-    [u,p] = getprofile(user)
-
-    if u.first_name or u.last_name:
-        n = u.get_full_name()
+    if user.first_name or user.last_name:
+        name = user.get_full_name()
     else:
-        n = u.username
+        name = user.username
 
-    b = Bundle.objects.filter(uploader=u)
-    s = Snippet.objects.filter(author=u)
+    b = Bundle.objects.filter(uploader=user)
+    s = Snippet.objects.filter(author=user)
 
-    return direct_to_template(request, 'profile/user.djhtml',
-                              {
-                                  'profile' : p,
-                                  'bundles' : b,
-                                  'snippets' : s,
-                                  'name' : n,
-                               },
-                              )
+    context = {
+        'profile': user.get_profile,
+        'name': name,
+        'bundles': Bundle.objects.filter(uploader=user),
+        'snippets': Snippet.objects.filter(author=user),
+    }
+
+    return render(request, 'profile/user.djhtml', context)
+
 
 @login_required
 def editprofile(request):
-    [u,p] = getprofile(request.user)
+    user = request.user
+    profile = user.get_profile()
 
-    if request.method=='POST':
-        u.first_name = request.POST['first-name']
-        u.last_name  = request.POST['last-name']
-        u.save()
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=user)
+        profile_form = ProfileForm(request.POST, instance=profile)
 
-        try:
-            p.preferred_license = \
-                            FreeLicense.objects.get(id=request.POST['license'])
-        except:
-            p.preferred_license = FreeLicense.objects.get(id=1)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect(user)
+    else:
+        user_form = UserForm(instance=user)
+        profile_form = ProfileForm(instance=profile)
 
-        p.interests = request.POST['interests']
-        p.blurb = request.POST['blurb']
-        p.save()
-        return HttpResponseRedirect(reverse(
-                                    'agora.apps.profile.views.showprofile',
-                                    args=(u,))
-                                    )
+    context = {
+        'profile': profile,
+        'user_form': user_form,
+        'profile_form': profile_form,
+    }
 
-    licenses = FreeLicense.objects.all()
-    return direct_to_template(request, 'profile/edit-user.djhtml',
-                              {
-                                  'profile' : p,
-                                  'licenses' : licenses,
-                              },
-                              )
+    return render(request, 'profile/edit-user.djhtml', context)

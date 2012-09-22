@@ -17,15 +17,22 @@ Viewing profile: {{ profile.user }}
 
     <dt>Preferred license:</dt>
     <dd>{{ profile.preferred_license }}</dd>
+
+    <dt>Syntax highlighting style:</dt>
+    <dd>{{ profile.pygments_style }}</dd>
 </dl>
 
+{% if profile.interests %}
 <h2>Interests</h2>
 
 <p>{{ profile.interests }}</p>
+{% endif %}
 
+{% if profile.blurb %}
 <h2>About {{ name }}</h2>
 
 <p>{{ profile.blurb }}</p>
+{% endif %}
 {% endblock %}
 
 {% block content-related %}
