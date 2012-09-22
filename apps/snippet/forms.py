@@ -19,6 +19,12 @@ EXPIRE_CHOICES = (
 EXPIRE_DEFAULT = 3600*24*30
 
 class SnippetForm(forms.ModelForm):
+    file = forms.FileField(help_text=_("If the snippet you want to post is \
+        saved as a file on your computer, you can upload it directly rather \
+        than having to copy and paste it into the box above. If a file \
+        is specified, the text in the content field above will be \
+        ignored."),
+        required=False)
 
     expire_options = forms.ChoiceField(
         choices=EXPIRE_CHOICES,
@@ -26,7 +32,8 @@ class SnippetForm(forms.ModelForm):
         label=_(u'Expires'),
     )
 
-    def __init__(self, request, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        request = kwargs.pop('request')
         super(SnippetForm, self).__init__(*args, **kwargs)
         self.request = request
 
@@ -42,6 +49,26 @@ class SnippetForm(forms.ModelForm):
                     self.request.session['userprefs'].get('default_name', '')
         except KeyError:
             pass
+
+        # Make the content field not required (validated in clean())
+        self.fields['content'].required = False
+        self.fields['title'].required = True
+
+    def clean(self):
+        cleaned_data = super(SnippetForm, self).clean()
+        file_data = cleaned_data.get('file')
+        content = cleaned_data.get('content')
+
+        if file_data:
+            file_data.open()
+            cleaned_data['content'] = file_data.read()
+        elif not content:
+            # No snippet data specified
+            raise forms.ValidationError(_("Please specify some content for \
+                the snippet, either in the content field or by uploading \
+                a file."))
+
+        return cleaned_data
 
     def save(self, parent=None, *args, **kwargs):
 

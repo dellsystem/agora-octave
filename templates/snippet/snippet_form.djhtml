@@ -1,18 +1,40 @@
 {% load i18n %}
-<form method="post" action="" class="snippetform">
-{% csrf_token %}
-    {% for field in snippet_form %}
-        {{ field.errors }}
-        {{ field.label_tag }}
-        {{ field }}
-        {% if request.session.userprefs.display_all_lexer %}
-        {% ifequal field.name "lexer" %}
-            <input type="button" 
-                   value="{% trans "Guess lexer" %}" 
-                   id="guess_lexer_btn"/>
-        {% endifequal %}
-        {% endif %}
-    {% endfor %}
+<form method="post" action="" class="snippetform"
+    enctype="multipart/form-data">
+    {% if snippet_form.non_field_errors %}
+        <div class="errors">
+            {{ snippet_form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    {% csrf_token %}
+
+    {% with field=snippet_form.title %}
+    {% include "simple_field.djhtml" %}
+    {% endwith %}
+
+    {% with field=snippet_form.content %}
+    {% include "simple_field.djhtml" %}
+    {% endwith %}
+
+    {% with field=snippet_form.file %}
+    {% include "simple_field.djhtml" %}
+    <br />
+    {% endwith %}
+
+    {% with field=snippet_form.lexer %}
+    {% include "simple_field.djhtml" %}
+    {% if request.session.userprefs.display_all_lexer %}
+    <input type="button"
+           value="{% trans "Guess lexer" %}"
+           id="guess_lexer_btn"/>
+    {% endif %}
+    {% endwith %}
+
+    {% with field=snippet_form.expire_options %}
+    {% include "simple_field.djhtml" %}
+    {% endwith %}
+
     <br />
     <div class="center-align">
         <button type="submit" class="button large">{% trans "Paste it" %}</button>

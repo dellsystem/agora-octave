@@ -1,0 +1,10 @@
+{{ field.label_tag }}
+{{ field }}
+
+{% if field.errors %}
+<div class="errors">{{ field.errors }}</div>
+{% endif %}
+
+{% if field.help_text %}
+<p>{{ field.help_text }}</p>
+{% endif %}

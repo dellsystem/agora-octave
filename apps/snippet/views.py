@@ -1,7 +1,7 @@
 import difflib
 
 from django.shortcuts import render_to_response, \
-     get_object_or_404, get_list_or_404, render
+     get_object_or_404, get_list_or_404, render, redirect
 from django.template.context \
      import RequestContext
 from django.http \
@@ -28,40 +28,36 @@ def snippet_explore(request):
     return render(request, 'snippet/explore.html', context)
 
 
-def snippet_new(request, template_name='snippet/snippet_new.djhtml'):
-
+def snippet_new(request):
     if request.method == "POST":
         snippet = Snippet()
-        try:
+
+        if request.user.is_authenticated():
             snippet.author = request.user
-        except:
-            pass
-        snippet_form = SnippetForm(data=request.POST, request=request,
+
+        snippet_form = SnippetForm(request.POST,
+                                   request.FILES,
+                                   request=request,
                                    instance=snippet)
+
         if snippet_form.is_valid():
             request, new_snippet = snippet_form.save()
-            return HttpResponseRedirect(new_snippet.get_absolute_url())
+            return redirect(new_snippet)
     else:
         snippet_form = SnippetForm(request=request)
 
     recent = Snippet.objects.all()[:10]
 
-    template_context = {
+    context = {
         'snippet_form': snippet_form,
         'recent_snippets' : recent,
     }
 
-    return render_to_response(
-        template_name,
-        template_context,
-        RequestContext(request)
-    )
+    return render(request, 'snippet/snippet_new.djhtml', context)
 
 
 def snippet_details(request, snippet_id,
-                    template_name='snippet/snippet_details.djhtml',
                     is_raw=False):
-
     snippet = get_object_or_404(Snippet, secret_id=snippet_id)
     snippet.num_views += 1
     snippet.save()
@@ -76,12 +72,13 @@ def snippet_details(request, snippet_id,
     }
 
     if request.method == "POST":
-        snippet_form = SnippetForm(data=request.POST,
+        snippet_form = SnippetForm(request.POST,
+                                   request.FILES,
                                    request=request,
                                    initial=new_snippet_initial)
         if snippet_form.is_valid():
             request, new_snippet = snippet_form.save(parent=snippet)
-            return HttpResponseRedirect(new_snippet.get_absolute_url())
+            return redirect(new_snippet)
     else:
         snippet_form = SnippetForm(initial=new_snippet_initial,
                                    request=request)
@@ -91,7 +88,7 @@ def snippet_details(request, snippet_id,
     else:
         default_pygments_style = PygmentsStyle.objects.get(pk=1)
 
-    template_context = {
+    context = {
         'snippet_form': snippet_form,
         'snippet': snippet,
         'lines': range(snippet.get_linecount()),
@@ -102,11 +99,7 @@ def snippet_details(request, snippet_id,
         'no_descendants': len(tree) == 1,
     }
 
-    response = render_to_response(
-        template_name,
-        template_context,
-        RequestContext(request)
-    )
+    response = render(request, 'snippet/snippet_details.djhtml', context)
 
     if is_raw:
         response['Content-Type'] = 'text/plain'
