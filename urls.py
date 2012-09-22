@@ -48,4 +48,3 @@ if settings.DEBUG:
                     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
                     {'document_root': 'static/', 'show_indexes': True}),
                     )
-
