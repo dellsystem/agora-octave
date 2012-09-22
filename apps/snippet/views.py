@@ -65,10 +65,15 @@ def snippet_details(request, snippet_id,
     tree = snippet.get_root()
     tree = tree.get_descendants(include_self=True)
 
+    if snippet.title.startswith('Re: '):
+        reply_title = snippet.title
+    else:
+        reply_title = 'Re: %s' % snippet.title
+
     new_snippet_initial = {
         'content': snippet.content,
         'lexer': snippet.lexer,
-        'title': 'Re: %s' % snippet.title,
+        'title': reply_title,
     }
 
     if request.method == "POST":
