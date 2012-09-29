@@ -87,19 +87,15 @@ Viewing snippet — {{ snippet.get_title }}
     </div><!-- closes .snippet-options -->
     <br />
     <div class="snippet {{ default_style }}">
-        <table>
+        <div class="code-lines">
             {% for line in snippet.content_splitted %}
-            <tr>
-                <td class="line-number">
-                    <a name="l{{ forloop.counter }}" href="#l{{ forloop.counter }}">
-                        {{ forloop.counter }}
-                    </a>
-                </td>
-                <td class="highlight">{% if line %}{{ line|safe }}{% else %}&nbsp;{% endif %}</td>
-            </tr>
+            <div class="line">
+                <p id="l{{ forloop.counter }}">{% if line %}{{ line|safe }}{% else %}&nbsp;{% endif %}</p>
+            </div>
             {% endfor %}
-        </table>
-    </div><!-- closes .snippet -->
+        </div>
+        <div class="line-counters"></div>
+    </div>
 
     <br />
 
