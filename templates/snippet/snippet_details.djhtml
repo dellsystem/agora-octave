@@ -72,6 +72,8 @@ Viewing snippet — {{ snippet.get_title }}
             </option>
             {% endfor %}
         </select>
+        &mdash;
+        <a href="#" class="highlight-code-lines">Highlight code</a>
         <div>
             Author:
             {% if snippet.author %}

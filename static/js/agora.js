@@ -19,6 +19,24 @@
         }
     };
 
+    // jQuery plugin for selecting text
+    $.fn.selectText = function () {
+        var element = this[0];
+        var range, selection;
+
+        if (document.body.createTextRange) {
+            range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+        } else if (window.getSelection) {
+            selection = window.getSelection();
+            range = document.createRange();
+            range.selectNodeContents(element);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    };
+
     $(document).ready(function () {
         handleLoginLink();
 
@@ -34,5 +52,10 @@
                 $('.line-counters').append(div);
             });
         }
+
+        // Highlight the code when the link is clicked
+        $('.highlight-code-lines').click(function () {
+            $('.code-lines').selectText();
+        });
     });
 })(jQuery);
