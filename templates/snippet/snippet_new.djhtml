@@ -6,7 +6,7 @@
 {% block content %}
     <div id="non-sidebar">
         <h1>{% trans "Paste a new snippet" %}</h1>
-        <p class="hint">{% trans "Snippets provide a way to quickly share pieces of code, complete with line-numbering and syntax-highlighting." %} {% if not user.is_authenticated %}{% trans "Although registration is not required, only registered users can delete their own snippets after ending a session or have them linked to their profile." %}{% endif %}</p>
+        <p class="hint">{% trans "Snippets provide a way to quickly share pieces of code, complete with line-numbering and syntax-highlighting." %} {% if not user.is_authenticated %}{% trans "Although registration is not required, only registered users can delete their own snippets after ending a session or have them linked to their profile. Additionally, snippets made by guests will not be publicly listed." %}{% endif %}</p>
         {% include "snippet/snippet_form.djhtml" %}
     </div><div id="sidebar">
         <h2>Recent snippets</h2>
@@ -18,13 +18,9 @@
             </a>
             <br />
             by
-            {% if snippet.author %}
-                <a href="{{ snippet.author.get_absolute_url }}">
-                    {{ snippet.author }}
-                </a>
-            {% else %}
-            anonymous
-            {% endif %}
+            <a href="{{ snippet.author.get_absolute_url }}">
+                {{ snippet.author }}
+            </a>
         </p>
         {% endfor %}
         <p class="right-float"><a href="{% url snippet_explore %}">

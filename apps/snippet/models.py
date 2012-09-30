@@ -14,7 +14,17 @@ t = 'abcdefghijkmnopqrstuvwwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ1234567890'
 def generate_secret_id(length=4):
     return ''.join([random.choice(t) for i in range(length)])
 
+class SnippetManager(models.Manager):
+    def public(self):
+        """
+        Returns all the snippets that were created by registered users
+        and thus can be publicly listed.
+        """
+        return self.filter(author__isnull=False)
+
+
 class Snippet(models.Model):
+    objects = SnippetManager()
     secret_id = models.CharField(_(u'Secret ID'), max_length=4, blank=True)
     title = models.CharField(_(u'Title'), max_length=120, blank=True)
     author = models.ForeignKey(User, max_length=30, blank=True, null=True)

@@ -24,13 +24,9 @@
                     <strong>{{ snippet.get_title }}</strong>
                 </a>
                 by
-                {% if snippet.author %}
                 <a href="{{ snippet.author.get_absolute_url }}">
                     {{ snippet.author }}
                 </a>
-                {% else %}
-                anonymous
-                {% endif %}
                 <br />
                 {{ snippet.published }}
             </li>

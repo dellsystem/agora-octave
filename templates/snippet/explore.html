@@ -27,13 +27,10 @@ Explore
             </a></td>
             <td>{{ snippet.get_lexer_display }}
             <td>N/A</td>
-            <td>{% if snippet.author %}
+            <td>
                 <a href="{{ snippet.author.get_absolute_url }}">
                     {{ snippet.author }}
                 </a>
-                {% else %}
-                {% trans "anonymous" %}
-                {% endif %}
             </td>
         </tr>
     </tbody>

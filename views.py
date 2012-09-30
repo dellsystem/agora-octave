@@ -9,7 +9,7 @@ from agora.apps.snippet.models import Snippet
 
 def code(request):
     context = {
-        'snippets': Snippet.objects.all()[:5],
+        'snippets': Snippet.objects.public()[:5],
         'modules': None, # temp
         'forge': None, # temp
     }

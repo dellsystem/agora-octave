@@ -22,7 +22,7 @@ from agora.apps.pygments_style.models import PygmentsStyle
 
 def snippet_explore(request):
     context = {
-        'recent_snippets': Snippet.objects.all()[:20]
+        'recent_snippets': Snippet.objects.public()[:20]
     }
 
     return render(request, 'snippet/explore.html', context)
@@ -46,7 +46,7 @@ def snippet_new(request):
     else:
         snippet_form = SnippetForm(request=request)
 
-    recent = Snippet.objects.all()[:10]
+    recent = Snippet.objects.public()[:10]
 
     context = {
         'snippet_form': snippet_form,
