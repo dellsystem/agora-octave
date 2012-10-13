@@ -62,6 +62,8 @@
         // Highlight the code when the link is clicked
         $('.highlight-code-lines').click(function () {
             $('.code-lines').selectText();
+
+            return false;
         });
     });
 })(jQuery);
