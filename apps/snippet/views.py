@@ -57,7 +57,7 @@ def snippet_new(request):
 
 
 def snippet_details(request, snippet_id,
-                    is_raw=False):
+    template_name='snippet/snippet_details.djhtml', is_raw=False):
     snippet = get_object_or_404(Snippet, secret_id=snippet_id)
     snippet.num_views += 1
     snippet.save()
@@ -104,7 +104,7 @@ def snippet_details(request, snippet_id,
         'no_descendants': len(tree) == 1,
     }
 
-    response = render(request, 'snippet/snippet_details.djhtml', context)
+    response = render(request, template_name, context)
 
     if is_raw:
         response['Content-Type'] = 'text/plain'
