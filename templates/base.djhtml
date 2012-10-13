@@ -23,11 +23,15 @@
     enables collaboration with Octave-related personal projects and
     code" />
 
+    {% if compile_less %}
+    <link href="/static/css/agora.css" rel="stylesheet" type="text/css" />
+    {% else %}
     <link href="/static/css/imports.less"
           rel="stylesheet/less" type="text/css" media="screen" />
 
-    <script src="/static/js/less.min.js" type="text/javascript">
-    </script>
+    <script src="/static/js/less.min.js" type="text/javascript"></script>
+    {% endif %}
+
     {% block extrahead %}{% endblock %}
   </head>
 

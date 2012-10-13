@@ -24,6 +24,11 @@ try:
 except:
     DEBUG = False
 
+try:
+    COMPILE_LESS = config.get('debug', 'compile_less').lower() != 'no'
+except:
+    COMPILE_LESS = True
+
 TEMPLATE_DEBUG = DEBUG
 
 try:
@@ -123,6 +128,7 @@ ACCOUNT_ACTIVATION_DAYS = 1
 
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'context_processors.less_compilation',
 )
 
 INSTALLED_APPS = (
