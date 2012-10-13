@@ -43,14 +43,20 @@
         // Add in the line numbers (no JS fallback unfortunately)
         if ($('.snippet').length) {
             var counter = 1;
+            var lineNumbers = [];
 
-            $('.code-lines').children().each(function () {
+            var lines = $('.code-lines').children();
+
+            for (var i = 0, numLines = lines.length; i < numLines; i++) {
+                var line = lines[i];
                 // Set the top offset to be the same as that of the line
-                var div = '<p style="top: ' + this.offsetTop + 'px">' +
+                var div = '<p style="top: ' + line.offsetTop + 'px">' +
                     '<a href="#l' + counter + '">' + counter + '</a></p>';
                 counter++;
-                $('.line-counters').append(div);
-            });
+                lineNumbers.push(div);
+            }
+
+            $('.line-counters').append(lineNumbers.join(''));
         }
 
         // Highlight the code when the link is clicked
