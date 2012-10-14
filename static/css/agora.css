@@ -39,7 +39,8 @@ p{padding-bottom:5px;}
 #non-sidebar{display:inline-block;zoom:1;*display:inline;width:710px;padding-right:20px;vertical-align:top;}
 .hint{border:1px solid #60cae1;background:#c3e9f5;padding:10px;margin-bottom:10px;}
 hr{border:0;border-top:1px solid #aaaaaa;margin:5px 0;}
-.tree ul{list-style-type:none;}
+#snippet-history{overflow-x:auto;}#snippet-history ul{white-space:nowrap;padding:0;list-style-type:none;}
+#snippet-history >ul{margin-left:0;}
 #diff{display:none;border:1px solid #e6e6e6;padding:10px;background:#fbfbfb;}#diff .code{white-space:pre-wrap;}
 #diff .gi{background:#DFD;}
 #diff .gu{color:#aaaaaa;}

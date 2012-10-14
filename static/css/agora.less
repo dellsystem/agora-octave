@@ -231,9 +231,17 @@ hr {
     margin: 5px 0;
 }
 
-.tree {
+#snippet-history {
+    overflow-x: auto;
+
     ul {
+        white-space: nowrap;
+        padding: 0;
         list-style-type: none;
+    }
+
+    & > ul {
+        margin-left: 0;
     }
 }
 

@@ -115,7 +115,7 @@ Viewing snippet — {{ snippet.get_title }}
         </p>
     {% else %}
     <form method="get" id="diffform" action="{% url snippet_diff %}">
-      <div class="tree">
+      <div id="snippet-history">
         {% for tree_item,structure in tree|tree_info %}
         {% if structure.new_level %}
         <ul>
@@ -151,10 +151,11 @@ Viewing snippet — {{ snippet.get_title }}
         </ul>
         {% endfor %}
         {% endfor %}
-        <div class="submit">
-          <input type="submit" value="{% trans "Compare" %}"/>
-        </div><!-- closes the .submit div -->
       </div><!-- closes the .tree div -->
+      <br />
+      <div class="submit">
+        <input type="submit" value="{% trans "Compare" %}"/>
+      </div><!-- closes the .submit div -->
     </form>
     {% endif %}
     <br />
