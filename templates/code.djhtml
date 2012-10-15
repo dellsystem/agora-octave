@@ -67,7 +67,10 @@
             <a href="{% url bundle_explore %}">View more &raquo;</a>
         </p>
         {% else %}
-        <p>This feature is not yet available.</p>
+        <p>
+            No one has uploaded a bundle yet.
+            <a href="{% url bundle_new %}">Be the first!</a>
+        </p>
         {% endif %}
     </div><div class="span3">
         <h2 class="center-align">Forge</h2>
