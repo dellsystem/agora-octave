@@ -63,7 +63,7 @@ dl dd{margin-left:200px;}
 .bundle-folder{background-image:url('../img/folder.png');background-repeat:no-repeat;margin-left:0;padding-left:20px;}
 .row{clear:both;}
 .span3{width:300px;display:inline-block;zoom:1;*display:inline;vertical-align:top;padding-right:30px;}.span3:last-child{padding-right:0px !important;}
-.snippet{width:670px;font-family:monospace;position:relative;}.snippet .code-lines{position:relative;left:40px;padding:10px;border:1px solid #e6e6e6;-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;}.snippet .code-lines .line p{white-space:pre-wrap;}
+.snippet{width:670px;font-family:monospace;position:relative;}.snippet .code-lines{position:relative;left:40px;padding:10px;border:1px solid #e6e6e6;-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;}.snippet .code-lines .line{white-space:pre-wrap;word-wrap:break-word;}
 .snippet .line-counters{position:absolute;top:0;font-weight:bold;}.snippet .line-counters p{width:30px;text-align:right;position:absolute;}
 .snippet.vibrant{}.snippet.vibrant .code-lines{color:#ffffff;background:#1b1b1b;}
 .snippet.vibrant .c{color:#3A6EF2;font-style:italic;}
