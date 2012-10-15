@@ -13,14 +13,14 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.utils import simplejson
 
-from agora.apps.snippet.forms import SnippetForm, UserSettingsForm
-from agora.apps.snippet.models import Snippet
-from agora.apps.snippet.highlight import pygmentize, guess_code_lexer, \
+from apps.snippet.forms import SnippetForm, UserSettingsForm
+from apps.snippet.models import Snippet
+from apps.snippet.highlight import pygmentize, guess_code_lexer, \
      LEXER_LIST
-from agora.apps.pygments_style.models import PygmentsStyle
+from apps.pygments_style.models import PygmentsStyle
 
 
-def snippet_explore(request):
+def explore(request):
     context = {
         'recent_snippets': Snippet.objects.public()[:20]
     }

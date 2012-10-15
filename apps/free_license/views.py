@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic.simple import direct_to_template
 
-from agora.apps.free_license.models import FreeLicense
+from apps.free_license.models import FreeLicense
 
 def index(request,  licenses = FreeLicense.objects.all() ):
     return direct_to_template(request, 'licenses/index.djhtml',

@@ -5,12 +5,13 @@ from django.core.urlresolvers import reverse
 from registration.forms import RegistrationForm
 
 from agora.apps.snippet.models import Snippet
+from agora.apps.bundle.models import Bundle
 
 
 def code(request):
     context = {
         'snippets': Snippet.objects.public()[:5],
-        'modules': None, # temp
+        'bundles': Bundle.objects.all()[:5],
         'forge': None, # temp
     }
 

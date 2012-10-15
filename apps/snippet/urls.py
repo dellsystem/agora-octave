@@ -1,12 +1,13 @@
 from django.conf.urls.defaults import patterns, url
 from django.conf import settings
 
-urlpatterns = patterns('agora.apps.snippet.views',
+
+urlpatterns = patterns('apps.snippet.views',
     url('^$',
         'snippet_new', name='snippet_new'),
 
     url(r'^explore$',
-        'snippet_explore', name='snippet_explore'),
+        'explore', name='snippet_explore'),
                        
     url(r'^guess/$',
         'guess_lexer', name='snippet_guess_lexer'),

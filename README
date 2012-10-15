@@ -5,26 +5,16 @@ Software Foundation, or at your option, any later version. Agora also
 includes other software under a different BSD-like license. For
 details consult LICENSE.
 
-Required external libraries:
-
-    - Django registration      
-      (http://bitbucket.org/ubernostrum/django-registration/)
-    - Pygments
-      (http://pygments.org/)
-    - Django OpenID Auth
-      (http://pypi.python.org/pypi/django-openid-auth/)
-    - Threaded Comments
-      (https://github.com/HonzaKral/django-threadedcomments)
+See the pip-requirements file for a list of required external libraries.
 
 Quickstart for personal debugging:
 
-    1) Install Django 1.3 or higher, Python 2.5 or higher, the
-       external libraries, and probably any version of mercurial,
-       SQLite3. On a Unix-based system, Python is probably already
-       installed, the rest can be gotten from source or your operating
-       system's package manager if it has one. If you have pip (the Python
-       package manager) installed, you can quickly install all the
-       dependencies at particular versions by running
+    1) Install Python 2.5 or higher, the external libraries, and probably any
+    version of mercurial, SQLite3. On a Unix-based system, Python is probably
+    already installed, the rest can be gotten from source or your operating
+    system's package manager if it has one. If you have pip (the Python package
+    manager) installed, you can quickly install all the dependencies at
+    particular versions by running
 
          $ pip install -r pip-requirements
 
@@ -43,6 +33,8 @@ Quickstart for personal debugging:
                                       #(by default: sqlite3)
 
          $ python manage.py runserver #Run a development webserver on port 8000
+         $ python manage.py celeryd --settings=settings # Start the celery
+                                                        # session (mandatory)
 
     5) Point a browser to http://localhost:8000
 

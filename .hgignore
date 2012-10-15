@@ -8,3 +8,4 @@ agora.conf
 ^Honza.*/
 fabfile.py
 .git
+tmp/bundles/*

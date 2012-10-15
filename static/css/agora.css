@@ -28,7 +28,7 @@ body{font-family:"Helvetica Neue","Helvetica LT Std",Helvetica,Arial,sans-serif;
 #breadcrumbs{border-bottom:1px solid #e6e6e6;margin-bottom:10px;padding-bottom:5px;}
 #info-box{margin-top:20px;clear:both;}#info-box h2{font-weight:normal;font-size:1.9em;}
 #content{width:960px;margin:0 auto;padding-bottom:30px;color:#333333;}
-#footer{width:960px;margin:0 auto;text-align:center;padding:15px 0;}
+#footer{clear:both;width:960px;margin:0 auto;text-align:center;padding-top:30px;padding-bottom:10px;}
 h1,h2,h3,h4,h5,h6{padding:10px 0;}
 h1{font-size:2.1em;}
 h2{font-size:1.7em;}
@@ -57,9 +57,13 @@ form .form-input p{padding-top:10px;padding-bottom:0;}
 form .errors{clear:both;}
 dl dt{float:left;clear:left;font-weight:bold;padding-right:5px;}
 dl dd{margin-left:200px;}
+#bundle-filebrowser{background:#fbfbfb;border:1px solid #e6e6e6;padding:10px;padding-bottom:0;width:208px;float:left;}#bundle-filebrowser ul{list-style-type:none;margin-left:0;}
+#bundle-filebrowser li{margin-left:10px;}#bundle-filebrowser li.selected{font-weight:bold;}
+#bundle-file{padding:0 20px;margin-left:220px;}#bundle-file h2{padding-top:0;}#bundle-file h2 small{color:#aaaaaa;font-size:0.7em;}
+.bundle-folder{background-image:url('../img/folder.png');background-repeat:no-repeat;margin-left:0;padding-left:20px;}
 .row{clear:both;}
 .span3{width:300px;display:inline-block;zoom:1;*display:inline;vertical-align:top;padding-right:30px;}.span3:last-child{padding-right:0px !important;}
-.snippet{width:670px;font-family:monospace;position:relative;}.snippet .code-lines{counter-reset:line;position:relative;left:40px;padding:10px;border:1px solid #e6e6e6;-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;}.snippet .code-lines .line{word-wrap:break-word;counter-increment:line;white-space:pre-wrap;}
+.snippet{width:670px;font-family:monospace;position:relative;}.snippet .code-lines{position:relative;left:40px;padding:10px;border:1px solid #e6e6e6;-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;}.snippet .code-lines .line p{white-space:pre-wrap;}
 .snippet .line-counters{position:absolute;top:0;font-weight:bold;}.snippet .line-counters p{width:30px;text-align:right;position:absolute;}
 .snippet.vibrant{}.snippet.vibrant .code-lines{color:#ffffff;background:#1b1b1b;}
 .snippet.vibrant .c{color:#3A6EF2;font-style:italic;}

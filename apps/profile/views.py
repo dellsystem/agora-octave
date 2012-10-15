@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from agora.apps.free_license.models import FreeLicense
-from agora.apps.bundle.models import Bundle
-from agora.apps.snippet.models import Snippet
-from agora.apps.profile.models import Profile
-from agora.apps.profile.forms import UserForm, ProfileForm
+from apps.free_license.models import FreeLicense
+from apps.bundle.models import Bundle
+from apps.snippet.models import Snippet
+from apps.profile.models import Profile
+from apps.profile.forms import UserForm, ProfileForm
 
 
 def showprofile(request, username):

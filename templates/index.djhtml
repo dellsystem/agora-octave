@@ -48,10 +48,12 @@
             of spam-protection measures in that case. Plus, syntax highlighting!
         </p>
     </div><div class="span3">
-        <div class="center-align">
-            <img src="/static/img/upload.png" alt="" />
-            <h2>Share your code</h2>
-        </div>
+        <a href="{% url bundle_new %}">
+            <div class="center-align">
+                <img src="/static/img/upload.png" alt="" />
+                <h2>Share your code</h2>
+            </div>
+        </a>
         <p>
             For larger pieces of code, we have bundles. Mercurial integration,
             select a license. Sharing made easy. Forge for installing packages,

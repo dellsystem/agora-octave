@@ -1,33 +1,72 @@
-{% extends "base.djhtml" %}
+{% extends "bundle/base.djhtml" %}
+
+
+{% load mptt_tags %}
+{% load sizefieldtags %}
+
+
+{% block title %}
+{{ bundle.name }} by {{ bundle.uploader }}
+{% endblock title %}
+
 
 {% block content %}
-<div class="info">
-  <h3>
-    {{bundle.name}} by <a href="/{{bundle.uploader}}/">{{bundle.uploader}}</a>
-  </h3>
+<h1>
+<a href="{{ bundle.get_absolute_url }}">{{ bundle.name }}</a>
+by
+<a href="{{ bundle.uploader.get_absolute_url }}">{{ bundle.uploader }}</a>
+</h1>
 
-  {% if files %}
-
-  <div class="whitebox">
-    <p>
-      files:
-    </p>
-    <ul>
-      {% for f in files%}
-      <li><a href="/{{f.bundle_file}}">{{f}}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
-
-  {% else %}
-
-  <div class="whitebox">
-    <p>
-      No files in this bundle!
-    </p>
-  </div>
-
-  {% endif %}
-
+{% if not bundle.done_uploading %}
+<p class="hint">This bundle is being processed.</p>
+{% else %}
+{% if files %}
+<div id="bundle-filebrowser">
+<ul>
+    {% recursetree files %}
+        <li class="{% if not node.is_leaf_node %}bundle-folder {% endif %}
+        {% if node == file %}selected{% endif %}">
+            {% if node.is_leaf_node %}
+            <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+            {% else %}
+            {{ node.name }}
+            {% endif %}
+            {% if not node.is_leaf_node %}
+                <ul>
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
 </div>
+
+<div id="bundle-file">
+    {% if file %}
+    <h2>{{ file.full_path }} <small>{{ file.file_size|filesize }}</small></h2>
+
+    {% if file.code %}
+    <p>
+    {% include "snippet/snippet_options.djhtml" %}
+    </p>
+    {% include "snippet/snippet_box.djhtml" with lines=file.get_lines %}
+    {% else %}
+    <p>This file is a binary file.</p>
+    <p><a href="#">Download file (feature not yet available)</a></p>
+    {% endif %}
+    {% else %}
+    <p><strong>Description:</strong> {{ bundle.description|default:"N/A" }}</p>
+    <p><strong>License:</strong> {{ bundle.free_license }}</p>
+    {% endif %}
+</div>
+{% else %}
+<p>
+    No files in this bundle!
+    {% if request.user == bundle.uploader %}
+    Upload something? (Not yet available)
+    {% endif %}
+</p>
+{% endif %}
+{% endif %}
+
 {% endblock %}

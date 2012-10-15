@@ -4,6 +4,8 @@
 import sys
 
 import django.conf.global_settings as DEFAULT_SETTINGS
+import djcelery
+djcelery.setup_loader()
 
 # Read some settings from config file
 from ConfigParser import ConfigParser
@@ -143,15 +145,18 @@ INSTALLED_APPS = (
 
     # Third-party apps
     'registration',
+    'djcelery',
+    'kombu.transport.django',
+    'mptt',
+    'sizefield',
 #   'threadedcomments',
 
     # Agora apps
-    'agora.apps.profile',
-    'agora.apps.snippet',
-    'agora.apps.bundle',
-    'agora.apps.free_license',
-    'agora.apps.pygments_style',
-    'agora.apps.mptt',
+    'apps.profile',
+    'apps.snippet',
+    'apps.bundle',
+    'apps.free_license',
+    'apps.pygments_style',
 )
 
 COMMENTS_APP = 'threadedcomments'
@@ -160,3 +165,6 @@ COMMENTS_APP = 'threadedcomments'
 LOGIN_REDIRECT_URL='/'
 LOGIN_URL = '/login'
 AUTH_PROFILE_MODULE = 'profile.Profile'
+
+# For celery
+BROKER_URL = 'django://'

@@ -5,9 +5,9 @@ import random
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from mptt.models import MPTTModel, TreeForeignKey
 
-from agora.apps.snippet.highlight import LEXER_DEFAULT, LEXER_LIST, pygmentize
-import agora.apps.mptt as mptt
+from apps.snippet.highlight import LEXER_DEFAULT, LEXER_LIST, pygmentize
 
 
 t = 'abcdefghijkmnopqrstuvwwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ1234567890'
@@ -23,7 +23,7 @@ class SnippetManager(models.Manager):
         return self.filter(author__isnull=False)
 
 
-class Snippet(models.Model):
+class Snippet(MPTTModel):
     objects = SnippetManager()
     secret_id = models.CharField(_(u'Secret ID'), max_length=4, blank=True)
     title = models.CharField(_(u'Title'), max_length=120, blank=True)
@@ -37,7 +37,7 @@ class Snippet(models.Model):
                              default=LEXER_DEFAULT)
     published = models.DateTimeField(_(u'Published'), blank=True)
     expires = models.DateTimeField(_(u'Expires'), blank=True, help_text='asdf')
-    parent = models.ForeignKey('self', null=True, blank=True,
+    parent = TreeForeignKey('self', null=True, blank=True,
                                related_name='children')
     num_views = models.IntegerField(default=0)
 
@@ -66,8 +66,6 @@ class Snippet(models.Model):
 
     def __unicode__(self):
         return '%s' % self.secret_id
-
-mptt.register(Snippet, order_insertion_by=['content'])
 
 
 class CodeLanguage(models.Model):

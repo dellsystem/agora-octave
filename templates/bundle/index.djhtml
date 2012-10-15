@@ -1,24 +1,39 @@
-{% extends "base.djhtml" %}
+{% extends "bundle/base.djhtml" %}
+{% load i18n %}
+
+{% block title %}
+New bundle
+{% endblock title %}
 
 {% block content %}
-<h1> Latest bundles </h1>
+<div id="non-sidebar">
+    <h1>{% trans "Upload a new bundle" %}</h1>
 
-{% if bundles|length > 0 %}
+    <p class="hint">Upload either an archived file or a plain text file.
+        Accepted formats for archive files: zip, tar, tar.gz, tar.bz2.
+    </p>
 
-{% for bundle in bundles %}
-	<div class="info">
-	  <h3>
-	    {{bundle.name}} by <a href="/{{bundle.uploader}}/">{{bundle.uploader}}</a>
-	  </h3>
-	  <div class="whitebox">
-	    <p>
-	      Bundle published the {{bundle.pub_date}} under the {{bundle.free_license}}.
-	    </p>
-	  </div>
-	{% endfor %}
+    {% include "bundle/form.djhtml" %}
+</div><div id="sidebar">
+    <h2>Latest bundles</h2>
 
-{% else %}
-	No bundles registered yet!
-{% endif %}
+    {% if bundles|length > 0 %}
+
+    {% for bundle in bundles %}
+    <h3>
+        <a href="{{ bundle.get_absolute_url }}">{{ bundle.name }}</a>
+        by
+        <a href="{{ bundle.uploader.get_absolute_url }}">
+            {{ bundle.uploader }}
+        </a>
+    </h3>
+    <p>
+          Bundle published on {{ bundle.pub_date }}, under the license {{ bundle.free_license }}.
+    </p>
+    {% endfor %}
+
+    {% else %}
+        <p>No bundles registered yet!</p>
+    {% endif %}
 </div>
 {% endblock %}

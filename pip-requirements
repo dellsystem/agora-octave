@@ -5,3 +5,7 @@ distribute==0.6.24
 django-openid-auth==0.4
 django-registration==0.8
 wsgiref==0.1.2
+django-celery==3.1.0
+django-mptt==0.5.4
+django-sizefield==0.1
+python-archive==0.2

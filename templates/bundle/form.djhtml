@@ -1,0 +1,35 @@
+{% load i18n %}
+
+<form method="post" action="" class="snippetform"
+    enctype="multipart/form-data">
+    {% if form.non_field_errors %}
+    <div class="errors">
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+    {% csrf_token %}
+
+    {% with field=form.name %}
+    {% include "simple_field.djhtml" %}
+    {% endwith %}
+
+    {% with field=form.description %}
+    {% include "simple_field.djhtml" %}
+    {% endwith %}
+
+    {% with field=form.free_license %}
+    {% include "simple_field.djhtml" %}
+    {% endwith %}
+
+    <br /><br />
+
+    {% with field=form.file %}
+    {% include "simple_field.djhtml" %}
+    {% endwith %}
+
+    <br />
+    <div class="center-align">
+        <button type="submit" class="button large">{% trans "Paste it" %}</button>
+    </div>
+</form>

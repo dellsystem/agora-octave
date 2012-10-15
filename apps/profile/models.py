@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
-from agora.apps.free_license.models import FreeLicense
-from agora.apps.pygments_style.models import PygmentsStyle
+from apps.free_license.models import FreeLicense
+from apps.pygments_style.models import PygmentsStyle
 
 
 class Profile(models.Model):

@@ -41,20 +41,31 @@
         </p>
         {% endif %}
     </div><div class="span3">
-        <h2 class="center-align">Modules</h2>
+        <h2 class="center-align">Bundles</h2>
         {% if user.is_authenticated %}
-        <a class="pill" href="">Upload a modules</a>
+        <a class="pill" href="{% url bundle_new %}">Upload a bundle</a>
         {% else %}
         <a class="pill login-link" href="{% url login %}">
-            Login to upload modules
+            Login to upload bundles
         </a>
         {% endif %}
-        {% if modules %}
+        {% if bundles %}
         <ul>
-            {% for module in modules %}
-            <li>{{ module }}</li>
+            {% for bundle in bundles %}
+            <li>
+                <a href="{{ bundle.get_absolute_url }}">{{ bundle }}</a>
+                by
+                <a href="{{ bundle.uploader.get_absolute_url }}">
+                    {{ bundle.uploader }}
+                </a>
+                <br />
+                {{ bundle.pub_date }}
+            </li>
             {% endfor %}
         </ul>
+        <p class="right-float">
+            <a href="{% url bundle_explore %}">View more &raquo;</a>
+        </p>
         {% else %}
         <p>This feature is not yet available.</p>
         {% endif %}

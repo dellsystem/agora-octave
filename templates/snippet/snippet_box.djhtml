@@ -1,0 +1,10 @@
+{% autoescape off %}
+<div class="snippet {{ default_style }}">
+    <div class="code-lines">
+        {% for line in lines %}
+        <p class="line" id="l{{ forloop.counter }}">{% if line %}{{ line }}{% else %}&nbsp;{% endif %}</p>
+        {% endfor %}
+    </div>
+    <div class="line-counters"></div>
+</div>
+{% endautoescape %}

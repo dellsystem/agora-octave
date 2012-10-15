@@ -1,9 +1,11 @@
+import datetime
+
 from django import forms
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
-from agora.apps.snippet.models import Snippet
-from agora.apps.snippet.highlight import LEXER_LIST_ALL, LEXER_LIST, LEXER_DEFAULT
-import datetime
+
+from apps.snippet.models import Snippet
+from apps.snippet.highlight import LEXER_LIST_ALL, LEXER_LIST, LEXER_DEFAULT
 
 #===============================================================================
 # Snippet Form and Handling

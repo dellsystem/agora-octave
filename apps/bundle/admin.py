@@ -1,6 +1,7 @@
-from agora.apps.bundle.models import *
 from django.contrib import admin
 
+from apps.bundle.models import Bundle, BundleFile
+
+
 admin.site.register(Bundle)
-admin.site.register(CodeFile)
 admin.site.register(BundleFile)

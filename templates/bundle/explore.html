@@ -1,0 +1,41 @@
+{% extends "bundle/base.djhtml" %}
+
+
+{% load i18n %}
+
+
+{% block title %}
+{% trans "Explore" %}
+{% endblock %}
+
+
+{% block content %}
+<h1>{% trans "Recent bundles" %}</h1>
+
+{% if recent_bundles %}
+<table class="default">
+    <thead>
+        <tr>
+            <th>{% trans "Bundle name" %}</th>
+            <th>{% trans "Created on" %}</th>
+            <th>{% trans "User" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bundle in recent_bundles %}
+        <tr>
+            <td><a href="{{ bundle.get_absolute_url }}">{{ bundle }}</a></td>
+            <td>{{ bundle.pub_date }}</td>
+            <td>
+                <a href="{{ bundle.uploader.get_absolute_url }}">
+                    {{ bundle.uploader }}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>{% trans "No bundles have been created yet!" %}</p>
+{% endif %}
+{% endblock %}

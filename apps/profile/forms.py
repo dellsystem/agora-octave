@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
-from agora.apps.profile.models import Profile
+from apps.profile.models import Profile
 
 
 class ProfileForm(ModelForm):
