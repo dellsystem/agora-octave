@@ -37,7 +37,7 @@
         </p>
         {% else %}
         <p>No one has yet created a snippet.
-            <a href="{% url new_snippet %}">Be the first!</a>
+            <a href="{% url snippet_new %}">Be the first!</a>
         </p>
         {% endif %}
     </div><div class="span3">
