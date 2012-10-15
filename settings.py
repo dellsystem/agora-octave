@@ -139,11 +139,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admindocs',
     'django.contrib.admin',
-#	'django.contrib.comments',
+#   'django.contrib.comments',
 
     # Third-party apps
     'registration',
-#	'threadedcomments',
+#   'threadedcomments',
 
     # Agora apps
     'agora.apps.profile',
