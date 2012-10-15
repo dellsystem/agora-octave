@@ -48,8 +48,8 @@ Viewing snippet — {{ snippet.get_title }}
 
     <h1>{{ snippet.get_title }}</h1>
     <div class="snippet-options">
-        <abbr title="{% trans "Time to live" %}"
-              >TTL:
+        <abbr title="{% trans "Time to live" %}">
+              TTL:
         </abbr>
         {{ snippet.expires|timeuntil  }}
         &mdash;
@@ -77,7 +77,7 @@ Viewing snippet — {{ snippet.get_title }}
         <div>
             Author:
             {% if snippet.author %}
-            <a href="{% url agora.apps.profile.views.showprofile snippet.author %}">
+            <a href="{{ snippet.author.get_absolute_url }}">
             {{ snippet.author }}
             </a>
             {% else %}
