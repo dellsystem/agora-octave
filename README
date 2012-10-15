@@ -18,9 +18,12 @@ Quickstart for personal debugging:
 
          $ pip install -r pip-requirements
 
-       It is recommended that you do this within a virtualenv to avoid
-       conflicts with system-wide packages. More information about
-       virtualenv is available at www.virtualenv.org.
+    It is recommended that you do this within a virtualenv to avoid
+    conflicts with system-wide packages. More information about
+    virtualenv is available at www.virtualenv.org.
+
+    If you do use virtualenv, you may have tocreate the virtualenv with the
+    --distribute flag, to avoid problems with installing distribute.
 
     2) Clone this repository
 
