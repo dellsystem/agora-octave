@@ -6,6 +6,7 @@ Viewing profile: {{ profile.user }}
 
 
 {% block content %}
+<div id="non-sidebar">
 
 <h1>{{ profile.user }}'s profile</h1>
 
@@ -33,46 +34,29 @@ Viewing profile: {{ profile.user }}
 
 <p>{{ profile.blurb }}</p>
 {% endif %}
-{% endblock %}
+</div><div id="sidebar">
+    <h2>Contributions</h2>
 
-{% block content-related %}
-{% if bundles or snippets %}
-<div id="info">
-  <h3>
-    Contributions by {{name}}
-  </h3>
-  <div class="whitebox">
+    <h3><a href="{% url bundle_new %}">Bundles</a></h3>
     {% if bundles %}
-    <h5>
-      Bundles
-    </h5>
     <ul>
-      {% for b in bundles %}
-      <li>
-        <a href="{% url agora.apps.bundle.views.detail profile.user b %}">
-          {{b.name}}
-        </a>
-      </li>
-      {% endfor %}
+        {% for bundle in bundles %}
+        <li><a href="{{ bundle.get_absolute_url }}">{{ bundle }}</a></li>
+        {% endfor %}
     </ul>
+    {% else %}
+    <p>{{ name }} does not have any bundles.</p>
     {% endif %}
+
+    <h3><a href="{% url snippet_new %}">Snippets</a></h3>
     {% if snippets %}
-    <h5>
-      Snippets
-    </h5>
     <ul>
-      {% for s in snippets %}
-      <li><a href="{% url snippet_details s %}">
-          {% if s.title %}
-          {{s.title}}
-          {% else %}
-          Snippet #{{s.pk}}
-          {% endif %}
-      </a></li>
-      {% endfor %}
+        {% for snippet in snippets %}
+        <li><a href="{{ snippet.get_absolute_url }}">{{ snippet }}</a></li>
+        {% endfor %}
     </ul>
+    {% else %}
+    <p>{{ name }} does not have any snippets.</p>
     {% endif %}
-  </div>
 </div>
-{% endif %}
-{% endblock content-related %}
+{% endblock %}
