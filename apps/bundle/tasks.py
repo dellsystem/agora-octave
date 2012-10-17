@@ -1,5 +1,6 @@
 import mimetypes
 import os
+from __future__ import with_statement
 
 import archive
 import magic
