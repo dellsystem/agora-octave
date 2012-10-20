@@ -1,4 +1,4 @@
-{{ field.label_tag }}
+<strong>{{ field.label_tag }}</strong>
 {{ field }}
 
 {% if field.errors %}
