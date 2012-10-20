@@ -16,6 +16,7 @@ Explore
             <th>{% trans "Snippet title" %}</th>
             <th>{% trans "Language" %}</th>
             <th>{% trans "Created on" %}</th>
+            <th>{% trans "Views" %}</th>
             <th>{% trans "User" %}</th>
         </tr>
     </thead>
@@ -26,7 +27,8 @@ Explore
                 {{ snippet.get_title }}
             </a></td>
             <td>{{ snippet.get_lexer_display }}
-            <td>N/A</td>
+            <td>{{ snippet.published }}</td>
+            <td>{{ snippet.num_views }}</td>
             <td>
                 <a href="{{ snippet.author.get_absolute_url }}">
                     {{ snippet.author }}
