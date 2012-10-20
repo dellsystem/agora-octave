@@ -33,9 +33,17 @@ def login_register(request):
 
             if username and password:
                 user = authenticate(username=username, password=password)
-                login(request, user)
 
-                return redirect(next_url)
+                if user is not None:
+                    login(request, user)
+                    return redirect(next_url)
+
+                # Could not authenticate
+                form = {
+                    'username': {
+                        'errors': 'Your username and password did not match.',
+                    }
+                }
             else:
                 form = {
                     'password1': {
