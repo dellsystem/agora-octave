@@ -76,4 +76,4 @@ def explore(request):
         'recent_bundles': Bundle.objects.all()[:20]
     }
 
-    return render(request, "snippet/explore.html", context)
+    return render(request, "bundle/explore.html", context)
