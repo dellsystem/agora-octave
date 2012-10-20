@@ -2,6 +2,7 @@ import os
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 from pygments import lexers, highlight, formatters, util
 from mptt.models import MPTTModel, TreeForeignKey
 from sizefield.models import FileSizeField
@@ -16,7 +17,10 @@ class Bundle(models.Model):
         unique_together = ('uploader','name')
         ordering = ['-pub_date']
 
-    name = models.SlugField()
+    name = models.SlugField(help_text=_("Your bundle will be accessible " +
+        "from a URL that uses the name you enter here, so choose wisely. " +
+        "Acceptable characters: alphanumeric characters, hyphens, and " +
+        "underscores."))
     uploader = models.ForeignKey(User)
     description = models.TextField(max_length=32728)
     free_license = models.ForeignKey(FreeLicense, default=1)
