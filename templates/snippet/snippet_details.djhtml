@@ -71,7 +71,9 @@ Viewing snippet — {{ snippet.get_title }}
             anonymous
             {% endif %}
             &mdash;
-            Language: {{language}}
+            Language: {{ language }}
+            &mdash;
+            Number of views: {{ snippet.num_views }}
         </div>
     </div><!-- closes .snippet-options -->
     <br />
