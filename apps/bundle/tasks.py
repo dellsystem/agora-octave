@@ -13,6 +13,9 @@ from apps.bundle.models import Bundle, BundleFile
 mimetypes.add_type('application/x-gzip', '.tgz')
 mimetypes.add_type('application/x-bzip2', '.tz2')
 archive_extensions = ('.zip', '.tgz', '.tar', '.tz2')
+text_mimetypes = (
+    'application/xml',
+)
 
 
 def process_files_in_dir(bundle, dir_name, parent_dir):
@@ -39,7 +42,7 @@ def process_files_in_dir(bundle, dir_name, parent_dir):
 
             # Only highlight the file contents if it's plain text
             mime_type = magic.from_file(file_path, mime=True)
-            if mime_type.startswith('text/'):
+            if mime_type.startswith('text/') or mime_type in text_mimetypes:
                 with open(file_path, 'rt') as file:
                     # Store the contents of the file in the code field
                     bundle_file.save_file_contents(file)
