@@ -78,7 +78,7 @@ by
     {% if previous_versions %}
     <h3>Versions</h3>
     <ul>
-    {% for version in previous_versions %}
+    {% for version in previous_versions reversed %}
         <li>
             <a href="{{ bundle.get_absolute_url }}/{{ version }}">
                 {% if version == this_version %}<strong>{% endif %}
