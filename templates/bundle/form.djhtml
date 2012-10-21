@@ -10,23 +10,9 @@
 
     {% csrf_token %}
 
-    {% with field=form.name %}
+    {% for field in form %}
     {% include "simple_field.djhtml" %}
-    {% endwith %}
-
-    {% with field=form.description %}
-    {% include "simple_field.djhtml" %}
-    {% endwith %}
-
-    {% with field=form.free_license %}
-    {% include "simple_field.djhtml" %}
-    {% endwith %}
-
-    <br /><br />
-
-    {% with field=form.file %}
-    {% include "simple_field.djhtml" %}
-    {% endwith %}
+    {% endfor %}
 
     <br />
     <div class="center-align">

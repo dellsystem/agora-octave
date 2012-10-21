@@ -1,0 +1,23 @@
+{% extends "bundle/base.djhtml" %}
+
+
+{% block title %}
+Editing {{ bundle }}
+{% endblock %}
+
+{% block section %}
+<a href="{{ bundle.get_absolute_url }}">{{ bundle }}</a>
+&raquo;
+Edit
+{% endblock %}
+
+{% block content %}
+<h1>Editing {{ bundle }}</h1>
+
+<p class="hint">
+You can't change a bundle's name after creating it. If you need to change
+the name, simply create a new bundle using the desired name.
+</p>
+
+{% include "bundle/form.djhtml" %}
+{% endblock %}

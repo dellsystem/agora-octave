@@ -1,10 +1,13 @@
-<strong>{{ field.label_tag }}</strong>
-{{ field }}
+<div class="form-field">
+    <strong>{{ field.label_tag }}</strong>
 
-{% if field.errors %}
-<div class="errors">{{ field.errors }}</div>
-{% endif %}
+    {% if field.errors %}
+    <div class="errors">{{ field.errors }}</div>
+    {% endif %}
 
-{% if field.help_text %}
-<p>{{ field.help_text }}</p>
-{% endif %}
+    {{ field }}
+
+    {% if field.help_text %}
+    <p>{{ field.help_text }}</p>
+    {% endif %}
+</div>

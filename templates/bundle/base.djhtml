@@ -1,5 +1,5 @@
 {% extends "base.djhtml" %}
 
 {% block breadcrumbs %}
-<a href="{% url bundle_new %}">Bundles</a> &raquo; {% block title %}{% endblock %}
+<a href="{% url bundle_new %}">Bundles</a> &raquo; {% block section %}{% endblock %}
 {% endblock %}

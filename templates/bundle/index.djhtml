@@ -5,6 +5,10 @@
 New bundle
 {% endblock title %}
 
+{% block section %}
+New bundle
+{% endblock %}
+
 {% block content %}
 <div id="non-sidebar">
     <h1>{% trans "Upload a new bundle" %}</h1>

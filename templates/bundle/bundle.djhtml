@@ -5,16 +5,33 @@
 {% load sizefieldtags %}
 
 
+{% block section %}
+<a href="{{ bundle.get_absolute_url }}">{{ bundle }}</a>
+by <a href="{{ bundle.uploader.get_absolute_url }}">{{ bundle.uploader }}</a>
+(version {{ this_version }})
+{% if file %}
+&raquo;
+{{ file }}
+{% endif %}
+{% endblock %}
+
 {% block title %}
-{{ bundle.name }} by {{ bundle.uploader }}
-{% endblock title %}
+{% if file %}
+{{ file }} in
+{% endif %}
+{{ bundle }} by {{ bundle.uploader }}
+{% endblock %}
 
 
 {% block content %}
+<div class="right-float">
+<h2><a href="{% url bundle_edit request.user.username bundle.name %}">Edit this bundle</a></h2>
+</div>
 <h1>
 <a href="{{ bundle.get_absolute_url }}">{{ bundle.name }}</a>
 by
 <a href="{{ bundle.uploader.get_absolute_url }}">{{ bundle.uploader }}</a>
+(version {{ this_version }})
 </h1>
 
 {% if not bundle.done_uploading %}
@@ -57,6 +74,21 @@ by
     {% else %}
     <p><strong>Description:</strong> {{ bundle.description|default:"N/A" }}</p>
     <p><strong>License:</strong> {{ bundle.free_license }}</p>
+    <p><strong>Latest version number:</strong> {{ bundle.latest_version }}</p>
+    {% if previous_versions %}
+    <h3>Versions</h3>
+    <ul>
+    {% for version in previous_versions %}
+        <li>
+            <a href="{{ bundle.get_absolute_url }}/{{ version }}">
+                {% if version == this_version %}<strong>{% endif %}
+                Version {{ version }}
+                {% if version == this_version %}</strong>{% endif %}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
     {% endif %}
 </div>
 {% else %}

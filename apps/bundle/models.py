@@ -28,6 +28,7 @@ class Bundle(models.Model):
     mod_date = models.DateTimeField('date last modified', auto_now=True)
     done_uploading = models.BooleanField(default=False)
     file_name = models.CharField(max_length=256) # the uploaded file
+    latest_version = models.IntegerField(default=1)
 
     def __unicode__(self):
         return self.name
@@ -37,11 +38,16 @@ class Bundle(models.Model):
         return ('bundle_details', [self.uploader.username, self.name])
 
     def get_temp_path(self):
-        return os.path.join('tmp', 'bundles', '%s' % self.id)
+        """
+        Returns the path to where the file is initially uploaded
+        """
+        return os.path.join('tmp', 'bundles',
+            "%d_%d" % (self.id, self.latest_version))
 
 
 class BundleFile(MPTTModel):
     bundle = models.ForeignKey(Bundle)
+    version = models.IntegerField()
     parent = TreeForeignKey('self', null=True, blank=True,
         related_name='children')
     name = models.CharField(max_length=256)
@@ -86,5 +92,6 @@ class BundleFile(MPTTModel):
         return ('bundlefile_details', [
             self.bundle.uploader.username,
             self.bundle.name,
+            self.version,
             self.get_path()
         ])

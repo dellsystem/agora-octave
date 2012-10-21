@@ -30,7 +30,8 @@ def process_files_in_dir(bundle, dir_name, parent_dir):
         filename = os.path.basename(file_path)
         full_path = file_path[len(bundle.get_temp_path()) + 1:]
         bundle_file = BundleFile(bundle=bundle, name=filename,
-            parent=parent_dir, full_path=full_path)
+            parent=parent_dir, full_path=full_path,
+            version=bundle.latest_version)
 
         if file_path in files:
             bundle_file.is_dir = False
@@ -79,7 +80,8 @@ def handle_bundle_upload(bundle_id):
     elif mime_type.startswith('text/'):
         # Should be a plain text file - create a CodeFile for it
         bundle_file = BundleFile(bundle=bundle, name=bundle.file_name,
-            full_path=bundle.file_name, file_size=os.path.getsize(file))
+            full_path=bundle.file_name, file_size=os.path.getsize(file),
+            version=bundle.latest_version)
         bundle_file.save_file_contents(open(file, 'rt'),
             original_filename=bundle.file_name)
 
