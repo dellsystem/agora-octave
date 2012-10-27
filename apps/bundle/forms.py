@@ -6,8 +6,8 @@ from apps.bundle.models import Bundle
 class BundleForm(forms.ModelForm):
     class Meta:
         model = Bundle
-        fields = ('uploader', 'name', 'description', 'free_license',
-            'octave_format')
+        fields = ('uploader', 'name', 'description', 'octave_format',
+            'free_license')
         widgets = {
             # Ideally, the uploader field should just not show up at all
             # Not really possible if we want to validate the name
