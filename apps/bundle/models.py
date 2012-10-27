@@ -26,8 +26,8 @@ class Bundle(models.Model):
         "Optional. If this field is left empty and the checkbox below "
         "is ticked, then the DESCRIPTION file (if it exists) will be "
         "used as the bundle description instead."))
-    octave_format = models.BooleanField('Is the bundle formatted according'
-        ' to Octave package manager standards?', default=False)
+    octave_format = models.BooleanField(_("Is the bundle formatted according"
+        " to Octave package manager standards?"), default=False)
     # If octave_format is true and there is a DESCRIPTION file in the root
     description_file = models.ForeignKey('BundleFile', blank=True, null=True,
         related_name="described")
