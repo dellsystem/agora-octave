@@ -48,12 +48,12 @@ def file_detail(request, user, bundle, version, path):
 def index(request):
     if request.method == 'POST':
         post_data = request.POST.copy()
-        bundle = Bundle(uploader=request.user)
-        form = BundleForm(post_data, request.FILES, instance=bundle)
+        post_data['uploader'] = request.user.id
+        form = BundleForm(post_data, request.FILES)
 
         if form.is_valid():
             file = request.FILES.get('file')
-            form.save()
+            bundle = form.save()
 
             bundle.file_name = file.name
             bundle.save()

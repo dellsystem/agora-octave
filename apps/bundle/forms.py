@@ -6,10 +6,23 @@ from apps.bundle.models import Bundle
 class BundleForm(forms.ModelForm):
     class Meta:
         model = Bundle
-        fields = ('name', 'description', 'free_license')
+        fields = ('uploader', 'name', 'description', 'free_license',
+            'octave_format')
 
     file = forms.FileField(help_text=("Upload a plain text file or an \
         archive file."))
+
+    def clean(self):
+        data = self.cleaned_data
+        name_used = Bundle.objects.filter(uploader=data.get('uploader'),
+            name=data.get('name')).exists()
+
+        # If a bundle with this user/name combo exists, raise an error
+        if name_used:
+            raise forms.ValidationError("You have already created a bundle"
+                " with this name.")
+
+        return data
 
 
 class BundleEditForm(forms.ModelForm):
