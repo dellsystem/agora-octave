@@ -22,7 +22,12 @@ class Bundle(models.Model):
         "Acceptable characters: alphanumeric characters, hyphens, and " +
         "underscores."))
     uploader = models.ForeignKey(User)
-    description = models.TextField(max_length=32728, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    octave_format = models.BooleanField('Is the bundle formatted according'
+        ' to Octave package manager standards?', default=False)
+    # If octave_format is true and there is a DESCRIPTION file in the root
+    description_file = models.ForeignKey('BundleFile', blank=True, null=True,
+        related_name="described")
     free_license = models.ForeignKey(FreeLicense, default=1)
     pub_date = models.DateTimeField('date uploaded', auto_now_add=True)
     mod_date = models.DateTimeField('date last modified', auto_now=True)

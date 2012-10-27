@@ -11,7 +11,9 @@
     {% csrf_token %}
 
     {% for field in form %}
+    {% if not field.is_hidden %}
     {% include "simple_field.djhtml" %}
+    {% endif %}
     {% endfor %}
 
     <br />

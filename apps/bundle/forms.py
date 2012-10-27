@@ -8,6 +8,12 @@ class BundleForm(forms.ModelForm):
         model = Bundle
         fields = ('uploader', 'name', 'description', 'free_license',
             'octave_format')
+        widgets = {
+            # Ideally, the uploader field should just not show up at all
+            # Not really possible if we want to validate the name
+            # This is the next best option (hidden fields just aren't shown)
+            'uploader': forms.HiddenInput,
+        }
 
     file = forms.FileField(help_text=("Upload a plain text file or an \
         archive file."))

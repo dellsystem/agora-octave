@@ -26,8 +26,6 @@ def process_files_in_dir(bundle, dir_name, parent_dir):
     dir_contents = [os.path.join(dir_name, f) for f in os.listdir(dir_name)]
     dirs = filter(os.path.isdir, dir_contents)
     files = filter(os.path.isfile, dir_contents)
-    print "Directories: %s" % ", ".join(dirs)
-    print "Files: %s" % ", ".join(files)
 
     for file_path in sorted(dirs) + sorted(files):
         filename = os.path.basename(file_path)
@@ -37,6 +35,7 @@ def process_files_in_dir(bundle, dir_name, parent_dir):
             version=bundle.latest_version)
 
         if file_path in files:
+            is_desc = False
             bundle_file.is_dir = False
             bundle_file.file_size = os.path.getsize(file_path)
 
@@ -46,6 +45,16 @@ def process_files_in_dir(bundle, dir_name, parent_dir):
                 with open(file_path, 'rt') as file:
                     # Store the contents of the file in the code field
                     bundle_file.save_file_contents(file)
+
+                    # DESCRIPTION file should be at most 1 level deep
+                    single_parent = (parent_dir is not None or
+                        '/' not in parent_dir)
+                    is_desc = single_parent and filename == 'DESCRIPTION'
+
+            # Check if this is the description file (if no description exists)
+            if bundle.octave_format and bundle.description == '' and is_desc:
+                bundle.description_file = bundle_file
+                bundle.save()
 
             bundle_file.save()
         else:

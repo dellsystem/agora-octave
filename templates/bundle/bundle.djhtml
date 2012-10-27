@@ -74,9 +74,21 @@ by
     <p><a href="#">Download file (feature not yet available)</a></p>
     {% endif %}
     {% else %}
-    <p><strong>Description:</strong> {{ bundle.description|default:"N/A" }}</p>
+    <h2>Description</h2>
+    {% if bundle.description %}
+    <p>{{ bundle.description }}</p>
+    {% else %}
+    {% if bundle.description_file %}
+    <p class="bundle-description">{{ bundle.description_file.code|safe }}</p>
+    {% else %}
+    <p>N/A</p>
+    {% endif %}
+    {% endif %}
+
+    {% if bundle.description %}
     <p><strong>License:</strong> {{ bundle.free_license }}</p>
     <p><strong>Latest version number:</strong> {{ bundle.latest_version }}</p>
+    {% endif %}
     {% if previous_versions %}
     <h3>Versions</h3>
     <ul>
