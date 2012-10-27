@@ -22,7 +22,10 @@ class Bundle(models.Model):
         "Acceptable characters: alphanumeric characters, hyphens, and " +
         "underscores."))
     uploader = models.ForeignKey(User)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True, help_text=_(
+        "Optional. If this field is left empty and the checkbox below "
+        "is ticked, then the DESCRIPTION file (if it exists) will be "
+        "used as the bundle description instead."))
     octave_format = models.BooleanField('Is the bundle formatted according'
         ' to Octave package manager standards?', default=False)
     # If octave_format is true and there is a DESCRIPTION file in the root
