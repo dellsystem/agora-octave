@@ -16,6 +16,6 @@
 
     <br />
     <div class="center-align">
-        <button type="submit" class="button large">{% trans "Paste it" %}</button>
+        <button type="submit" class="button large">{% trans "Save bundle" %}</button>
     </div>
 </form>
