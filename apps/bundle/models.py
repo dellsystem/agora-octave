@@ -53,6 +53,20 @@ class Bundle(models.Model):
             "%d_%d" % (self.id, self.latest_version))
 
 
+class BundleVersion(models.Model):
+    class Meta:
+        unique_together = ('bundle', 'version')
+    """
+    Needed to allow users to download the originally-uploaded files
+    """
+    bundle = models.ForeignKey(Bundle)
+    version = models.IntegerField()
+    file_name = models.CharField(max_length=256)
+
+    def __unicode__(self):
+        return self.file_name
+
+
 class BundleFile(MPTTModel):
     bundle = models.ForeignKey(Bundle)
     version = models.IntegerField()

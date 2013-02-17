@@ -98,7 +98,7 @@ by
                 {% if version == this_version %}<strong>{% endif %}
                 Version {{ version }}
                 {% if version == this_version %}</strong>{% endif %}
-            </a>
+            </a> :: <a href="{% url bundle_download bundle.uploader.username bundle.name version %}">Download &raquo;</a>
         </li>
     {% endfor %}
     </ul>

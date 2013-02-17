@@ -5,8 +5,9 @@ import os
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.views.static import serve
 
-from apps.bundle.models import Bundle, BundleFile
+from apps.bundle.models import Bundle, BundleFile, BundleVersion
 from apps.bundle.forms import BundleForm, BundleEditForm
 from apps.bundle.tasks import handle_bundle_upload
 from apps.pygments_style.models import PygmentsStyle
@@ -37,7 +38,6 @@ def detail(request, user, bundle, file=None, version=0):
 
 
 def file_detail(request, user, bundle, version, path):
-    print version
     bundle_file = get_object_or_404(BundleFile, bundle__uploader__username=user,
         bundle__name=bundle, full_path=path, is_dir=False, version=version)
 
@@ -123,3 +123,14 @@ def edit(request, user, bundle):
     }
 
     return render(request, "bundle/edit.djhtml", context)
+
+
+def download(request, user, bundle, version):
+    bundle = get_object_or_404(Bundle, uploader__username=user, name=bundle)
+    version = int(version)
+
+    # Look for the BundleVersion with this version
+    bundle_version = get_object_or_404(BundleVersion, bundle=bundle,
+        version=version)
+    return serve(request, bundle_version.file_name, os.path.join('tmp',
+        'bundles'))

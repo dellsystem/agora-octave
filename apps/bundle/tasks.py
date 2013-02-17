@@ -7,7 +7,7 @@ import archive
 import magic
 from celery import task
 
-from apps.bundle.models import Bundle, BundleFile
+from apps.bundle.models import Bundle, BundleFile, BundleVersion
 
 
 mimetypes.add_type('application/x-gzip', '.tgz')
@@ -72,13 +72,15 @@ def handle_bundle_upload(bundle_id):
     mime_type = magic.from_file(file, mime=True)
     extension = mimetypes.guess_extension(mime_type)
 
-    print "mime type: %s" % mime_type
-    print "extension: %s" % extension
-
     if extension in archive_extensions:
         new_path = file + extension
         # Treat it as an archive. Rename it to that, then extract
         os.rename(file, new_path)
+
+        # Create the new BundleVersion
+        new_file_name = os.path.basename(new_path)
+        BundleVersion.objects.create(bundle=bundle, file_name=new_file_name,
+            version=bundle.latest_version)
 
         try:
             # Extract it to a directory, same path as the filename
@@ -87,7 +89,6 @@ def handle_bundle_upload(bundle_id):
             # Now go through the extracted files, make BundleFiles from them
             process_files_in_dir(bundle, file, None)
         except archive.ArchiveException:
-            print "Archive exception"
             pass
     elif mime_type.startswith('text/'):
         # Should be a plain text file - create a CodeFile for it
@@ -97,6 +98,5 @@ def handle_bundle_upload(bundle_id):
         bundle_file.save_file_contents(open(file, 'rt'),
             original_filename=bundle.file_name)
 
-    print "Done uploading!"
     bundle.done_uploading = True
     bundle.save()
