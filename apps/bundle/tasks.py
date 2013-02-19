@@ -74,13 +74,11 @@ def handle_bundle_upload(bundle_id):
 
     if extension in archive_extensions:
         new_path = file + extension
+        # Save the new file name (needed for the BundleVersion)
+
+        new_file_name = os.path.basename(new_path)
         # Treat it as an archive. Rename it to that, then extract
         os.rename(file, new_path)
-
-        # Create the new BundleVersion
-        new_file_name = os.path.basename(new_path)
-        BundleVersion.objects.create(bundle=bundle, file_name=new_file_name,
-            version=bundle.latest_version)
 
         try:
             # Extract it to a directory, same path as the filename
@@ -97,6 +95,11 @@ def handle_bundle_upload(bundle_id):
             version=bundle.latest_version)
         bundle_file.save_file_contents(open(file, 'rt'),
             original_filename=bundle.file_name)
+        new_file_name = os.path.basename(file)
+
+    # Create the new BundleVersion
+    BundleVersion.objects.create(bundle=bundle, file_name=new_file_name,
+        version=bundle.latest_version)
 
     bundle.done_uploading = True
     bundle.save()
